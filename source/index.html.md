@@ -1,14 +1,14 @@
 ---
-title: API Reference
+title: OmniBOLT API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
   - javascript
+  - golang
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/LightningOnOmnilayer/LightningOnOmni'>Join our dev community</a>
+  - <a href='https://github.com/LightningOnOmnilayer/Omni-BOLT-spec'>Help in OmniBOLT specification</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -17,223 +17,353 @@ includes:
 search: true
 ---
 
-# Introduction
+# OmniBOLT Daemon Websocket Messages Reference
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18), which provides the complete services of token transactions on bitcoin network. And current OBD implementation is deeply binded to OmniCore. 
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We assume you have already gone through our [installation instruction](https://github.com/LightningOnOmnilayer/LightningOnOmni#installation), so that you are familar with:
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+ * pull source code and compile to get obdserver;  
+ * Configure OmniCore node for OBD;  
+ * Connect OBD with Omnicore correctly;  
+ * Use a simple web based [websocket client](https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn?hl=en) for Chrome to do experiments;  
+ * OBD responses you correctly;  
 
-# Authentication
+For kernel developers in our community, the above steps are the easiest way to get started. Just open [LightningOnOmni](https://github.com/LightningOnOmnilayer/LightningOnOmni#step-4-test-channel-operations-using-websocket-testing-tool) project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.
 
-> To authorize, use this code:
 
-```ruby
-require 'kittn'
+# Wallet Preparation
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+> To test and debug the kernel, use OmniCore in REGTEST mode, and creat two users Alice and Bob:
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+# With shell, you can creat your addresses using omnicore-cli
+Alice: mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
+"pubkey": "021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"  
+"privatekey": "cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"  
+
+Bob: myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY  
+"pubkey": "03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9"  
+"privatekey":   cV6dif91LHD8Czk8BTgvYZR3ipUrqyMDMtUXSWsThqpHaQJUuHKA  
+
+channel:  
+(P2WHK)address: 2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE  
+"channel_address_redeem_script":"5221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae"  
+"channel_address_script_pub_key":"a9145761a1d45b8a6e7caa10a4bcecca97630c67af4687"  
+
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+To be added
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace pubkey and privatekey of `Alice/Bob` with values you create in your environment.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+Use omnicore-cli to creat new users in REGTEST mode, and deposit tokens to their addresses respectively. Don't develop in real BTC network. A good start is [Use the raw transaction API to create a Simple Send transaction](https://github.com/OmniLayer/omnicore/wiki/Use-the-raw-transaction-API-to-create-a-Simple-Send-transaction)  
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+After you created your users and their addresses, you shall replace <code>Alice</code> and <code>Bob</code> with your data.
 </aside>
 
-# Kittens
+# Balance and Unspent
 
-## Get All Kittens
+## get all balances for address
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+<!-- right -->
+> Here we use the example data created before. Alice: 
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+./omnicore-cli omni_getallbalancesforaddress mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
+``` 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{  
+    "propertyid": 121,  
+    "name": "OST-P1-Test",  
+    "balance": "15.00000000",  
+    "reserved": "0.00000000",  
+    "frozen": "0.00000000"  
+}  
 ```
 
-This endpoint retrieves all kittens.
+> Bob: 
 
-### HTTP Request
+```shell
+./omnicore-cli omni_getallbalancesforaddress myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY  
 
-`GET http://example.com/api/kittens`
+``` 
+> Response:
 
-### Query Parameters
+```json
+{  
+    "propertyid": 121,
+    "name": "OST-P1-Test",
+    "balance": "20.00000000",
+    "reserved": "0.00000000",
+    "frozen": "0.00000000"
+}  
+```
+
+<!-- middle -->
+`./omnicore-cli omni_getallbalancesforaddress <omni address>`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+omni address | N/A | Address created by omnicore-cli, same to the bitcoin core addresss.
+ 
+
+## list unspent 
+
+<!-- right -->
+> Alice:
+
+```shell
+./omnicore-cli listunspent 0 999999  '["mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"]'
+```
+
+> Response:
+
+```json
+{
+    "txid": "b57afc6164f68f2c3b79d31afb30bd1750b22798ec6cfad0131a3062c2317ec7",
+    "vout": 0,
+    "address": "mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
+    "account": "",
+    "scriptPubKey": "76a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac",
+    "amount": 0.01000000,
+    "confirmations": 1,
+    "spendable": true,
+    "solvable": true
+}
+```
+
+> Bob:
+
+```shell
+./omnicore-cli listunspent 0 999999  '["myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY"]'
+```
+
+> Response:
+
+```json
+{
+    "txid": "4a018fca34428ba622c9d105faba954e045dd977b61e52269b05d1cc5b8fc9f9",
+    "vout": 0,
+    "address": "myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY",
+    "account": "",
+    "scriptPubKey": "76a914c2e30e5f058df787de0529e0742d7ef7a13231ab88ac",
+    "amount": 0.00070467,
+    "confirmations": 383,
+    "spendable": true,
+    "solvable": true
+}
+```
+
+<!-- middle -->
+`./omnicore-cli listunspent 0 999999  '["<omni address>"]'`
+
+Parameter | Default | Description
+--------- | ------- | -----------
+omni address | N/A | Address created by omnicore-cli, same to the bitcoin core addresss.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Now, we have our environment ready. Let's start to communicate with OBD!
 </aside>
 
-## Get a Specific Kitten
+# User Login
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+<!-- right -->
+> Alice:
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+{
+	"type":1,
+	"data":{
+        	"peer_id":"alice"
+        	}
+}
 ```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> Response:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+	"type":1,
+	"status":true,
+	"from":"alice",
+	"to":"all",
+	"result":"alice login"
 }
 ```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+> Bob:
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+{
+	"type":1,
+	"data":{
+        	"peer_id":"bob"
+        	}
+}
 ```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
+> Response:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+	"type":1,
+	"status":true,
+	"from":"bob",
+	"to":"all",
+	"result":"bob login"
 }
 ```
 
-This endpoint deletes a specific kitten.
 
-### HTTP Request
+<!-- middle -->
+This endpoint manages users createb by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.
 
-`DELETE http://example.com/kittens/<ID>`
+## Websocket Request 
+ 
+{  
+	"type":1,  
+	"data":{  
+        	"peer_id":"<user ID>"  
+        	}  
+}  
+ 
 
-### URL Parameters
-
+## Websocket Response：
+ 
+{  
+	"type":1,  
+	"status":true or false,  
+	"from":"<user ID>",  
+	"to":"all",  
+	"result":"response data"  
+}  
+ 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+user ID   | Global ID for a user in OBD network
+
+<aside class="warning">This is not ready for production environment.</aside>
+
+ 
+# create channel
+
+## request to create
+
+> Alice requests:
+
+```shell
+{
+    	"type":-32,
+    		"data":{
+		"funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"
+    		},
+	"recipient_peer_id":"bob"
+}
+```
+> OBD Response:
+
+```json
+{
+	"type":-32,
+	"status":true,
+	"from":"alice",
+	"to":"bob",
+	"result":
+	{
+		"chain_hash":"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P",
+		"channel_reserve_satoshis":0,
+		"delayed_payment_base_point":"",
+		"dust_limit_satoshis":0,
+		"fee_rate_per_kw":0,
+		"funding_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
+		"funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d",
+		"funding_satoshis":0,
+		"htlc_base_point":"",
+		"htlc_minimum_msat":0,
+		"max_accepted_htlcs":0,
+		"max_htlc_value_in_flight_msat":0,
+		"payment_base_point":"",
+		"push_msat":0,
+		"revocation_base_point":"",
+		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],"to_self_delay":0
+	}
+}
+```
+
+<!-- middle -->
+Alice sends request to Bob for creating a channel between them
+
+### Websocket Request
+```
+{
+    	"type":-32,
+    		"data":{
+		"funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"
+    		},
+	"recipient_peer_id":"bob"
+}
+```
+
+### Websocket Response：
+```
+{
+	"type":-32,
+	"status":true,
+	"from":"alice",
+	"to":"bob",
+	"result":
+	{
+		"chain_hash":"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P",
+		"channel_reserve_satoshis":0,
+		"delayed_payment_base_point":"",
+		"dust_limit_satoshis":0,
+		"fee_rate_per_kw":0,
+		"funding_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
+		"funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d",
+		"funding_satoshis":0,
+		"htlc_base_point":"",
+		"htlc_minimum_msat":0,
+		"max_accepted_htlcs":0,
+		"max_htlc_value_in_flight_msat":0,
+		"payment_base_point":"",
+		"push_msat":0,
+		"revocation_base_point":"",
+		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],"to_self_delay":0
+	}
+}
+```
+
+## Websocket Request 
+```
+{
+	"type":1,
+	"data":{
+        	"peer_id":"<user ID>"
+        	}
+}
+```
+
+## Websocket Response：
+```
+{
+	"type":1,
+	"status":true or false,
+	"from":"<user ID>",
+	"to":"all",
+	"result":"response data"
+}
+```
+Parameter | Description
+--------- | -----------
+user ID   | Global ID for a user in OBD network
+
+<aside class="warning">This is not ready for production environment.</aside>
+
+
+ 
 
