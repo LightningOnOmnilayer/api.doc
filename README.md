@@ -40,8 +40,9 @@ You're going to need:
 
  - **Linux or macOS** — Windows may work, but is unsupported.
  - **Ruby, version 2.3.1 or newer**
+
+The following instruction is for Ubuntu installation:
 ```
-This is for Ubuntu installation:
 >sudo apt-get update
 >sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
 ```
@@ -115,6 +116,21 @@ sudo bundle install
 
 # OR run this to run with vagrant
 vagrant up
+```
+
+If encounters failure of JS runtime:
+```
+bundler: failed to load command: middleman (/usr/local/bin/middleman)
+ExecJS::RuntimeUnavailable: Could not find a JavaScript runtime. 
+```
+You will need to install node.js to solve it:
+```
+sudo apt-get install nodejs
+```
+Then run `bundle exec middleman server` again, the following prompt shows success:
+```
+== The Middleman is loading
+== View your site at "http://localhost:4567", "http://127.0.0.1:4567"
 ```
 
 You can now see the docs at http://localhost:4567. Whoa! That was fast!
