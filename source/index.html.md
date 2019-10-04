@@ -107,7 +107,7 @@ After you created your users and their addresses, you shall replace <code>Alice<
 }  
 ```
 
-<!-- middle -->
+<!-- center -->
 `./omnicore-cli omni_getallbalancesforaddress <omni address>`
 
 Parameter | Default | Description
@@ -162,7 +162,7 @@ omni address | N/A | Address created by omnicore-cli, same to the bitcoin core a
 }
 ```
 
-<!-- middle -->
+<!-- center -->
 `./omnicore-cli listunspent 0 999999  '["<omni address>"]'`
 
 Parameter | Default | Description
@@ -173,7 +173,7 @@ omni address | N/A | Address created by omnicore-cli, same to the bitcoin core a
 Now, we have our environment ready. Let's start to communicate with OBD!
 </aside>
 
-# User Login
+# User Login  
 
 <!-- right -->
 > Alice:
@@ -220,32 +220,36 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 ```
 
 
-<!-- middle -->
+<!-- center -->
 This endpoint manages users createb by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.
 
+**Message Type: 1**
+
 **Websocket Request:**
- 
+`
 {  
-	"type":1,  
-	"data":{  
-        	"peer_id":"<user ID>"  
-        	}  
+    "type":1,  
+    "data":  
+    {  
+        "peer_id":"<peer ID>"  
+    }  
 }  
- 
+`
 
 **Websocket Response：**
- 
+` 
 {  
-	"type":1,  
-	"status":true or false,  
-	"from":"<user ID>",  
-	"to":"all",  
-	"result":"response data"  
+    "type":1,  
+    "status":true or false,  
+    "from":"<peer ID>",  
+    "to":"all",  
+    "result":"response data"  
 }  
- 
-Parameter | Description
---------- | -----------
-user ID   | Global ID for a user in OBD network
+`
+
+Parameter | default | Description
+--------- | ------- | ------------
+peer ID   | ------- | Global peer ID for a user in OBD network
 
 <aside class="warning">This is not ready for production environment.</aside>
 
@@ -254,6 +258,7 @@ user ID   | Global ID for a user in OBD network
 
 ## request to create
 
+<!-- right -->
 > Alice requests:
 
 ```shell
@@ -295,22 +300,29 @@ user ID   | Global ID for a user in OBD network
 }
 ```
 
-<!-- middle -->
+<!-- center -->
 Alice sends request to Bob for creating a channel between them
 
-### Websocket Request
-```
+**Message Type: -32**
+ 
+**Websocket Request**
+` 
 {
     	"type":-32,
     		"data":{
-		"funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"
+		"funding_pubkey":"<funding pubkey>"
     		},
-	"recipient_peer_id":"bob"
+	"recipient_peer_id":"<recipient peer id>"
 }
-```
+` 
 
-### Websocket Response：
-```
+Parameter | default | Description
+--------- | ------- | ------------
+funding pubkey    | ------- | public key of funder, who wish to deposite BTC and other tokens to the channel
+recipient peer id | ------- | peer id of the fundee.
+ 
+**Websocket Response：**
+` 
 {
 	"type":-32,
 	"status":true,
@@ -336,34 +348,6 @@ Alice sends request to Bob for creating a channel between them
 		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],"to_self_delay":0
 	}
 }
-```
-
-## Websocket Request 
-```
-{
-	"type":1,
-	"data":{
-        	"peer_id":"<user ID>"
-        	}
-}
-```
-
-## Websocket Response：
-```
-{
-	"type":1,
-	"status":true or false,
-	"from":"<user ID>",
-	"to":"all",
-	"result":"response data"
-}
-```
-Parameter | Description
---------- | -----------
-user ID   | Global ID for a user in OBD network
-
-<aside class="warning">This is not ready for production environment.</aside>
-
+` 
 
  
-
