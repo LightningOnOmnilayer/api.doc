@@ -40,6 +40,62 @@ You're going to need:
 
  - **Linux or macOS** — Windows may work, but is unsupported.
  - **Ruby, version 2.3.1 or newer**
+```
+This is for Ubuntu installation:
+>sudo apt-get update
+>sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+```
+ 
+Download and install Ruby:
+```
+>wget https://cache.ruby-china.com/pub/ruby/ruby-2.3.1.tar.gz
+>tar -zxvf ruby-2.3.1.tar.gz
+>cd ruby-2.3.1
+>./configure
+>make&&make install
+>ruby -v
+```
+Download rubygems-2.7.7
+```
+>wget https://rubygems.org/rubygems/rubygems-2.7.7.tgz
+>tar -zxvf rubygems-2.7.7.tgz 
+>cd rubygems-2.7.7 
+>ruby setup.rb
+```
+
+Install Zlib
+```
+>cd ruby-2.3.1/ext/zlib
+>ruby ./extconf.rb
+>make&&make install
+>cd rubygems-2.7.7
+>ruby setup.rb
+```
+
+Install Openssl, which is needed in running ruby:
+```
+>sudo apt-get install openssl
+>sudo apt-get install libssl-dev
+>sudo apt-get install libssl0.9.8
+```
+Then go to the Ruby source code directory:
+```
+>cd ruby-2.3.1/ext/openssl
+>ruby extconf.rb
+>make 
+>sudo make install
+```
+If you encounter `make: *** No rule to make target /include/ruby.h , needed by ossl.o .  Stop.`, then you need to edit `{ruby source code path}/ext/openssl/Makefile`, and add evaluate `top_srcdir`(the third line of the following snippet):
+```
+srcdir = .
+topdir = /usr/local/include/ruby-2.1.0
+top_srcdir = {ruby source code path}
+hdrdir = $(topdir)
+arch_hdrdir = /usr/local/include/ruby-2.1.0/x86_64-linux
+```
+Save, and run `make && make install` again. It works.
+
+  
  - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
 ### Getting Set Up
