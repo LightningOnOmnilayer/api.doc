@@ -246,12 +246,6 @@
                   <li>
                     <a href="#request-to-create" class="toc-h2 toc-link" data-title="request to create">request to create</a>
                   </li>
-                  <li>
-                    <a href="#websocket-request-2" class="toc-h2 toc-link" data-title="Websocket Request">Websocket Request</a>
-                  </li>
-                  <li>
-                    <a href="#websocket-response-2" class="toc-h2 toc-link" data-title="Websocket Response：">Websocket Response：</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -347,7 +341,7 @@ After you created your users and their addresses, you shall replace <code>Alice<
     </span><span class="s2">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">
 </span><span class="p">}</span><span class="w">  
 </span></code></pre>
-<!-- middle -->
+<!-- center -->
 
 <p><code>./omnicore-cli omni_getallbalancesforaddress &lt;omni address&gt;</code></p>
 
@@ -407,7 +401,7 @@ After you created your users and their addresses, you shall replace <code>Alice<
     </span><span class="s2">"solvable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<!-- middle -->
+<!-- center -->
 
 <p><code>./omnicore-cli listunspent 0 999999  &#39;[&quot;&lt;omni address&gt;&quot;]&#39;</code></p>
 
@@ -473,43 +467,52 @@ Now, we have our environment ready. Let's start to communicate with OBD!
     </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"bob login"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<!-- middle -->
+<!-- center -->
 
 <p>This endpoint manages users createb by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.</p>
 
-<p><strong>Websocket Request:</strong></p>
+<p><strong>Message Type: 1</strong></p>
 
-<p>{<br>
-    &quot;type&quot;:1,<br>
-    &quot;data&quot;:{<br>
-            &quot;peer_id&quot;:&quot;<user ID>&quot;<br>
-            }<br>
-}  </p>
+<p><strong>Websocket Request:</strong>
+<code>
+{  
+    &quot;type&quot;:1,  
+    &quot;data&quot;:  
+    {  
+        &quot;peer_id&quot;:&quot;&lt;peer ID&gt;&quot;  
+    }  
+}  
+</code></p>
 
-<p><strong>Websocket Response：</strong></p>
-
-<p>{<br>
-    &quot;type&quot;:1,<br>
-    &quot;status&quot;:true or false,<br>
-    &quot;from&quot;:&quot;<user ID>&quot;,<br>
-    &quot;to&quot;:&quot;all&quot;,<br>
-    &quot;result&quot;:&quot;response data&quot;<br>
-}  </p>
+<p><strong>Websocket Response：</strong>
+<code>
+{  
+    &quot;type&quot;:1,  
+    &quot;status&quot;:true or false,  
+    &quot;from&quot;:&quot;&lt;peer ID&gt;&quot;,  
+    &quot;to&quot;:&quot;all&quot;,  
+    &quot;result&quot;:&quot;response data&quot;  
+}  
+</code></p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>user ID</td>
-<td>Global ID for a user in OBD network</td>
+<td>peer ID</td>
+<td>-------</td>
+<td>Global peer ID for a user in OBD network</td>
 </tr>
 </tbody></table>
 
 <aside class="warning">This is not ready for production environment.</aside>
 <h1 id='create-channel'>create channel</h1><h2 id='request-to-create'>request to create</h2>
+<!-- right -->
+
 <blockquote>
 <p>Alice requests:</p>
 </blockquote>
@@ -550,68 +553,70 @@ Now, we have our environment ready. Let's start to communicate with OBD!
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<!-- middle -->
+<!-- center -->
 
 <p>Alice sends request to Bob for creating a channel between them</p>
-<h3 id='websocket-request'>Websocket Request</h3><pre class="highlight plaintext"><code>{
-        "type":-32,
-            "data":{
-        "funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"
+
+<p><strong>Message Type: -32</strong></p>
+
+<p><strong>Websocket Request</strong>
+<code>
+{
+        &quot;type&quot;:-32,
+            &quot;data&quot;:{
+        &quot;funding_pubkey&quot;:&quot;&lt;funding pubkey&gt;&quot;
             },
-    "recipient_peer_id":"bob"
+    &quot;recipient_peer_id&quot;:&quot;&lt;recipient peer id&gt;&quot;
 }
-</code></pre><h3 id='websocket-response'>Websocket Response：</h3><pre class="highlight plaintext"><code>{
-    "type":-32,
-    "status":true,
-    "from":"alice",
-    "to":"bob",
-    "result":
-    {
-        "chain_hash":"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P",
-        "channel_reserve_satoshis":0,
-        "delayed_payment_base_point":"",
-        "dust_limit_satoshis":0,
-        "fee_rate_per_kw":0,
-        "funding_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
-        "funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d",
-        "funding_satoshis":0,
-        "htlc_base_point":"",
-        "htlc_minimum_msat":0,
-        "max_accepted_htlcs":0,
-        "max_htlc_value_in_flight_msat":0,
-        "payment_base_point":"",
-        "push_msat":0,
-        "revocation_base_point":"",
-        "temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],"to_self_delay":0
-    }
-}
-</code></pre><h2 id='websocket-request-2'>Websocket Request</h2><pre class="highlight plaintext"><code>{
-    "type":1,
-    "data":{
-            "peer_id":"&lt;user ID&gt;"
-            }
-}
-</code></pre><h2 id='websocket-response-2'>Websocket Response：</h2><pre class="highlight plaintext"><code>{
-    "type":1,
-    "status":true or false,
-    "from":"&lt;user ID&gt;",
-    "to":"all",
-    "result":"response data"
-}
-</code></pre>
+</code> </p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>user ID</td>
-<td>Global ID for a user in OBD network</td>
+<td>funding pubkey</td>
+<td>-------</td>
+<td>public key of funder, who wish to deposite BTC and other tokens to the channel</td>
+</tr>
+<tr>
+<td>recipient peer id</td>
+<td>-------</td>
+<td>peer id of the fundee.</td>
 </tr>
 </tbody></table>
 
-<aside class="warning">This is not ready for production environment.</aside>
+<p><strong>Websocket Response：</strong>
+<code>
+{
+    &quot;type&quot;:-32,
+    &quot;status&quot;:true,
+    &quot;from&quot;:&quot;alice&quot;,
+    &quot;to&quot;:&quot;bob&quot;,
+    &quot;result&quot;:
+    {
+        &quot;chain_hash&quot;:&quot;1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P&quot;,
+        &quot;channel_reserve_satoshis&quot;:0,
+        &quot;delayed_payment_base_point&quot;:&quot;&quot;,
+        &quot;dust_limit_satoshis&quot;:0,
+        &quot;fee_rate_per_kw&quot;:0,
+        &quot;funding_address&quot;:&quot;mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs&quot;,
+        &quot;funding_pubkey&quot;:&quot;021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d&quot;,
+        &quot;funding_satoshis&quot;:0,
+        &quot;htlc_base_point&quot;:&quot;&quot;,
+        &quot;htlc_minimum_msat&quot;:0,
+        &quot;max_accepted_htlcs&quot;:0,
+        &quot;max_htlc_value_in_flight_msat&quot;:0,
+        &quot;payment_base_point&quot;:&quot;&quot;,
+        &quot;push_msat&quot;:0,
+        &quot;revocation_base_point&quot;:&quot;&quot;,
+        &quot;temporary_channel_id&quot;:[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],&quot;to_self_delay&quot;:0
+    }
+}
+</code> </p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
