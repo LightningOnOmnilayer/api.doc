@@ -223,7 +223,7 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 <!-- middle -->
 This endpoint manages users createb by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.
 
-## Websocket Request 
+**Websocket Request:**
  
 {  
 	"type":1,  
@@ -233,7 +233,7 @@ This endpoint manages users createb by an OBD instance. Here we use Alice and Bo
 }  
  
 
-## Websocket Response：
+**Websocket Response：**
  
 {  
 	"type":1,  
