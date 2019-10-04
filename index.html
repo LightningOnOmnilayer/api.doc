@@ -239,15 +239,18 @@
           </li>
           <li>
             <a href="#user-login" class="toc-h1 toc-link" data-title="User Login">User Login</a>
+          </li>
+          <li>
+            <a href="#create-channel" class="toc-h1 toc-link" data-title="create channel">create channel</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                    <a href="#request-to-create" class="toc-h2 toc-link" data-title="request to create">request to create</a>
                   </li>
                   <li>
-                    <a href="#url-parameters" class="toc-h2 toc-link" data-title="URL Parameters">URL Parameters</a>
+                    <a href="#websocket-request-2" class="toc-h2 toc-link" data-title="Websocket Request">Websocket Request</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#websocket-response-2" class="toc-h2 toc-link" data-title="Websocket Response：">Websocket Response：</a>
                   </li>
               </ul>
           </li>
@@ -426,14 +429,73 @@ After you created your users and their addresses, you shall replace <code>Alice<
 Now, we have our environment ready. Let's start to communicate with OBD!
 </aside>
 <h1 id='user-login'>User Login</h1>
+<!-- right -->
+
+<blockquote>
+<p>Alice:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:1,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"peer_id"</span>:<span class="s2">"alice"</span>
+            <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"alice login"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Bob:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:1,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"peer_id"</span>:<span class="s2">"bob"</span>
+            <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"bob login"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <!-- middle -->
 
 <p>This endpoint manages users createb by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>** Websocket Request </p>
+
+<p>{<br>
+    &quot;type&quot;:1,<br>
+    &quot;data&quot;:{<br>
+            &quot;peer_id&quot;:&quot;<user ID>&quot;<br>
+            }<br>
+}  </p>
+
+<p>** Websocket Response： **</p>
+
+<p>{<br>
+    &quot;type&quot;:1,<br>
+    &quot;status&quot;:true or false,<br>
+    &quot;from&quot;:&quot;<user ID>&quot;,<br>
+    &quot;to&quot;:&quot;all&quot;,<br>
+    &quot;result&quot;:&quot;response data&quot;<br>
+}  </p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -441,38 +503,102 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>user ID</td>
+<td>Global ID for a user in OBD network</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<aside class="warning">This is not ready for production environment.</aside>
+<h1 id='create-channel'>create channel</h1><h2 id='request-to-create'>request to create</h2>
+<blockquote>
+<p>Alice requests:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+        <span class="s2">"type"</span>:-32,
+            <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"funding_pubkey"</span>:<span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span>
+            <span class="o">}</span>,
+    <span class="s2">"recipient_peer_id"</span>:<span class="s2">"bob"</span>
+<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>OBD Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-32</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"chain_hash"</span><span class="p">:</span><span class="s2">"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_reserve_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delayed_payment_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dust_limit_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee_rate_per_kw"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_address"</span><span class="p">:</span><span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_pubkey"</span><span class="p">:</span><span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_minimum_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_accepted_htlcs"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_htlc_value_in_flight_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"push_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"revocation_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temporary_channel_id"</span><span class="p">:[</span><span class="mi">43</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">166</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">214</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">184</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">209</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">245</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">183</span><span class="p">],</span><span class="s2">"to_self_delay"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<!-- middle -->
+
+<p>Alice sends request to Bob for creating a channel between them</p>
+<h3 id='websocket-request'>Websocket Request</h3><pre class="highlight plaintext"><code>{
+        "type":-32,
+            "data":{
+        "funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"
+            },
+    "recipient_peer_id":"bob"
+}
+</code></pre><h3 id='websocket-response'>Websocket Response：</h3><pre class="highlight plaintext"><code>{
+    "type":-32,
+    "status":true,
+    "from":"alice",
+    "to":"bob",
+    "result":
+    {
+        "chain_hash":"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P",
+        "channel_reserve_satoshis":0,
+        "delayed_payment_base_point":"",
+        "dust_limit_satoshis":0,
+        "fee_rate_per_kw":0,
+        "funding_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
+        "funding_pubkey":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d",
+        "funding_satoshis":0,
+        "htlc_base_point":"",
+        "htlc_minimum_msat":0,
+        "max_accepted_htlcs":0,
+        "max_htlc_value_in_flight_msat":0,
+        "payment_base_point":"",
+        "push_msat":0,
+        "revocation_base_point":"",
+        "temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],"to_self_delay":0
+    }
+}
+</code></pre><h2 id='websocket-request-2'>Websocket Request</h2><pre class="highlight plaintext"><code>{
+    "type":1,
+    "data":{
+            "peer_id":"&lt;user ID&gt;"
+            }
+}
+</code></pre><h2 id='websocket-response-2'>Websocket Response：</h2><pre class="highlight plaintext"><code>{
+    "type":1,
+    "status":true or false,
+    "from":"&lt;user ID&gt;",
+    "to":"all",
+    "result":"response data"
+}
+</code></pre>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -480,10 +606,12 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>user ID</td>
+<td>Global ID for a user in OBD network</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">This is not ready for production environment.</aside>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
