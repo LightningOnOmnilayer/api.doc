@@ -110,6 +110,9 @@ Save, and run `make && make install` again. It works.
 bundle install
 bundle exec middleman server
 
+# on ubuntu, you may need to use sudo to run bundle install
+sudo bundle install
+
 # OR run this to run with vagrant
 vagrant up
 ```
