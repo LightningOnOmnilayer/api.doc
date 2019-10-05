@@ -1,6 +1,6 @@
 # Query
 
-Alice starts to deposit omni assets to the channel. This is quit similar to the the btc funding procedure.
+This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty. 
 
 ## Query list
 

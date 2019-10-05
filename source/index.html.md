@@ -16,6 +16,7 @@ includes:
   - fund_channel
   - deposit_tokens
   - query
+  - payments_in_channel
 
 search: true
 ---
