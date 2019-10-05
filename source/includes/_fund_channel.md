@@ -6,7 +6,7 @@ After that, we need to create the second part of transactions that deposit token
 
 This is the place that OBD differs from LND or other lightning implementation, since they are for BTC only, so there is no need for them to deposit extra bitcoin for fee.
 
-<aside class="warning">Another difference is that we need to transactions for the miner fees, one for the channel, and the other for a internal temporary multi-sig address. So Alice may raise request twice, and Bob needs to answer twice.
+<aside class="warning">Another difference is that we need two transactions for the miner fees, one for the channel, and the other for a internal temporary multi-sig address. So Alice may raise request twice, and Bob needs to answer twice.
 
 
 It is not finalized yet.
