@@ -290,6 +290,17 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#payments-in-channel" class="toc-h1 toc-link" data-title="Payments in Channel">Payments in Channel</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sender-creates-a-commitment-transaction-to-pay" class="toc-h2 toc-link" data-title="sender creates a commitment transaction to pay">sender creates a commitment transaction to pay</a>
+                  </li>
+                  <li>
+                    <a href="#receiever-accepts-the-tokens" class="toc-h2 toc-link" data-title="Receiever accepts the tokens">Receiever accepts the tokens</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://github.com/LightningOnOmnilayer/LightningOnOmni'>Join our dev community</a></li>
@@ -2062,7 +2073,7 @@ pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
 </tr>
 </tbody></table>
 <h1 id='query'>Query</h1>
-<p>Alice starts to deposit omni assets to the channel. This is quit similar to the the btc funding procedure.</p>
+<p>This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty. </p>
 <h2 id='query-list'>Query list</h2>
 <!-- right -->
 
@@ -2602,6 +2613,484 @@ pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
 <td>-------</td>
 <td>result</td>
 <td></td>
+</tr>
+</tbody></table>
+<h1 id='payments-in-channel'>Payments in Channel</h1>
+<p>Funder/fundee create commitment transactions.</p>
+<h2 id='sender-creates-a-commitment-transaction-to-pay'>sender creates a commitment transaction to pay</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice&#39;s data:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>last_temp_pub_key：       n2gj8MDzUU7JZ6eVF5VpXcL4wUfaDXzTfJ
+last_temp_private_key：  cSgTisoiZLzH5vrwHBMAXLC5nvND2ffcqqDtejMg12rEVrUMeP5R
+curr_temp_address：       mpnHbpARXjUBcf6vib7E3jjD6Zv4CrvYuW
+curr_temp_private_key： cP8vR19XbtytyHgyBh1SV5dVAMLrLR2rzSU9EAcQTCUHij61u5C2
+curr_temp_pub_key: 02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2
+</code></pre>
+<blockquote>
+<p>Alice creates a commitment transaction:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:-351,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
+        <span class="s2">"amount"</span>:0.1,
+        <span class="s2">"curr_temp_address_pub_key"</span>:<span class="s2">"02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2"</span>,
+        <span class="s2">"curr_temp_address_private_key"</span>:<span class="s2">"cP8vR19XbtytyHgyBh1SV5dVAMLrLR2rzSU9EAcQTCUHij61u5C2"</span>,
+        <span class="s2">"property_id"</span>:121,
+        <span class="s2">"channel_address_private_key"</span>:<span class="s2">"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"</span>,
+        <span class="s2">"last_temp_address_private_key"</span>:<span class="s2">"cSgTisoiZLzH5vrwHBMAXLC5nvND2ffcqqDtejMg12rEVrUMeP5R"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-351</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"curr_temp_address_private_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_temp_address_private_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"request_commitment_hash"</span><span class="p">:</span><span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -351</strong></p>
+
+<p><strong>Either funder or fundee sends:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>-------</td>
+<td>data</td>
+<td>amount to pay</td>
+</tr>
+<tr>
+<td>curr_temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>temporary multi-sig address</td>
+</tr>
+<tr>
+<td>curr_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>the private key of the temporary multi-sig address currently in use.</td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>data</td>
+<td>the omni asset id that has been funding.</td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>Alice&#39;s private key of the channel</td>
+</tr>
+<tr>
+<td>last_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>the private key of the last temporary multi-sig address</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_temp_address_private_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_temp_address_private_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>request_commitment_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='receiever-accepts-the-tokens'>Receiever accepts the tokens</h2>
+<!-- right -->
+
+<blockquote>
+<p>Bob&#39;s data: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>last_temp_pub_key： 
+last_temp_private_key： 
+curr_temp_pub_key：       mt1jUkFb9JtR3qBeYHqJE68S6TUct7fB8r
+curr_temp_private_key： cQm58g783uvXbFjTjLN5STR3TrPiKueC5f9SCkAc9kSew4dj2Y2i
+curr_temp_pub_key：   0277bf9e0df3ffe2d8f22356fb198e9b0a2237b8c51bde77e3c7da5df09a4dba05
+</code></pre>
+<blockquote>
+<p>Bob replies: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code> <span class="o">{</span>
+    <span class="s2">"type"</span>:-352,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
+        <span class="s2">"curr_temp_address_pub_key"</span>:<span class="s2">"0277bf9e0df3ffe2d8f22356fb198e9b0a2237b8c51bde77e3c7da5df09a4dba05"</span>,
+        <span class="s2">"curr_temp_address_private_key"</span>:<span class="s2">"cQm58g783uvXbFjTjLN5STR3TrPiKueC5f9SCkAc9kSew4dj2Y2i"</span>,
+        <span class="s2">"last_temp_private_key"</span>:<span class="s2">""</span>,
+        <span class="s2">"request_commitment_hash"</span>:<span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span>,
+        <span class="s2">"channel_address_private_key"</span>:<span class="s2">"cV6dif91LHD8Czk8BTgvYZR3ipUrqyMDMtUXSWsThqpHaQJUuHKA"</span>,
+        <span class="s2">"approval"</span>:true
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre>
+<blockquote>
+<p>OBD Responses：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-352</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount_b"</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_m"</span><span class="p">:</span><span class="mf">5.9</span><span class="p">,</span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:38:02.249498+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_hash"</span><span class="p">:</span><span class="s2">"235d465eae3bb8c71e97ca08cca295598461cc8d23a9bdf4e6ff09e4e9f9323f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_amount"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_txid"</span><span class="p">:</span><span class="s2">"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_vout"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"last_commitment_tx_id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">"last_edit_time"</span><span class="p">:</span><span class="s2">"2019-09-21T01:38:02.249498+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_hash"</span><span class="p">:</span><span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"multi_address"</span><span class="p">:</span><span class="s2">"2Mz8QZz1RxwpHioy1bgyPA4rhXXWwEkFDtW"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"redeem_script"</span><span class="p">:</span><span class="s2">"522102b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f22103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"script_pub_key"</span><span class="p">:</span><span class="s2">"a9144b7ecd257a459e0fabf75b72fdfd98a54a12e7c187"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"send_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sign_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:38:03.119512+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temp_address_pub_key"</span><span class="p">:</span><span class="s2">"02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_sign_hex_to_other"</span><span class="p">:</span><span class="s2">"02000000043bfd87e4cbc54e3ddf54871188a5fd074546b6fe5f564e76957a21de81f934c702000000d900473044022068d84ef3d9d6db850d1c348ae52158ee542758ed4f82f1359a901999657ea8d902202e63d2c3e7ddba77b69fd6d71eee072964f9e0fd6972b11922ae64b4d4b5d7fa0147304402202903a8784eeb72dc7f32e048a50134f217a4b7ccf371066ddce2c7fafa863a9c0220117307e4e7efe7e74321707310e6a2c387e4a5002fd3bc654d1860275ee157e801475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff6aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c00000000d90047304402205536325b0b93f34528c4cb8d31f0f43c39bd035db521bc3dca54ae8a99accd0902203bd9ca2bce0ee8314f5a8998a0cb64a0edc17abe8f60ad813e0e41f1ddaf9bdc014730440220628681cd6a6fc23ce8074788ce13c7da998dc94af9fd9d1d0bbe8ad98f86ddbd02205c016cabce74eaf577b6702760129cd3f86173b6ffeb008cca7783240634dde901475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffffd8f2a3c2a2b2e6678d21025aed46cbc905ba25ac55e0dfd50a2d719b687f1c5203000000d900473044022001e87986132f4f8ad3e4264044fecdd1afe813aeed1a540ff96f11c159774c0f022016b7cb615ae10e48d911b5fddf3e8770829e489f61971203e9462854c81b493a0147304402206e46182bf84fe5c4d1f7b5c78b80c315bb6a5f7922a6f33afa68cec3a84f79ad02205168f413d7345fbb1d22f7f2540588934e5851d2243c3ad03f6ac1e04ccf26d001475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffffdea307c20723ced3445b67d801c2c28a7cc371092e9500dac8f96d5c892abba402000000d90047304402204586943539db1a9087b26678a7c6a20cadc38e2545d061ab8c2a25c245d817de02202f8bfb63e5448054be581ffffb64db1297ca95728bdf4be8f0b6ffff7107dbe8014730440220750202e5eef02556b22b124bc1bb2452918df7e02fb639e07432fc0e42829a4502204071fc1b6d60d3275b081920085777134547f4c986f15bbb5284989fc07d3ebb01475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff039a460000000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e690000000000000079000000000098968022020000000000001976a914c2e30e5f058df787de0529e0742d7ef7a13231ab88ac00000000"</span><span class="p">,</span><span class="s2">"transaction_sign_hex_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"0200000001685a7e84bc2d24fa01550674176a6b4bf366a99e001b5b52f2fc16c8b6146b2600000000d90047304402207fdf6d9de273352f215b7139a169b9c6046fc33f5e5c26a4012c6b32e07137aa02200a437ce51e3a02478c59d8c21a8c71ea6fda6dac62c5032ec5f131f21a7e8ee20147304402205eccc7e4b8bcae3269d6eb25aeb6823d88562f308c203590b86073d35f9d3d7e02203130cf67e48b539d7b3c17400a7fba88c812315f465a42dabab046d65a52054c01475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff033c1900000000000017a9144b7ecd257a459e0fabf75b72fdfd98a54a12e7c1870000000000000000166a146f6d6e69000000000000007900000000232aaf801c0200000000000017a9144b7ecd257a459e0fabf75b72fdfd98a54a12e7c18700000000"</span><span class="p">,</span><span class="s2">"txid_to_other"</span><span class="p">:</span><span class="s2">"3065fa232bb5dec89104bc487359ac12b2480bb0762f64abbebd6adf0795bc13"</span><span class="p">,</span><span class="s2">"txid_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"74cffd8987cf01ed02d355aad82c38aadd991c4f185b3e394c5bade55d2ceb73"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<!-- center -->
+
+<p>Receiever notify the sender that he has receieved the money. </p>
+
+<p><strong>Message Type: -352</strong></p>
+
+<p><strong>Receiever sends</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>curr_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>last_temp_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>request_commitment_hash</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of the channel that Bob holds</td>
+</tr>
+</tbody></table>
+
+<p>approval</p>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>amount_b</td>
+<td>-------</td>
+<td>result</td>
+<td>how much has been payed</td>
+</tr>
+<tr>
+<td>amount_m</td>
+<td>-------</td>
+<td>result</td>
+<td>the balance of the sender</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td>channel officially created</td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_by</td>
+<td>-------</td>
+<td>result</td>
+<td>created by the funder</td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_amount</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_txid</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_vout</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_commitment_tx_id</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>last_edit_time</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_a</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_b</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>redeem_script</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>script_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>send_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>sign_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>transaction_sign_hex_to_other</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
 </tr>
 </tbody></table>
 
