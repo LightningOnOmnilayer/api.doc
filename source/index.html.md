@@ -176,7 +176,7 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 # User Login  
 
 <!-- right -->
-> Alice:
+> Alice request:
 
 ```shell
 {
@@ -186,7 +186,7 @@ Now, we have our environment ready. Let's start to communicate with OBD!
         	}
 }
 ```
-> Response:
+> OBD Response:
 
 ```json
 {
@@ -197,7 +197,7 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 	"result":"alice login"
 }
 ```
-> Bob:
+> Bob request:
 
 ```shell
 {
@@ -207,7 +207,7 @@ Now, we have our environment ready. Let's start to communicate with OBD!
         	}
 }
 ```
-> Response:
+> OBD Response:
 
 ```json
 {
@@ -221,37 +221,29 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 
 
 <!-- center -->
-This endpoint manages users createb by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.
+This endpoint manages users created by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.
 
 **Message Type: 1**
 
 **Websocket Request:**
-`
-{  
-    "type":1,  
-    "data":  
-    {  
-        "peer_id":"<peer ID>"  
-    }  
-}  
-`
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+peer_iD   | ------- |   data    | Global peer ID for a user in OBD network
+
 
 **Websocket Response：**
-` 
-{  
-    "type":1,  
-    "status":true or false,  
-    "from":"<peer ID>",  
-    "to":"all",  
-    "result":"response data"  
-}  
-`
 
-Parameter | default | Description
---------- | ------- | ------------
-peer ID   | ------- | Global peer ID for a user in OBD network
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status    | ------- |   body    | true or false
+from      | ------- |   body    | Global peer ID for a user in OBD network
+to        | ------- |   body    | to whom should know the login of this peer
+result    | ------- |   body    | response data from OBD
 
-<aside class="warning">This is not ready for production environment.</aside>
+
+
+<aside class="warning">This is not ready for production environment, only for test. The complete set of wallet functions are on our schedule.</aside>
 
  
 # create channel
@@ -295,43 +287,90 @@ peer ID   | ------- | Global peer ID for a user in OBD network
 		"payment_base_point":"",
 		"push_msat":0,
 		"revocation_base_point":"",
-		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],"to_self_delay":0
+		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+		"to_self_delay":0
 	}
 }
 ```
 
 <!-- center -->
-Alice sends request to Bob for creating a channel between them
+Alice sends request to her OBD instance, her OBD helps her complete the message, and routes her request to Bob's OBD for creating a channel between them. 
 
 **Message Type: -32**
  
-**Websocket Request**
-` 
-{
-    	"type":-32,
-    		"data":{
-		"funding_pubkey":"<funding pubkey>"
-    		},
-	"recipient_peer_id":"<recipient peer id>"
-}
-` 
+**Alice Request**
 
-Parameter | default | Description
---------- | ------- | ------------
-funding pubkey    | ------- | public key of funder, who wish to deposite BTC and other tokens to the channel
-recipient peer id | ------- | peer id of the fundee.
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+funding pubkey    | ------- |   data    | public key of funder, who wish to deposite BTC and other tokens to the channel
+recipient_peer_id | ------- |   body    | peer id of the fundee.
  
-**Websocket Response：**
-` 
+ 
+**OBD Response：**  
+This response is simutanously sent to Bob's OBD.
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status    | ------- |    body   | true or false
+from      | ------- |    body   | peer id of funder
+to        | ------- |    body   | peer id of fundee
+chain_hash             |  1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P     |    result   | identify the public chain. Default is OmniLayer
+channel_reserve_satoshis   | ------- |    result   | reserved satoshis in the channel
+delayed_payment_base_point | ------- |    result   | 
+dust_limit_satoshis        | ------- |    result   | 
+fee_rate_per_kw            | ------- |    result   | 
+funding_address            | ------- |    result   | Funder's address from where he send money to the channel
+funding_pubkey             | ------- |    result   | public key of funder, who wish to deposite BTC and other tokens to the channel 
+funding_satoshis           | ------- |    result   | 
+htlc_base_point            | ------- |    result   | 
+htlc_minimum_msat          | ------- |    result   | 
+max_accepted_htlcs         | ------- |    result   | 
+max_htlc_value_in_flight_msat      | ------- |    result   | 
+payment_base_point                 | ------- |    result   | 
+push_msat                          | ------- |    result   | 
+revocation_base_point              | ------- |    result   | 
+temporary_channel_id               | ------- |    result   | 
+to_self_delay                      | ------- |    result   | 
+
+## Response to agree
+
+<!-- right -->
+> Bob replies to accept:
+
+```shell
 {
-	"type":-32,
+	"type":-33,
+	"data":{
+    		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+		"funding_pubkey":"03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9",
+    		"approval":true
+	}
+}
+```
+
+> OBD Response:
+
+```json
+{
+	"type":-33,
 	"status":true,
-	"from":"alice",
-	"to":"bob",
+	"from":"bob",
+	"to":"alice",
 	"result":
 	{
+		"accept_at":"2019-09-21T00:06:48.634265+08:00",
+		"address_a":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
+		"address_b":"myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY",
 		"chain_hash":"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P",
+		"channel_address":"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE",
+		"channel_address_redeem_script":"5221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae",
+		"channel_address_script_pub_key":"a9145761a1d45b8a6e7caa10a4bcecca97630c67af4687",
+		"channel_id":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 		"channel_reserve_satoshis":0,
+		"close_at":"0001-01-01T00:00:00Z",
+		"create_at":"2019-09-21T00:05:25.667117+08:00",
+		"create_by":"alice",
+		"curr_state":20,
 		"delayed_payment_base_point":"",
 		"dust_limit_satoshis":0,
 		"fee_rate_per_kw":0,
@@ -340,14 +379,76 @@ recipient peer id | ------- | peer id of the fundee.
 		"funding_satoshis":0,
 		"htlc_base_point":"",
 		"htlc_minimum_msat":0,
+		"id":2,
 		"max_accepted_htlcs":0,
 		"max_htlc_value_in_flight_msat":0,
 		"payment_base_point":"",
+		"peer_id_a":"alice",
+		"peer_id_b":"bob",
+		"pub_key_a":"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d",
+		"pub_key_b":"03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9",
 		"push_msat":0,
 		"revocation_base_point":"",
-		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],"to_self_delay":0
+		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+		"to_self_delay":0
 	}
 }
-` 
+```
+<!-- center -->
+Bob replies to accept, his OBD completes his message and routes it to Alice's OBD. Then Alice sees the response of acceptance. 
+
+**Message Type: -33**
+ 
+**Bob Request**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+temporary_channel_id  | ------- |   body    | the temporary channel id, used before real funding completes.
+funding pubkey        | ------- |   body    | public key of fundee(Bob), who wish to deposite BTC and other tokens to the channel. Current implementation of OBD supports one-way deposite. Fundee does not need to fund the channel.
+approval              | ------- |   body    | true or false to deny.
+ 
+ 
+**OBD Response：**  
+This response is simutanously sent to Alice's OBD.
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status    | ------- |    body   | true or false
+from      | ------- |    body   | peer id of funder
+to        | ------- |    body   | peer id of fundee
+accept_at | ------- |    result   | time of acceptance
+address_a | ------- |    result   | address of Alice
+address_b | ------- |    result   | address of Bob
+chain_hash             |  1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P     |    result   | identify the public chain. Default is OmniLayer
+channel_address                | ------- |    result   | the p2whk address of the channel
+channel_address_redeem_script  | ------- |    result   | redeem script of the multi-sig address
+channel_address_script_pub_key | ------- |    result   | the script pubkey
+channel_id                     | ------- |    result   | the global unique channel id
+channel_reserve_satoshis       | ------- |    result   | reserved satoshis in the channel
+close_at                       | ------- |    result   | close time
+create_at                      | ------- |    result   | create time
+create_by                      | ------- |    result   | the funder who created this channel. Alice in this case.
+curr_state                     | ------- |    result   | 
+delayed_payment_base_point | ------- |    result   | 
+dust_limit_satoshis        | ------- |    result   | 
+fee_rate_per_kw            | ------- |    result   | 
+funding_address            | ------- |    result   | Funder's address from where he send money to the channel
+funding_pubkey             | ------- |    result   | public key of funder, who wish to deposite BTC and other tokens to the channel 
+funding_satoshis           | ------- |    result   | 
+htlc_base_point            | ------- |    result   | 
+htlc_minimum_msat          | ------- |    result   | 
+max_accepted_htlcs         | ------- |    result   | 
+max_htlc_value_in_flight_msat      | ------- |    result   | 
+payment_base_point                 | ------- |    result   | 
+peer_id_a                          | ------- |    result   | peer id of funder
+peer_id_b                          | ------- |    result   | peer id of fundee
+pub_key_a                          | ------- |    result   | public key of funder
+pub_key_b                          | ------- |    result   | public key of fundee. Current OBD implementation does not requir fundee to deposit money to a channel.
+push_msat                          | ------- |    result   | 
+revocation_base_point              | ------- |    result   | 
+temporary_channel_id               | ------- |    result   | 
+to_self_delay                      | ------- |    result   | 
+
+
 
  
