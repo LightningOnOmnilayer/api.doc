@@ -23,10 +23,10 @@ Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), 
 
 We assume you have already gone through our [installation instruction](https://github.com/LightningOnOmnilayer/LightningOnOmni#installation), so that you are familar with:
 
- * pull source code and compile to get obdserver;  
- * Configure OmniCore node for OBD;  
- * Connect OBD with Omnicore correctly;  
- * Use a simple web based [websocket client](https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn?hl=en) for Chrome to do experiments;  
+ * Pulling source code and compile to get obdserver;  
+ * Configuring OmniCore node for OBD;  
+ * Connecting OBD with Omnicore correctly;  
+ * Using a simple web based [websocket client](https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn?hl=en) for Chrome to do experiments;  
  * OBD responses you correctly;  
 
 For kernel developers in our community, the above steps are the easiest way to get started. Just open [LightningOnOmni](https://github.com/LightningOnOmnilayer/LightningOnOmni#step-4-test-channel-operations-using-websocket-testing-tool) project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.
