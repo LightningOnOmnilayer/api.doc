@@ -11,8 +11,11 @@ toc_footers:
   - <a href='https://github.com/LightningOnOmnilayer/Omni-BOLT-spec'>Help in OmniBOLT specification</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
+ 
 includes:
-  - errors
+  - fund_channel
+  - deposit_tokens
+  - query
 
 search: true
 ---
@@ -451,4 +454,3 @@ to_self_delay                      | ------- |    result   |
 
 
 
- 
