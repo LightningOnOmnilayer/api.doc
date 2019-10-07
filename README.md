@@ -137,6 +137,8 @@ You can now see the docs at http://localhost:4567. Whoa! That was fast!
 
 Now that Slate is all set up on your machine, you'll probably want to learn more about [editing Slate markdown](https://github.com/lord/slate/wiki/Markdown-Syntax), or [how to publish your docs](https://github.com/lord/slate/wiki/Deploying-Slate).
 
+Be noticed, every time you run `./deploy.sh`, the Custom domain will be changed back to `https://github.com/you_organization/your_api_doc_repo`. So you need to add a new document `CNAME` under directoy `/source`, with content of your domain information. In our case, the content is `api.omnilab.online`. Push CNAME to this repository.
+
 If you'd prefer to use Docker, instructions are available [in the wiki](https://github.com/lord/slate/wiki/Docker).
 
 ### Note on JavaScript Runtime
