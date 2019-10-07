@@ -2,14 +2,14 @@
 
 This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty. 
 
-## Query list
+## Query list of commitment transactions
 
 <!-- right -->
 > either Alice or Bob:
 
 ```shell
 {
-    	"type":-35101,
+    	"type": -35101,
     	"data":{
     		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
     	}
@@ -21,7 +21,7 @@ This section collects all the messages used in querying the latest status of the
 
 ```json
 {
-	"type":-35101,
+	"type": -35101,
 	"status":true,
 	"from":"alice",
 	"to":"alice",
@@ -118,7 +118,7 @@ txid_to_temp_multi_address                          | ------- |   result  |
  
 ```shell
 {
-	"type":-35104,
+	"type": -35104,
 	"data":{
 		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
 	}
@@ -130,7 +130,7 @@ txid_to_temp_multi_address                          | ------- |   result  |
 
 ```json
 {
-	"type":-35104,
+	"type": -35104,
 	"status":true,
 	"from":"alice",
 	"to":"alice",
@@ -215,5 +215,204 @@ transaction_sign_hex_to_other      		| ------- |   result  |
 transaction_sign_hex_to_temp_multi_address      | ------- |   result  | 
 txid_to_other    				| ------- |   result  | 
 txid_to_temp_multi_address     			| ------- |   result  | 
+
+
+
+## Latest Revockable Delivery Transaction
+
+<!-- right -->
+ 
+> Either Alice or Bob can query: 
+
+ 
+```shell
+{
+	"type": -35105,
+	"data":{
+		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+	}
+}
+``` 
+
+
+<!-- center -->
+ 
+
+**Message Type: -35105**
+ 
+**Either Alice or Bob can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+ 
+
+## Latest Breach Remedy Transaction
+
+<!-- right -->
+ 
+> Either Alice or Bob can query: 
+
+ 
+```shell
+{
+	"type": -35106,
+	"data":{
+		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+	}
+}
+``` 
+
+
+<!-- center -->
+ 
+
+**Message Type: -35106**
+ 
+**Either Alice or Bob can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+ 
+
+## List all Revockable Delivery Transactions
+
+<!-- right -->
+ 
+> Either Alice or Bob can query: 
+
+ 
+```shell
+{
+	"type": -35108,
+	"data":{
+		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+	}
+}
+``` 
+
+
+<!-- center -->
+ 
+
+**Message Type: -35108**
+ 
+**Either Alice or Bob can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+ 
+ 
+## List all Breach Remedy Transactions
+
+<!-- right -->
+ 
+> Either Alice or Bob can query: 
+
+ 
+```shell
+{
+	"type": -35109,
+	"data":{
+		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+	}
+}
+``` 
+
+
+<!-- center -->
+ 
+
+**Message Type: -35109**
+ 
+**Either Alice or Bob can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+ 
+
+## List all Channels
+
+<!-- right -->
+ 
+> Either Alice or Bob can query: 
+
+ 
+```shell
+{
+	"type": -3202, 
+}
+``` 
+
+
+<!-- center -->
+ 
+
+**Message Type: -3202**
+ 
+**Either Alice or Bob can fetch the list of all channels**
+
+This message has no arguments.
+
+## List all Commitment Transactions Broadcasted
+
+<!-- right -->
+ 
+> Either Alice or Bob can query: 
+
+ 
+```shell
+{
+	"type": -35110,
+	"data":{
+		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+	}
+}
+``` 
+
+
+<!-- center -->
+ 
+
+**Message Type: -35110**
+ 
+**Either Alice or Bob can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+ 
+
+## List all Commitment Transactions Broadcasted
+
+<!-- right -->
+ 
+> Either Alice or Bob can query: 
+
+ 
+```shell
+{
+	"type": -35110,
+	"data":{
+		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+	}
+}
+``` 
+
+
+<!-- center -->
+ 
+
+**Message Type: -35110**
+ 
+**Either Alice or Bob can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+ 
 
 
