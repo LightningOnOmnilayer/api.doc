@@ -283,10 +283,31 @@
             <a href="#query" class="toc-h1 toc-link" data-title="Query">Query</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#query-list" class="toc-h2 toc-link" data-title="Query list">Query list</a>
+                    <a href="#query-list-of-commitment-transactions" class="toc-h2 toc-link" data-title="Query list of commitment transactions">Query list of commitment transactions</a>
                   </li>
                   <li>
                     <a href="#latest-commitment-transaction" class="toc-h2 toc-link" data-title="Latest commitment transaction">Latest commitment transaction</a>
+                  </li>
+                  <li>
+                    <a href="#latest-revockable-delivery-transaction" class="toc-h2 toc-link" data-title="Latest Revockable Delivery Transaction">Latest Revockable Delivery Transaction</a>
+                  </li>
+                  <li>
+                    <a href="#latest-breach-remedy-transaction" class="toc-h2 toc-link" data-title="Latest Breach Remedy Transaction">Latest Breach Remedy Transaction</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-revockable-delivery-transactions" class="toc-h2 toc-link" data-title="List all Revockable Delivery Transactions">List all Revockable Delivery Transactions</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-breach-remedy-transactions" class="toc-h2 toc-link" data-title="List all Breach Remedy Transactions">List all Breach Remedy Transactions</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-channels" class="toc-h2 toc-link" data-title="List all Channels">List all Channels</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-commitment-transactions-broadcasted" class="toc-h2 toc-link" data-title="List all Commitment Transactions Broadcasted">List all Commitment Transactions Broadcasted</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-commitment-transactions-broadcasted-2" class="toc-h2 toc-link" data-title="List all Commitment Transactions Broadcasted">List all Commitment Transactions Broadcasted</a>
                   </li>
               </ul>
           </li>
@@ -2074,14 +2095,14 @@ pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
 </tbody></table>
 <h1 id='query'>Query</h1>
 <p>This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty. </p>
-<h2 id='query-list'>Query list</h2>
+<h2 id='query-list-of-commitment-transactions'>Query list of commitment transactions</h2>
 <!-- right -->
 
 <blockquote>
 <p>either Alice or Bob:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-        <span class="s2">"type"</span>:-35101,
+        <span class="s2">"type"</span>: -35101,
         <span class="s2">"data"</span>:<span class="o">{</span>
             <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
         <span class="o">}</span>
@@ -2091,7 +2112,7 @@ pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
 <p>OBD Responses:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-35101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-35101</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
@@ -2350,7 +2371,7 @@ pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
 <p>Either Alice or Bob can query: </p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-    <span class="s2">"type"</span>:-35104,
+    <span class="s2">"type"</span>: -35104,
     <span class="s2">"data"</span>:<span class="o">{</span>
         <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
     <span class="o">}</span>
@@ -2360,7 +2381,7 @@ pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
 <p>OBD Responses：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-35104</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-35104</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
@@ -2612,6 +2633,227 @@ pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
 <td>txid_to_temp_multi_address</td>
 <td>-------</td>
 <td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='latest-revockable-delivery-transaction'>Latest Revockable Delivery Transaction</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35105,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35105</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='latest-breach-remedy-transaction'>Latest Breach Remedy Transaction</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35106,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35106</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-revockable-delivery-transactions'>List all Revockable Delivery Transactions</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35108,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35108</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-breach-remedy-transactions'>List all Breach Remedy Transactions</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35109,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35109</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-channels'>List all Channels</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -3202, 
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -3202</strong></p>
+
+<p><strong>Either Alice or Bob can fetch the list of all channels</strong></p>
+
+<p>This message has no arguments.</p>
+<h2 id='list-all-commitment-transactions-broadcasted'>List all Commitment Transactions Broadcasted</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35110,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35110</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-commitment-transactions-broadcasted-2'>List all Commitment Transactions Broadcasted</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35110,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35110</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
 <td></td>
 </tr>
 </tbody></table>
