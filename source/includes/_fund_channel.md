@@ -29,11 +29,11 @@ channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE
 {
     	"type":1009,
     	"data":{
-			"fromBitCoinAddress":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
-			"fromBitCoinAddressPrivKey":"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy",
-			"toBitCoinAddress":"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE",
+			"from_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
+			"from_address_private_key":"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy",
+			"to_address":"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE",
 			"amount":0.0001,
-			"minerFee":0.00001,
+			"miner_fee":0.00001,
     	}
     
 }
@@ -62,11 +62,11 @@ channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-fromBitCoinAddress         | ------- |   data    | address of funder, from where the BTC is transferred.
-fromBitCoinAddressPrivKey  | ------- |   data    | private key.
-toBitCoinAddress           | ------- |   data    | the channel multi-sig address.
-amount			   | 0.0001  |   data    | 
-minerFee		   | 0.00001 |   data    | 
+from_address         		| ------- |   data    | address of funder, from where the BTC is transferred.
+from_address_private_key  	| ------- |   data    | private key.
+to_address           		| ------- |   data    | the channel multi-sig address.
+amount			   	| 0.0001  |   data    | 
+miner_fee		   	| 0.00001 |   data    | 
  
 **OBD Responses:**
 

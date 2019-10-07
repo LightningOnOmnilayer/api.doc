@@ -19,11 +19,11 @@ channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE
 {
     	"type":2001,
     	"data":{
-			"fromBitCoinAddress":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
-			"fromBitCoinAddressPrivKey":"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy",
-			"toBitCoinAddress":"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE",
+			"from_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
+			"from_address_private_key":"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy",
+			"to_address":"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE",
 			"amount":6,
-			"propertyId": 121
+			"property_id": 121
                 
 	}
 }
@@ -52,11 +52,11 @@ channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-fromBitCoinAddress         | ------- |   data    | address of funder, from where the BTC is transferred.
-fromBitCoinAddressPrivKey  | ------- |   data    | private key.
-toBitCoinAddress           | ------- |   data    | the channel multi-sig address.
-amount			   | 0.0001  |   data    | 
-propertyId		   | ------- |   data    | the omni asset id that has been funding.
+from_address         		| ------- |   data    | address of funder, from where the BTC is transferred.
+from_address_private_key  	| ------- |   data    | private key.
+to_address           		| ------- |   data    | the channel multi-sig address.
+amount			   	| 0.0001  |   data    | 
+property_id		  	| ------- |   data    | the omni asset id that has been funding.
  
 **OBD Responses:**
 
