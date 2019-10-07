@@ -1,0 +1,3349 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>OmniBOLT API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;golang&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="golang">golang</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#omnibolt-daemon-websocket-messages-reference" class="toc-h1 toc-link" data-title="OmniBOLT Daemon Websocket Messages Reference">OmniBOLT Daemon Websocket Messages Reference</a>
+          </li>
+          <li>
+            <a href="#wallet-preparation" class="toc-h1 toc-link" data-title="Wallet Preparation">Wallet Preparation</a>
+          </li>
+          <li>
+            <a href="#balance-and-unspent" class="toc-h1 toc-link" data-title="Balance and Unspent">Balance and Unspent</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-balances-for-address" class="toc-h2 toc-link" data-title="get all balances for address">get all balances for address</a>
+                  </li>
+                  <li>
+                    <a href="#list-unspent" class="toc-h2 toc-link" data-title="list unspent">list unspent</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#user-login" class="toc-h1 toc-link" data-title="User Login">User Login</a>
+          </li>
+          <li>
+            <a href="#create-channel" class="toc-h1 toc-link" data-title="create channel">create channel</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-to-create" class="toc-h2 toc-link" data-title="request to create">request to create</a>
+                  </li>
+                  <li>
+                    <a href="#response-to-agree" class="toc-h2 toc-link" data-title="Response to agree">Response to agree</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#deposit-btc-for-miner-fee" class="toc-h1 toc-link" data-title="Deposit BTC for miner fee">Deposit BTC for miner fee</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#funder-create-funding-transaction" class="toc-h2 toc-link" data-title="funder create funding transaction">funder create funding transaction</a>
+                  </li>
+                  <li>
+                    <a href="#funder-notifies-fundee" class="toc-h2 toc-link" data-title="funder notifies fundee">funder notifies fundee</a>
+                  </li>
+                  <li>
+                    <a href="#fundee-replies" class="toc-h2 toc-link" data-title="fundee replies">fundee replies</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#deposit-omni-assets" class="toc-h1 toc-link" data-title="Deposit Omni Assets">Deposit Omni Assets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#funder-creates-token-funding-transaction" class="toc-h2 toc-link" data-title="funder creates token funding transaction">funder creates token funding transaction</a>
+                  </li>
+                  <li>
+                    <a href="#funder-notifies-fundee-the-token-funding-is-created" class="toc-h2 toc-link" data-title="funder notifies fundee the token funding is created">funder notifies fundee the token funding is created</a>
+                  </li>
+                  <li>
+                    <a href="#fundee-replies-knowing-the-token-has-been-funded" class="toc-h2 toc-link" data-title="fundee replies knowing the token has been funded">fundee replies knowing the token has been funded</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#query" class="toc-h1 toc-link" data-title="Query">Query</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#query-list-of-commitment-transactions" class="toc-h2 toc-link" data-title="Query list of commitment transactions">Query list of commitment transactions</a>
+                  </li>
+                  <li>
+                    <a href="#latest-commitment-transaction" class="toc-h2 toc-link" data-title="Latest commitment transaction">Latest commitment transaction</a>
+                  </li>
+                  <li>
+                    <a href="#latest-revockable-delivery-transaction" class="toc-h2 toc-link" data-title="Latest Revockable Delivery Transaction">Latest Revockable Delivery Transaction</a>
+                  </li>
+                  <li>
+                    <a href="#latest-breach-remedy-transaction" class="toc-h2 toc-link" data-title="Latest Breach Remedy Transaction">Latest Breach Remedy Transaction</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-revockable-delivery-transactions" class="toc-h2 toc-link" data-title="List all Revockable Delivery Transactions">List all Revockable Delivery Transactions</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-breach-remedy-transactions" class="toc-h2 toc-link" data-title="List all Breach Remedy Transactions">List all Breach Remedy Transactions</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-channels" class="toc-h2 toc-link" data-title="List all Channels">List all Channels</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-commitment-transactions-broadcasted" class="toc-h2 toc-link" data-title="List all Commitment Transactions Broadcasted">List all Commitment Transactions Broadcasted</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-commitment-transactions-broadcasted-2" class="toc-h2 toc-link" data-title="List all Commitment Transactions Broadcasted">List all Commitment Transactions Broadcasted</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#payments-in-channel" class="toc-h1 toc-link" data-title="Payments in Channel">Payments in Channel</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sender-creates-a-commitment-transaction-to-pay" class="toc-h2 toc-link" data-title="sender creates a commitment transaction to pay">sender creates a commitment transaction to pay</a>
+                  </li>
+                  <li>
+                    <a href="#receiever-accepts-the-tokens" class="toc-h2 toc-link" data-title="Receiever accepts the tokens">Receiever accepts the tokens</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/LightningOnOmnilayer/LightningOnOmni'>Join our dev community</a></li>
+            <li><a href='https://github.com/LightningOnOmnilayer/Omni-BOLT-spec'>Help in OmniBOLT specification</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='omnibolt-daemon-websocket-messages-reference'>OmniBOLT Daemon Websocket Messages Reference</h1>
+<p>Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18), which provides the complete services of token transactions on bitcoin network. And current OBD implementation is deeply binded to OmniCore. </p>
+
+<p>We assume you have already gone through our <a href="https://github.com/LightningOnOmnilayer/LightningOnOmni#installation">installation instruction</a>, so that you are familar with:</p>
+
+<ul>
+<li>Pulling source code and compile to get obdserver;<br></li>
+<li>Configuring OmniCore node for OBD;<br></li>
+<li>Connecting OBD with Omnicore correctly;<br></li>
+<li>Using a simple web based <a href="https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn?hl=en">websocket client</a> for Chrome to do experiments;<br></li>
+<li>OBD responses you correctly;<br></li>
+</ul>
+
+<p>For kernel developers in our community, the above steps are the easiest way to get started. Just open <a href="https://github.com/LightningOnOmnilayer/LightningOnOmni#step-4-test-channel-operations-using-websocket-testing-tool">LightningOnOmni</a> project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.</p>
+<h1 id='wallet-preparation'>Wallet Preparation</h1>
+<blockquote>
+<p>To test and debug the kernel, use OmniCore in REGTEST mode, and creat two users Alice and Bob:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can creat your addresses using omnicore-cli</span>
+Alice: mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
+<span class="s2">"pubkey"</span>: <span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span>  
+<span class="s2">"privatekey"</span>: <span class="s2">"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"</span>  
+
+Bob: myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY  
+<span class="s2">"pubkey"</span>: <span class="s2">"03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9"</span>  
+<span class="s2">"privatekey"</span>:   cV6dif91LHD8Czk8BTgvYZR3ipUrqyMDMtUXSWsThqpHaQJUuHKA  
+
+channel:  
+<span class="o">(</span>P2WHK<span class="o">)</span>address: 2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE  
+<span class="s2">"channel_address_redeem_script"</span>:<span class="s2">"5221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae"</span>  
+<span class="s2">"channel_address_script_pub_key"</span>:<span class="s2">"a9145761a1d45b8a6e7caa10a4bcecca97630c67af4687"</span>  
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">To</span> <span class="nx">be</span> <span class="nx">added</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace pubkey and privatekey of <code>Alice/Bob</code> with values you create in your environment.</p>
+</blockquote>
+
+<p>Use omnicore-cli to creat new users in REGTEST mode, and deposit tokens to their addresses respectively. Don&#39;t develop in real BTC network. A good start is <a href="https://github.com/OmniLayer/omnicore/wiki/Use-the-raw-transaction-API-to-create-a-Simple-Send-transaction">Use the raw transaction API to create a Simple Send transaction</a>  </p>
+
+<aside class="notice">
+After you created your users and their addresses, you shall replace <code>Alice</code> and <code>Bob</code> with your data.
+</aside>
+<h1 id='balance-and-unspent'>Balance and Unspent</h1><h2 id='get-all-balances-for-address'>get all balances for address</h2>
+<!-- right -->
+
+<blockquote>
+<p>Here we use the example data created before. Alice: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>./omnicore-cli omni_getallbalancesforaddress mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+    </span><span class="s2">"propertyid"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">  
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OST-P1-Test"</span><span class="p">,</span><span class="w">  
+    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.00000000"</span><span class="p">,</span><span class="w">  
+    </span><span class="s2">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">  
+    </span><span class="s2">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">  
+</span><span class="p">}</span><span class="w">  
+</span></code></pre>
+<blockquote>
+<p>Bob: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>./omnicore-cli omni_getallbalancesforaddress myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY  
+
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+    </span><span class="s2">"propertyid"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OST-P1-Test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">
+</span><span class="p">}</span><span class="w">  
+</span></code></pre>
+<!-- center -->
+
+<p><code>./omnicore-cli omni_getallbalancesforaddress &lt;omni address&gt;</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>omni address</td>
+<td>N/A</td>
+<td>Address created by omnicore-cli, same to the bitcoin core addresss.</td>
+</tr>
+</tbody></table>
+<h2 id='list-unspent'>list unspent</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>./omnicore-cli listunspent 0 999999  <span class="s1">'["mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"]'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b57afc6164f68f2c3b79d31afb30bd1750b22798ec6cfad0131a3062c2317ec7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vout"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scriptPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"spendable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solvable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Bob:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>./omnicore-cli listunspent 0 999999  <span class="s1">'["myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY"]'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"txid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4a018fca34428ba622c9d105faba954e045dd977b61e52269b05d1cc5b8fc9f9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vout"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scriptPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76a914c2e30e5f058df787de0529e0742d7ef7a13231ab88ac"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00070467</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">383</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"spendable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"solvable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p><code>./omnicore-cli listunspent 0 999999  &#39;[&quot;&lt;omni address&gt;&quot;]&#39;</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>omni address</td>
+<td>N/A</td>
+<td>Address created by omnicore-cli, same to the bitcoin core addresss.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Now, we have our environment ready. Let's start to communicate with OBD!
+</aside>
+<h1 id='user-login'>User Login</h1>
+<!-- right -->
+
+<blockquote>
+<p>Alice request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:1,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"peer_id"</span>:<span class="s2">"alice"</span>
+            <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"alice login"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Bob request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:1,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"peer_id"</span>:<span class="s2">"bob"</span>
+            <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"bob login"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p>This endpoint manages users created by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.</p>
+
+<p><strong>Message Type: 1</strong></p>
+
+<p><strong>Websocket Request:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>peer_iD</td>
+<td>-------</td>
+<td>data</td>
+<td>Global peer ID for a user in OBD network</td>
+</tr>
+</tbody></table>
+
+<p><strong>Websocket Response：</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>Global peer ID for a user in OBD network</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>to whom should know the login of this peer</td>
+</tr>
+<tr>
+<td>result</td>
+<td>-------</td>
+<td>body</td>
+<td>response data from OBD</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">This is not ready for production environment, only for test. The complete set of wallet functions are on our schedule.</aside>
+<h1 id='create-channel'>create channel</h1><h2 id='request-to-create'>request to create</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice requests:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+        <span class="s2">"type"</span>:-32,
+            <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"funding_pubkey"</span>:<span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span>
+            <span class="o">}</span>,
+    <span class="s2">"recipient_peer_id"</span>:<span class="s2">"bob"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-32</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"chain_hash"</span><span class="p">:</span><span class="s2">"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_reserve_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delayed_payment_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dust_limit_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee_rate_per_kw"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_address"</span><span class="p">:</span><span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_pubkey"</span><span class="p">:</span><span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_minimum_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_accepted_htlcs"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_htlc_value_in_flight_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"push_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"revocation_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temporary_channel_id"</span><span class="p">:[</span><span class="mi">43</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">166</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">214</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">184</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">209</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">245</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">183</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"to_self_delay"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p>Alice sends request to her OBD instance, her OBD helps her complete the message, and routes her request to Bob&#39;s OBD for creating a channel between them. </p>
+
+<p><strong>Message Type: -32</strong></p>
+
+<p><strong>Alice Request</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>funding pubkey</td>
+<td>-------</td>
+<td>data</td>
+<td>public key of funder, who wish to deposite BTC and other tokens to the channel</td>
+</tr>
+<tr>
+<td>recipient_peer_id</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of the fundee.</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Response：</strong><br>
+This response is simutanously sent to Bob&#39;s OBD.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>chain_hash</td>
+<td>1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P</td>
+<td>result</td>
+<td>identify the public chain. Default is OmniLayer</td>
+</tr>
+<tr>
+<td>channel_reserve_satoshis</td>
+<td>-------</td>
+<td>result</td>
+<td>reserved satoshis in the channel</td>
+</tr>
+<tr>
+<td>delayed_payment_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>dust_limit_satoshis</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>fee_rate_per_kw</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_address</td>
+<td>-------</td>
+<td>result</td>
+<td>Funder&#39;s address from where he send money to the channel</td>
+</tr>
+<tr>
+<td>funding_pubkey</td>
+<td>-------</td>
+<td>result</td>
+<td>public key of funder, who wish to deposite BTC and other tokens to the channel</td>
+</tr>
+<tr>
+<td>funding_satoshis</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_minimum_msat</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>max_accepted_htlcs</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>max_htlc_value_in_flight_msat</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>payment_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>push_msat</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>revocation_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>to_self_delay</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='response-to-agree'>Response to agree</h2>
+<!-- right -->
+
+<blockquote>
+<p>Bob replies to accept:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:-33,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"temporary_channel_id"</span>:[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+        <span class="s2">"funding_pubkey"</span>:<span class="s2">"03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9"</span>,
+            <span class="s2">"approval"</span>:true
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-33</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accept_at"</span><span class="p">:</span><span class="s2">"2019-09-21T00:06:48.634265+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_a"</span><span class="p">:</span><span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_b"</span><span class="p">:</span><span class="s2">"myHRPQWTQ1yYbj7vr7raBW59CTeAFEsUXY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chain_hash"</span><span class="p">:</span><span class="s2">"1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address"</span><span class="p">:</span><span class="s2">"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_redeem_script"</span><span class="p">:</span><span class="s2">"5221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_script_pub_key"</span><span class="p">:</span><span class="s2">"a9145761a1d45b8a6e7caa10a4bcecca97630c67af4687"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"channel_reserve_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T00:05:25.667117+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delayed_payment_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dust_limit_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee_rate_per_kw"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_address"</span><span class="p">:</span><span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_pubkey"</span><span class="p">:</span><span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_satoshis"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_minimum_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_accepted_htlcs"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_htlc_value_in_flight_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pub_key_a"</span><span class="p">:</span><span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pub_key_b"</span><span class="p">:</span><span class="s2">"03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"push_msat"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"revocation_base_point"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temporary_channel_id"</span><span class="p">:[</span><span class="mi">43</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">166</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">214</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">184</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">209</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">245</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">183</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"to_self_delay"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p>Bob replies to accept, his OBD completes his message and routes it to Alice&#39;s OBD. Then Alice sees the response of acceptance. </p>
+
+<p><strong>Message Type: -33</strong></p>
+
+<p><strong>Bob Request</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>body</td>
+<td>the temporary channel id, used before real funding completes.</td>
+</tr>
+<tr>
+<td>funding pubkey</td>
+<td>-------</td>
+<td>body</td>
+<td>public key of fundee(Bob), who wish to deposite BTC and other tokens to the channel. Current implementation of OBD supports one-way deposite. Fundee does not need to fund the channel.</td>
+</tr>
+<tr>
+<td>approval</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false to deny.</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Response：</strong><br>
+This response is simutanously sent to Alice&#39;s OBD.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>accept_at</td>
+<td>-------</td>
+<td>result</td>
+<td>time of acceptance</td>
+</tr>
+<tr>
+<td>address_a</td>
+<td>-------</td>
+<td>result</td>
+<td>address of Alice</td>
+</tr>
+<tr>
+<td>address_b</td>
+<td>-------</td>
+<td>result</td>
+<td>address of Bob</td>
+</tr>
+<tr>
+<td>chain_hash</td>
+<td>1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P</td>
+<td>result</td>
+<td>identify the public chain. Default is OmniLayer</td>
+</tr>
+<tr>
+<td>channel_address</td>
+<td>-------</td>
+<td>result</td>
+<td>the p2whk address of the channel</td>
+</tr>
+<tr>
+<td>channel_address_redeem_script</td>
+<td>-------</td>
+<td>result</td>
+<td>redeem script of the multi-sig address</td>
+</tr>
+<tr>
+<td>channel_address_script_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>the script pubkey</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td>the global unique channel id</td>
+</tr>
+<tr>
+<td>channel_reserve_satoshis</td>
+<td>-------</td>
+<td>result</td>
+<td>reserved satoshis in the channel</td>
+</tr>
+<tr>
+<td>close_at</td>
+<td>-------</td>
+<td>result</td>
+<td>close time</td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td>create time</td>
+</tr>
+<tr>
+<td>create_by</td>
+<td>-------</td>
+<td>result</td>
+<td>the funder who created this channel. Alice in this case.</td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>delayed_payment_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>dust_limit_satoshis</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>fee_rate_per_kw</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_address</td>
+<td>-------</td>
+<td>result</td>
+<td>Funder&#39;s address from where he send money to the channel</td>
+</tr>
+<tr>
+<td>funding_pubkey</td>
+<td>-------</td>
+<td>result</td>
+<td>public key of funder, who wish to deposite BTC and other tokens to the channel</td>
+</tr>
+<tr>
+<td>funding_satoshis</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_minimum_msat</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>max_accepted_htlcs</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>max_htlc_value_in_flight_msat</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>payment_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_a</td>
+<td>-------</td>
+<td>result</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>peer_id_b</td>
+<td>-------</td>
+<td>result</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>pub_key_a</td>
+<td>-------</td>
+<td>result</td>
+<td>public key of funder</td>
+</tr>
+<tr>
+<td>pub_key_b</td>
+<td>-------</td>
+<td>result</td>
+<td>public key of fundee. Current OBD implementation does not requir fundee to deposit money to a channel.</td>
+</tr>
+<tr>
+<td>push_msat</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>revocation_base_point</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>to_self_delay</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='deposit-btc-for-miner-fee'>Deposit BTC for miner fee</h1>
+<p>Alice tells her OBD to create a funding transaction. Since on Omnilayer/BTC, the miner fee is bitcoin, so that first we need to deposit small amount of bitcoin used in withdraw money, creating temporary multi-sig addresses for transactions in RSMC and HTLC.  </p>
+
+<p>After that, we need to create the second part of transactions that deposit tokens which both sides agreed to fund the channel.  </p>
+
+<p>This is the place that OBD differs from LND or other lightning implementation, since they are for BTC only, so there is no need for them to deposit extra bitcoin for fee.</p>
+
+<aside class="warning">Another difference is that we need two transactions for the miner fees, one for the channel, and the other for a internal temporary multi-sig address. So Alice may raise request twice, and Bob needs to answer twice.
+
+
+It is not finalized yet.
+</aside>
+<h2 id='funder-create-funding-transaction'>funder create funding transaction</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice&#39;s data:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>address: mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
+privkey: cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy  
+channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE  
+</code></pre>
+<blockquote>
+<p>Alice requests:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+        <span class="s2">"type"</span>:1009,
+        <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"from_address"</span>:<span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span>,
+            <span class="s2">"from_address_private_key"</span>:<span class="s2">"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"</span>,
+            <span class="s2">"to_address"</span>:<span class="s2">"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE"</span>,
+            <span class="s2">"amount"</span>:0.0001,
+            <span class="s2">"miner_fee"</span>:0.00001,
+        <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1009</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hex"</span><span class="p">:</span><span class="s2">"0200000001c77e31c262301a13d0fa6cec9827b25017bd30fb1ad3793b2c8ff66461fc7ab5000000006a473044022047c441b3f34bcce960f667391941a4db29de16bb00dbee97d4c85f60995d4b5102201a4f2d13a0cc22e7e62ee3fe04d0cc7dd36e375108a9242ede7aa718a5c5578a0121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff02102700000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468748170f00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac00000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid"</span><span class="p">:</span><span class="s2">"266b14b6c816fcf2525b1b009ea966f34b6b6a1774065501fa242dbc847e5a68"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p><strong>Message Type: 1009</strong></p>
+
+<p><strong>Alice Requests</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from_address</td>
+<td>-------</td>
+<td>data</td>
+<td>address of funder, from where the BTC is transferred.</td>
+</tr>
+<tr>
+<td>from_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key.</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td>-------</td>
+<td>data</td>
+<td>the channel multi-sig address.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>0.0001</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>miner_fee</td>
+<td>0.00001</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>hex</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>txid</td>
+<td>-------</td>
+<td>result</td>
+<td>transaction id</td>
+</tr>
+</tbody></table>
+<h2 id='funder-notifies-fundee'>funder notifies fundee</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:-3400,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"temporary_channel_id"</span>:[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+        <span class="s2">"channel_address_private_key"</span>:<span class="s2">"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"</span>,           <span class="s2">"funding_tx_hex"</span>:<span class="s2">"0200000001c77e31c262301a13d0fa6cec9827b25017bd30fb1ad3793b2c8ff66461fc7ab5000000006a473044022047c441b3f34bcce960f667391941a4db29de16bb00dbee97d4c85f60995d4b5102201a4f2d13a0cc22e7e62ee3fe04d0cc7dd36e375108a9242ede7aa718a5c5578a0121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff02102700000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468748170f00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac00000000"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-3400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">0.0001</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_txid"</span><span class="p">:</span><span class="s2">"266b14b6c816fcf2525b1b009ea966f34b6b6a1774065501fa242dbc847e5a68"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temporary_channel_id"</span><span class="p">:[</span><span class="mi">43</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">166</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">214</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">184</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">209</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">245</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">183</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p>Alice tells her OBD to notify Bob that she created the funding transaction by payloads packed in the message -3400.  </p>
+
+<p><strong>Message Type: -3400</strong></p>
+
+<p><strong>Alice Requests</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of the channel that Alice holds</td>
+</tr>
+<tr>
+<td>funding_tx_hex</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_txid</td>
+<td>-------</td>
+<td>result</td>
+<td>funding transaction id</td>
+</tr>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='fundee-replies'>fundee replies</h2>
+<!-- right -->
+
+<blockquote>
+<p>Bob relies: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:-3500,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"temporary_channel_id"</span>:[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+        <span class="s2">"channel_address_private_key"</span>:<span class="s2">"cV6dif91LHD8Czk8BTgvYZR3ipUrqyMDMtUXSWsThqpHaQJUuHKA"</span>,
+        <span class="s2">"funding_txid"</span>:<span class="s2">"266b14b6c816fcf2525b1b009ea966f34b6b6a1774065501fa242dbc847e5a68"</span>,
+        <span class="s2">"approval"</span>:true
+        <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-3500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T00:14:42.17012+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temporary_channel_id"</span><span class="p">:[</span><span class="mi">43</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">166</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">214</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">184</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">209</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">245</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">183</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"tx_hash"</span><span class="p">:</span><span class="s2">"0200000001685a7e84bc2d24fa01550674176a6b4bf366a99e001b5b52f2fc16c8b6146b2600000000d90047304402206724a55a5f58c8cc0325e5b2d7e9bce844c621194777a2bac4ae18f0794fe316022038beaa93be8cd70b7337b68c9fb48377c4833739a1165e3104db8b50a6d75573014730440220723785063cd4767cd275d6f861ab3147b29ba8035123ca140d6c09f329562cac02200d3e25d2b2e10975bcf98241715c87d8c380e92fa5aad7e8470da1d2e260ff3701475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff01581b0000000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac00000000"</span><span class="p">,</span><span class="s2">"txid"</span><span class="p">:</span><span class="s2">"cd30f25260a7d5971949802974f57da45341146404ebb26db3917ef5bc841b9e"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p>Bob tells his OBD to reply Alice that he knows the funding by message -3500. </p>
+
+<p><strong>Message Type: -3500</strong></p>
+
+<p><strong>Bob Replies</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of the channel that Bob holds</td>
+</tr>
+<tr>
+<td>funding_txid</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>approval</td>
+<td>-------</td>
+<td>data</td>
+<td>true or false</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>owner</td>
+<td>-------</td>
+<td>result</td>
+<td>the funder is the owner</td>
+</tr>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>tx_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='deposit-omni-assets'>Deposit Omni Assets</h1>
+<p>Alice starts to deposit omni assets to the channel. This is quit similar to the the btc funding procedure.</p>
+<h2 id='funder-creates-token-funding-transaction'>funder creates token funding transaction</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice&#39;s data:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>address: mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
+privkey: cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy  
+channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE  
+</code></pre>
+<blockquote>
+<p>Alice requests:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+        <span class="s2">"type"</span>:2001,
+        <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"from_address"</span>:<span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span>,
+            <span class="s2">"from_address_private_key"</span>:<span class="s2">"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"</span>,
+            <span class="s2">"to_address"</span>:<span class="s2">"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE"</span>,
+            <span class="s2">"amount"</span>:6,
+            <span class="s2">"property_id"</span>: 121
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">2001</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"hex"</span><span class="p">:</span><span class="s2">"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000"</span><span class="w">
+        </span><span class="s2">"txid"</span><span class="p">:</span><span class="s2">"missing??? our development team?"</span><span class="w">   
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p><strong>Message Type: 2001</strong></p>
+
+<p><strong>Alice Requests</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from_address</td>
+<td>-------</td>
+<td>data</td>
+<td>address of funder, from where the BTC is transferred.</td>
+</tr>
+<tr>
+<td>from_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key.</td>
+</tr>
+<tr>
+<td>to_address</td>
+<td>-------</td>
+<td>data</td>
+<td>the channel multi-sig address.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>0.0001</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>data</td>
+<td>the omni asset id that has been funding.</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>hex</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>txid</td>
+<td>-------</td>
+<td>result</td>
+<td>transaction id</td>
+</tr>
+</tbody></table>
+<h2 id='funder-notifies-fundee-the-token-funding-is-created'>funder notifies fundee the token funding is created</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice data: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>address  n2gj8MDzUU7JZ6eVF5VpXcL4wUfaDXzTfJ
+privkey   cSgTisoiZLzH5vrwHBMAXLC5nvND2ffcqqDtejMg12rEVrUMeP5R
+pubkey   03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d
+</code></pre>
+<blockquote>
+<p>Alice sends: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:-34,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"temporary_channel_id"</span>:[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],            <span class="s2">"funding_tx_hex"</span>:<span class="s2">"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000"</span>,        
+        <span class="s2">"temp_address_pub_key"</span>:<span class="s2">"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d"</span>,
+        <span class="s2">"temp_address_private_key"</span>:<span class="s2">"cSgTisoiZLzH5vrwHBMAXLC5nvND2ffcqqDtejMg12rEVrUMeP5R"</span>,
+        <span class="s2">"channel_address_private_key"</span>:<span class="s2">"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-34</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount_a"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_b"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"channel_info_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T00:58:55.448353+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fundee_sign_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funder_address"</span><span class="p">:</span><span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funder_pub_key_2_for_commitment"</span><span class="p">:</span><span class="s2">"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_output_index"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"funding_tx_hex"</span><span class="p">:</span><span class="s2">"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_txid"</span><span class="p">:</span><span class="s2">"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p>Alice tells her OBD to notify Bob that she created the token funding transaction by payloads packed in the message -34.  </p>
+
+<p><strong>Message Type: -34</strong></p>
+
+<p><strong>Alice sends</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>temporary_channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_tx_hex</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of the channel that Alice holds</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>amount_a</td>
+<td>-------</td>
+<td>result</td>
+<td>how much has been funded</td>
+</tr>
+<tr>
+<td>amount_b</td>
+<td>-------</td>
+<td>result</td>
+<td>none required</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td>channel officially created</td>
+</tr>
+<tr>
+<td>channel_info_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_by</td>
+<td>-------</td>
+<td>result</td>
+<td>created by the funder</td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>fundee_sign_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funder_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funder_pub_key_2_for_commitment</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_output_index&quot;</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_txid</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_a</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_b</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='fundee-replies-knowing-the-token-has-been-funded'>fundee replies knowing the token has been funded</h2>
+<!-- right -->
+
+<blockquote>
+<p>Bob sends: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:-35,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
+        <span class="s2">"fundee_channel_address_private_key"</span>:<span class="s2">"cV6dif91LHD8Czk8BTgvYZR3ipUrqyMDMtUXSWsThqpHaQJUuHKA"</span>,
+        <span class="s2">"approval"</span>:true
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-35</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount_a"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_b"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"channel_info_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T00:58:55.448353+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fundee_sign_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:01:53.970256+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funder_address"</span><span class="p">:</span><span class="s2">"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funder_pub_key_2_for_commitment"</span><span class="p">:</span><span class="s2">"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_output_index"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_tx_hex"</span><span class="p">:</span><span class="s2">"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"funding_txid"</span><span class="p">:</span><span class="s2">"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p>Bob tells his OBD to reply Alice that he knows the funding by message -35, and OBD has created commitment transactions (C1a &amp; RD1a)</p>
+
+<p><strong>Message Type: -35</strong></p>
+
+<p><strong>Bob Replies</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>fundee_channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of the channel that Bob holds</td>
+</tr>
+<tr>
+<td>funding_txid</td>
+<td>-------</td>
+<td>data</td>
+<td>transaction id missing???</td>
+</tr>
+<tr>
+<td>approval</td>
+<td>-------</td>
+<td>data</td>
+<td>true or false</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_a</td>
+<td>-------</td>
+<td>result</td>
+<td>how much the funder deposited</td>
+</tr>
+<tr>
+<td>amount_b</td>
+<td>-------</td>
+<td>result</td>
+<td>none required</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_info_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_by</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>fundee_sign_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funder_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funder_pub_key_2_for_commitment</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_output_index</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>funding_txid</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_a</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='query'>Query</h1>
+<p>This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty. </p>
+<h2 id='query-list-of-commitment-transactions'>Query list of commitment transactions</h2>
+<!-- right -->
+
+<blockquote>
+<p>either Alice or Bob:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+        <span class="s2">"type"</span>: -35101,
+        <span class="s2">"data"</span>:<span class="o">{</span>
+            <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-35101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:[{</span><span class="w">
+        </span><span class="s2">"amount_b"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_m"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:01:54.262628+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_hash"</span><span class="p">:</span><span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_amount"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_txid"</span><span class="p">:</span><span class="s2">"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_vout"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_commitment_tx_id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_edit_time"</span><span class="p">:</span><span class="s2">"2019-09-21T01:01:54.262628+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_hash"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"multi_address"</span><span class="p">:</span><span class="s2">"2N3zxWFsT2nocWPiM7Qpc8rngQDv7PEX6yz"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"redeem_script"</span><span class="p">:</span><span class="s2">"522103ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"script_pub_key"</span><span class="p">:</span><span class="s2">"a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac87"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"send_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sign_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:01:54.704956+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_sign_hex_to_other"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_sign_hex_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"0200000001685a7e84bc2d24fa01550674176a6b4bf366a99e001b5b52f2fc16c8b6146b2600000000d900473044022008df14db1d40c4c53dbf87903ed3604e6075a80d96c8efbdc0899218c813d1df02203dde10f2139286ba4a533ea28f3b25c1394a359e1bf7db0a8b4245981a2aab3b014730440220194ed787685360c7c3b1dc67328db680e8e8d9e201753550c585efcf355beee1022023bf97e53ae59110f0c5f4160a2df723747ba61d65db5d6af7cc93ba70cc5ace01475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff033c1900000000000017a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac870000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac8700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid_to_other"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"8656156b4e70670745f0f9e46b64a84c7366bbad3182ebf135b6a5b60f10b1f1"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<!-- center -->
+
+<p>What is this message really querying about? The latest channel status?</p>
+
+<p><strong>Message Type: -35101</strong></p>
+
+<p><strong>Either Alice or Bob Requests:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>amount_m</td>
+<td>-------</td>
+<td>result</td>
+<td>total tokens in this channel</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_by</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_amount</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_txid</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_vout</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_commitment_tx_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_edit_time</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>owner</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_a</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_b</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>redeem_script</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>script_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>send_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>sign_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_sign_hex_to_other</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_sign_hex_to_temp_multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>txid_to_other</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>txid_to_temp_multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='latest-commitment-transaction'>Latest commitment transaction</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35104,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-35104</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount_b"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_m"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:01:54.262628+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_hash"</span><span class="p">:</span><span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_amount"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_txid"</span><span class="p">:</span><span class="s2">"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_vout"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_commitment_tx_id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_edit_time"</span><span class="p">:</span><span class="s2">"2019-09-21T01:01:54.262628+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_hash"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"multi_address"</span><span class="p">:</span><span class="s2">"2N3zxWFsT2nocWPiM7Qpc8rngQDv7PEX6yz"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"redeem_script"</span><span class="p">:</span><span class="s2">"522103ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae"</span><span class="p">,</span><span class="s2">"script_pub_key"</span><span class="p">:</span><span class="s2">"a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac87"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"send_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sign_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:01:54.704956+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_sign_hex_to_other"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_sign_hex_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"0200000001685a7e84bc2d24fa01550674176a6b4bf366a99e001b5b52f2fc16c8b6146b2600000000d900473044022008df14db1d40c4c53dbf87903ed3604e6075a80d96c8efbdc0899218c813d1df02203dde10f2139286ba4a533ea28f3b25c1394a359e1bf7db0a8b4245981a2aab3b014730440220194ed787685360c7c3b1dc67328db680e8e8d9e201753550c585efcf355beee1022023bf97e53ae59110f0c5f4160a2df723747ba61d65db5d6af7cc93ba70cc5ace01475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff033c1900000000000017a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac870000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac8700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid_to_other"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"txid_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"8656156b4e70670745f0f9e46b64a84c7366bbad3182ebf135b6a5b60f10b1f1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35104</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>amount_b</td>
+<td>-------</td>
+<td>result</td>
+<td>none required</td>
+</tr>
+<tr>
+<td>amount_m</td>
+<td>-------</td>
+<td>result</td>
+<td>how much has been funded</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_by</td>
+<td>-------</td>
+<td>result</td>
+<td>created by the funder</td>
+</tr>
+<tr>
+<td>curr_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_amount</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_txid</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_vout</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_commitment_tx_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_edit_time</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>owner</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_a</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_b</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>redeem_script</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>script_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>send_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>sign_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_sign_hex_to_other</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_sign_hex_to_temp_multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>txid_to_other</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>txid_to_temp_multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='latest-revockable-delivery-transaction'>Latest Revockable Delivery Transaction</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35105,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35105</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='latest-breach-remedy-transaction'>Latest Breach Remedy Transaction</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35106,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35106</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-revockable-delivery-transactions'>List all Revockable Delivery Transactions</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35108,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35108</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-breach-remedy-transactions'>List all Breach Remedy Transactions</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35109,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35109</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-channels'>List all Channels</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -3202, 
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -3202</strong></p>
+
+<p><strong>Either Alice or Bob can fetch the list of all channels</strong></p>
+
+<p>This message has no arguments.</p>
+<h2 id='list-all-commitment-transactions-broadcasted'>List all Commitment Transactions Broadcasted</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35110,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35110</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='list-all-commitment-transactions-broadcasted-2'>List all Commitment Transactions Broadcasted</h2>
+<!-- right -->
+
+<blockquote>
+<p>Either Alice or Bob can query: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>: -35110,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -35110</strong></p>
+
+<p><strong>Either Alice or Bob can query:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='payments-in-channel'>Payments in Channel</h1>
+<p>Funder/fundee create commitment transactions.</p>
+<h2 id='sender-creates-a-commitment-transaction-to-pay'>sender creates a commitment transaction to pay</h2>
+<!-- right -->
+
+<blockquote>
+<p>Alice&#39;s data:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>last_temp_pub_key：       n2gj8MDzUU7JZ6eVF5VpXcL4wUfaDXzTfJ
+last_temp_private_key：  cSgTisoiZLzH5vrwHBMAXLC5nvND2ffcqqDtejMg12rEVrUMeP5R
+curr_temp_address：       mpnHbpARXjUBcf6vib7E3jjD6Zv4CrvYuW
+curr_temp_private_key： cP8vR19XbtytyHgyBh1SV5dVAMLrLR2rzSU9EAcQTCUHij61u5C2
+curr_temp_pub_key: 02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2
+</code></pre>
+<blockquote>
+<p>Alice creates a commitment transaction:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"type"</span>:-351,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
+        <span class="s2">"amount"</span>:0.1,
+        <span class="s2">"curr_temp_address_pub_key"</span>:<span class="s2">"02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2"</span>,
+        <span class="s2">"curr_temp_address_private_key"</span>:<span class="s2">"cP8vR19XbtytyHgyBh1SV5dVAMLrLR2rzSU9EAcQTCUHij61u5C2"</span>,
+        <span class="s2">"property_id"</span>:121,
+        <span class="s2">"channel_address_private_key"</span>:<span class="s2">"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"</span>,
+        <span class="s2">"last_temp_address_private_key"</span>:<span class="s2">"cSgTisoiZLzH5vrwHBMAXLC5nvND2ffcqqDtejMg12rEVrUMeP5R"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>OBD Responses:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-351</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"curr_temp_address_private_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_temp_address_private_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"request_commitment_hash"</span><span class="p">:</span><span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<!-- center -->
+
+<p><strong>Message Type: -351</strong></p>
+
+<p><strong>Either funder or fundee sends:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>-------</td>
+<td>data</td>
+<td>amount to pay</td>
+</tr>
+<tr>
+<td>curr_temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>temporary multi-sig address</td>
+</tr>
+<tr>
+<td>curr_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>the private key of the temporary multi-sig address currently in use.</td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>data</td>
+<td>the omni asset id that has been funding.</td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>Alice&#39;s private key of the channel</td>
+</tr>
+<tr>
+<td>last_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>the private key of the last temporary multi-sig address</td>
+</tr>
+</tbody></table>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_temp_address_private_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_temp_address_private_key</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>request_commitment_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='receiever-accepts-the-tokens'>Receiever accepts the tokens</h2>
+<!-- right -->
+
+<blockquote>
+<p>Bob&#39;s data: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>last_temp_pub_key： 
+last_temp_private_key： 
+curr_temp_pub_key：       mt1jUkFb9JtR3qBeYHqJE68S6TUct7fB8r
+curr_temp_private_key： cQm58g783uvXbFjTjLN5STR3TrPiKueC5f9SCkAc9kSew4dj2Y2i
+curr_temp_pub_key：   0277bf9e0df3ffe2d8f22356fb198e9b0a2237b8c51bde77e3c7da5df09a4dba05
+</code></pre>
+<blockquote>
+<p>Bob replies: </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code> <span class="o">{</span>
+    <span class="s2">"type"</span>:-352,
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"channel_id"</span>:[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
+        <span class="s2">"curr_temp_address_pub_key"</span>:<span class="s2">"0277bf9e0df3ffe2d8f22356fb198e9b0a2237b8c51bde77e3c7da5df09a4dba05"</span>,
+        <span class="s2">"curr_temp_address_private_key"</span>:<span class="s2">"cQm58g783uvXbFjTjLN5STR3TrPiKueC5f9SCkAc9kSew4dj2Y2i"</span>,
+        <span class="s2">"last_temp_private_key"</span>:<span class="s2">""</span>,
+        <span class="s2">"request_commitment_hash"</span>:<span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span>,
+        <span class="s2">"channel_address_private_key"</span>:<span class="s2">"cV6dif91LHD8Czk8BTgvYZR3ipUrqyMDMtUXSWsThqpHaQJUuHKA"</span>,
+        <span class="s2">"approval"</span>:true
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre>
+<blockquote>
+<p>OBD Responses：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-352</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount_b"</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_m"</span><span class="p">:</span><span class="mf">5.9</span><span class="p">,</span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">59</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">228</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">197</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">223</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">253</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">182</span><span class="p">,</span><span class="mi">254</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">249</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">197</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:38:02.249498+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_hash"</span><span class="p">:</span><span class="s2">"235d465eae3bb8c71e97ca08cca295598461cc8d23a9bdf4e6ff09e4e9f9323f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_amount"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_txid"</span><span class="p">:</span><span class="s2">"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_vout"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"last_commitment_tx_id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s2">"last_edit_time"</span><span class="p">:</span><span class="s2">"2019-09-21T01:38:02.249498+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_hash"</span><span class="p">:</span><span class="s2">"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"multi_address"</span><span class="p">:</span><span class="s2">"2Mz8QZz1RxwpHioy1bgyPA4rhXXWwEkFDtW"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"redeem_script"</span><span class="p">:</span><span class="s2">"522102b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f22103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"script_pub_key"</span><span class="p">:</span><span class="s2">"a9144b7ecd257a459e0fabf75b72fdfd98a54a12e7c187"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"send_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sign_at"</span><span class="p">:</span><span class="s2">"2019-09-21T01:38:03.119512+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temp_address_pub_key"</span><span class="p">:</span><span class="s2">"02b8302d22a50fd84f34d528ff98998a6959bc7fb8f45b5f3fb44e23101aa5d8f2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_sign_hex_to_other"</span><span class="p">:</span><span class="s2">"02000000043bfd87e4cbc54e3ddf54871188a5fd074546b6fe5f564e76957a21de81f934c702000000d900473044022068d84ef3d9d6db850d1c348ae52158ee542758ed4f82f1359a901999657ea8d902202e63d2c3e7ddba77b69fd6d71eee072964f9e0fd6972b11922ae64b4d4b5d7fa0147304402202903a8784eeb72dc7f32e048a50134f217a4b7ccf371066ddce2c7fafa863a9c0220117307e4e7efe7e74321707310e6a2c387e4a5002fd3bc654d1860275ee157e801475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff6aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c00000000d90047304402205536325b0b93f34528c4cb8d31f0f43c39bd035db521bc3dca54ae8a99accd0902203bd9ca2bce0ee8314f5a8998a0cb64a0edc17abe8f60ad813e0e41f1ddaf9bdc014730440220628681cd6a6fc23ce8074788ce13c7da998dc94af9fd9d1d0bbe8ad98f86ddbd02205c016cabce74eaf577b6702760129cd3f86173b6ffeb008cca7783240634dde901475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffffd8f2a3c2a2b2e6678d21025aed46cbc905ba25ac55e0dfd50a2d719b687f1c5203000000d900473044022001e87986132f4f8ad3e4264044fecdd1afe813aeed1a540ff96f11c159774c0f022016b7cb615ae10e48d911b5fddf3e8770829e489f61971203e9462854c81b493a0147304402206e46182bf84fe5c4d1f7b5c78b80c315bb6a5f7922a6f33afa68cec3a84f79ad02205168f413d7345fbb1d22f7f2540588934e5851d2243c3ad03f6ac1e04ccf26d001475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffffdea307c20723ced3445b67d801c2c28a7cc371092e9500dac8f96d5c892abba402000000d90047304402204586943539db1a9087b26678a7c6a20cadc38e2545d061ab8c2a25c245d817de02202f8bfb63e5448054be581ffffb64db1297ca95728bdf4be8f0b6ffff7107dbe8014730440220750202e5eef02556b22b124bc1bb2452918df7e02fb639e07432fc0e42829a4502204071fc1b6d60d3275b081920085777134547f4c986f15bbb5284989fc07d3ebb01475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff039a460000000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e690000000000000079000000000098968022020000000000001976a914c2e30e5f058df787de0529e0742d7ef7a13231ab88ac00000000"</span><span class="p">,</span><span class="s2">"transaction_sign_hex_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"0200000001685a7e84bc2d24fa01550674176a6b4bf366a99e001b5b52f2fc16c8b6146b2600000000d90047304402207fdf6d9de273352f215b7139a169b9c6046fc33f5e5c26a4012c6b32e07137aa02200a437ce51e3a02478c59d8c21a8c71ea6fda6dac62c5032ec5f131f21a7e8ee20147304402205eccc7e4b8bcae3269d6eb25aeb6823d88562f308c203590b86073d35f9d3d7e02203130cf67e48b539d7b3c17400a7fba88c812315f465a42dabab046d65a52054c01475221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952aeffffffff033c1900000000000017a9144b7ecd257a459e0fabf75b72fdfd98a54a12e7c1870000000000000000166a146f6d6e69000000000000007900000000232aaf801c0200000000000017a9144b7ecd257a459e0fabf75b72fdfd98a54a12e7c18700000000"</span><span class="p">,</span><span class="s2">"txid_to_other"</span><span class="p">:</span><span class="s2">"3065fa232bb5dec89104bc487359ac12b2480bb0762f64abbebd6adf0795bc13"</span><span class="p">,</span><span class="s2">"txid_to_temp_multi_address"</span><span class="p">:</span><span class="s2">"74cffd8987cf01ed02d355aad82c38aadd991c4f185b3e394c5bade55d2ceb73"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<!-- center -->
+
+<p>Receiever notify the sender that he has receieved the money. </p>
+
+<p><strong>Message Type: -352</strong></p>
+
+<p><strong>Receiever sends</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>data</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>curr_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>last_temp_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>request_commitment_hash</td>
+<td>-------</td>
+<td>data</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of the channel that Bob holds</td>
+</tr>
+</tbody></table>
+
+<p>approval</p>
+
+<p><strong>OBD Responses:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of funder</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>peer id of fundee</td>
+</tr>
+<tr>
+<td>amount_b</td>
+<td>-------</td>
+<td>result</td>
+<td>how much has been payed</td>
+</tr>
+<tr>
+<td>amount_m</td>
+<td>-------</td>
+<td>result</td>
+<td>the balance of the sender</td>
+</tr>
+<tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td>channel officially created</td>
+</tr>
+<tr>
+<td>create_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>create_by</td>
+<td>-------</td>
+<td>result</td>
+<td>created by the funder</td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_amount</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_txid</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>input_vout</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_commitment_tx_id</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>last_edit_time</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>last_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>multi_address</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_a</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_id_b</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>redeem_script</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>script_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>send_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>sign_at</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+<tr>
+<td>transaction_sign_hex_to_other</td>
+<td>-------</td>
+<td>result</td>
+<td>to be added</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="golang">golang</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
