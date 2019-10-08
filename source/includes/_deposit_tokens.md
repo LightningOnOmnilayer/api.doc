@@ -1,6 +1,6 @@
 # Deposit Omni Assets
 
-Alice starts to deposit omni assets to the channel. This is quit similar to the the btc funding procedure.
+Alice starts to deposit omni assets to the channel. This is quite similar to the the btc funding procedure.
 
 ## funder creates token funding transaction
 
