@@ -17,7 +17,8 @@ includes:
   - deposit_tokens
   - query
   - payments_in_channel
-
+  - htlc
+  
 search: true
 ---
 
