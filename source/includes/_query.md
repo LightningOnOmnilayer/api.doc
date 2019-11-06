@@ -415,4 +415,148 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
+<!-- Added by Kevin 2019-11-6 -->
+
+## Get HTLC base data and the H (Hash_Preimage_R)
+
+<!-- right -->
+ 
+> Only HTLC creator can query: 
+
+```json
+{
+	"type": -4001
+}
+``` 
+
+<!-- center -->
+ 
+**Message Type: -4001**
+ 
+**Only HTLC creator can query:**
+
+This message has no arguments.
+
+## Get HTLC base data and the R (Preimage_R)
+
+<!-- right -->
+ 
+> Only HTLC Receiever can query: 
+
+```json
+{
+	"type": -4101
+}
+``` 
+
+> OBD Responses:
+
+```json
+{
+    "type": -4101, 
+    "status": true, 
+    "from": "carol", 
+    "to": "carol", 
+    "result": [
+        {
+            "amount": 5, 
+            "create_at": "2019-11-04T15:02:25.2004375+08:00", 
+            "create_by": "alice", 
+            "curr_state": 20, 
+            "h": "83519233492eb05ddd547757f2c3d151ad9392b2ebf48fc1a88e07e61dd82a45", 
+            "id": 1, 
+            "property_id": 121, 
+            "r": "2de142c8006a3462241e96a610b59f3d92d8259c", 
+            "recipient_peer_id": "carol", 
+            "request_hash": "742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636", 
+            "sender_peer_id": "alice", 
+            "sign_at": "2019-11-04T15:08:31.5417759+08:00", 
+            "sign_by": "carol"
+        }, 
+        {
+            "amount": 5, 
+            "create_at": "2019-11-06T08:02:50.8302374+08:00", 
+            "create_by": "alice", 
+            "curr_state": 20, 
+            "h": "e7626f2b7207006d6515399c587c09c3bfb5ed3b12f63c12b0d40e634f9dd9a3", 
+            "id": 2, 
+            "property_id": 121, 
+            "r": "2de142c8006a3462241e96a610b59f3d92d8259c", 
+            "recipient_peer_id": "carol", 
+            "request_hash": "1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9", 
+            "sender_peer_id": "alice", 
+            "sign_at": "2019-11-06T08:03:41.3545586+08:00", 
+            "sign_by": "carol"
+        }
+    ]
+}
+```
+
+<!-- center -->
+ 
+**Message Type: -4101**
+ 
+**Only HTLC Receiever can query:**
+
+This message has no arguments.
+
+## The middleman node get the R (Preimage_R) by channel id
+
+<!-- right -->
+ 
+> Only middleman node can query: 
+
+```json
+{
+	"type":-4103,
+	"data":{
+		"channel_id":[223,177,75,185,186,22,47,155,145,238,242,1,158,247,192,1,48,183,197,192,190,72,49,233,62,65,156,103,111,172,109,51]
+	}
+}
+``` 
+
+<!-- center -->
+ 
+**Message Type: -4103**
+ 
+**Only middleman node can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+
+## HTLC Receiever get the R by H
+
+<!-- right -->
+ 
+> HTLC Receiever can query: 
+
+```json
+{
+	"type":-4105,
+	"data":"e7626f2b7207006d6515399c587c09c3bfb5ed3b12f63c12b0d40e634f9dd9a3"
+}
+``` 
+
+> OBD Responses:
+
+```json
+{
+    "type": -4105, 
+    "status": true, 
+    "from": "carol", 
+    "to": "carol", 
+    "result": "\"2de142c8006a3462241e96a610b59f3d92d8259c\""
+}
+```
+
+<!-- center -->
+ 
+**Message Type: -4105**
+ 
+**HTLC Receiever can query:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+H         | ------- |   data    | Hash_Preimage_R
 
