@@ -500,6 +500,30 @@ This message has no arguments.
 
 This message has no arguments.
 
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status            | ------- |   body    | true or false
+from	          | ------- |   body    | sender
+to                | ------- |   body    | receiever
+amount            | ------- |   result  | 
+create_at         | ------- |   result  | 
+create_by         | ------- |   result  | 
+curr_state        | ------- |   result  | 
+h                 | ------- |   result  | 
+id                | ------- |   result  | 
+property_id       | ------- |   result  | 
+r                 | ------- |   result  | 
+recipient_peer_id | ------- |   result  | 
+request_hash      | ------- |   result  | 
+sender_peer_id    | ------- |   result  | 
+sign_at           | ------- |   result  | 
+sign_by           | ------- |   result  | 
+
+
 ## The middleman node get the R (Preimage_R) by channel id
 
 <!-- right -->
@@ -560,3 +584,13 @@ Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 H         | ------- |   data    | Hash_Preimage_R
 
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status            | ------- |   body    | true or false
+from	          | ------- |   body    | sender
+to                | ------- |   body    | receiever
+string            | ------- |   result  | result
