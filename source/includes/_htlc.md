@@ -104,7 +104,13 @@ channel:
 
 <!-- center -->
 
-**Three client login.**
+Three client login.
+
+**Message Type: 1**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+peer_id   | ------- |   data    | id of a client
 
 ## Open Channel between Alice and Bob（A2B）
 
@@ -188,17 +194,75 @@ channel:
 
 <!-- center -->
 
+Alice sends request to her OBD instance, her OBD helps her complete the message, and routes her request to Bob's OBD for creating a channel between them. 
+
 **Message Type: -32**
 
-**Alice send the open channel request to Bob**
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+funding pubkey    | ------- |   data    | public key of funder, who wish to deposite BTC and other tokens to the channel
+recipient_peer_id | ------- |   body    | peer id of the fundee.
+ 
+<br/>
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+**OBD Response：**  
+This response is simutanously sent to Bob's OBD. Response is a temporary_channel_id.
 
-*Bob replies*
+<br/>
+
+Bob replies to accept, his OBD completes his message and routes it to Alice's OBD. Then Alice sees the response of acceptance. 
 
 **Message Type: -33**
  
-**Bob replies**
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+temporary_channel_id  | ------- |   body    | the temporary channel id, used before real funding completes.
+funding pubkey        | ------- |   body    | public key of fundee(Bob), who wish to deposite BTC and other tokens to the channel. Current implementation of OBD supports one-way deposite. Fundee does not need to fund the channel.
+approval              | ------- |   body    | true or false to deny.
+ 
+<br/>
+
+**OBD Response：**  
+This response is simutanously sent to Alice's OBD.
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status    | ------- |    body   | true or false
+from      | ------- |    body   | peer id of funder
+to        | ------- |    body   | peer id of fundee
+accept_at | ------- |    result   | time of acceptance
+address_a | ------- |    result   | address of Alice
+address_b | ------- |    result   | address of Bob
+chain_hash             |  1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P     |    result   | identify the public chain. Default is OmniLayer
+channel_address                | ------- |    result   | the p2whk address of the channel
+channel_address_redeem_script  | ------- |    result   | redeem script of the multi-sig address
+channel_address_script_pub_key | ------- |    result   | the script pubkey
+channel_id                     | ------- |    result   | the global unique channel id
+channel_reserve_satoshis       | ------- |    result   | reserved satoshis in the channel
+close_at                       | ------- |    result   | close time
+create_at                      | ------- |    result   | create time
+create_by                      | ------- |    result   | the funder who created this channel. Alice in this case.
+curr_state                     | ------- |    result   | 
+delayed_payment_base_point | ------- |    result   | 
+dust_limit_satoshis        | ------- |    result   | 
+fee_rate_per_kw            | ------- |    result   | 
+funding_address            | ------- |    result   | Funder's address from where he send money to the channel
+funding_pubkey             | ------- |    result   | public key of funder, who wish to deposite BTC and other tokens to the channel 
+funding_satoshis           | ------- |    result   | 
+htlc_base_point            | ------- |    result   | 
+htlc_minimum_msat          | ------- |    result   | 
+max_accepted_htlcs         | ------- |    result   | 
+max_htlc_value_in_flight_msat      | ------- |    result   | 
+payment_base_point                 | ------- |    result   | 
+peer_id_a                          | ------- |    result   | peer id of funder
+peer_id_b                          | ------- |    result   | peer id of fundee
+pub_key_a                          | ------- |    result   | public key of funder
+pub_key_b                          | ------- |    result   | public key of fundee. Current OBD implementation does not requir fundee to deposit money to a channel.
+push_msat                          | ------- |    result   | 
+revocation_base_point              | ------- |    result   | 
+temporary_channel_id               | ------- |    result   | 
+to_self_delay                      | ------- |    result   | 
+
 
 ## Open Channel between Bob and Carol（B2C）
 
@@ -282,17 +346,36 @@ channel:
 
 <!-- center -->
 
+Bob sends request to his OBD instance, his OBD helps he complete the message, and routes his request to Carol's OBD for creating a channel between them. 
+
 **Message Type: -32**
 
-**Bob send the open channel request to Carol**
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+funding pubkey      | ------- |   data    | public key of funder, who wish to deposite BTC and other tokens to the channel
+recipient_peer_id | ------- |   body    | peer id of the fundee.
+ 
+<br/>
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+**OBD Response：**  
+This response is simutanously sent to Bob's OBD. Response is a temporary_channel_id.
 
-*Carol replies*
+<br/>
+
+Carol replies to accept, her OBD completes her message and routes it to Bob's OBD. Then Bob sees the response of acceptance. 
 
 **Message Type: -33**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+temporary_channel_id  | ------- |   body    | the temporary channel id, used before real funding completes.
+funding pubkey        | ------- |   body    | public key of fundee(Bob), who wish to deposite BTC and other tokens to the channel. Current implementation of OBD supports one-way deposite. Fundee does not need to fund the channel.
+approval              | ------- |   body    | true or false to deny.
  
-**Carol replies**
+<br/>
+
+**OBD Response：**
+Same to above.
 
 <!-- ## Alice Deposit Assets to Channels A2B -->
 
@@ -570,33 +653,96 @@ channel:
 
 <!-- center -->
 
-*First deposit BTC*
+*First deposit BTC for miner fee*
 
 **Message Type: 1009**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+from_address         		| ------- |   data    | address of funder, from where the BTC is transferred.
+from_address_private_key  	| ------- |   data    | private key.
+to_address           		| ------- |   data    | the channel multi-sig address.
+amount			   	| 0.0001  |   data    | 
+miner_fee		   	| 0.00001 |   data    | 
+ 
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | peer id of funder
+to             | ------- |   body    | peer id of fundee
+hex            | ------- |   result  | 
+txid	       | ------- |   result  | transaction id
+
+<br/>
 
 *Send a notification to bob*
 
 **Message Type: -3400**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+temporary_channel_id         | ------- |   data    | 
+channel_address_private_key  | ------- |   data    | private key of the channel that Alice holds
+funding_tx_hex               | ------- |   data    | 
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | peer id of funder
+to             | ------- |   body    | peer id of fundee
+amount         | ------- |   result  | 
+funding_txid   | ------- |   result  | funding transaction id
+temporary_channel_id  | ------- |   result  |
+
+<br/>
 
 *Bob replies*
 
 **Message Type: -3500**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+temporary_channel_id         | ------- |   data    | 
+channel_address_private_key  | ------- |   data    | private key of the channel that Bob holds
+funding_txid                 | ------- |   data    | 
+approval                     | ------- |   data    | true or false
+ 
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | peer id of fundee
+to             | ------- |   body    | peer id of funder
+channel_id            | ------- |   result  | 
+create_at             | ------- |   result  | 
+id                    | ------- |   result  | 
+owner                 | ------- |   result  | the funder is the owner
+temporary_channel_id  | ------- |   result  |
+tx_hash               | ------- |   result  |
+
+<br/>
 
 *Second deposit BTC*
 
 **Message Type: 1009**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameters and OBD Responses same to above. 
+
+<br/><br/><br/><br/><br/>
 
 *Send a notification to bob*
 
 **Message Type: -3400**
+
+Parameters and OBD Responses same to above. 
+
+<br/>
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
@@ -604,23 +750,32 @@ channel:
 
 **Message Type: -3500**
 
+Parameters and OBD Responses same to above. 
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 *Third deposit BTC*
 
 **Message Type: 1009**
 
+Parameters and OBD Responses same to above. 
+
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 *Send a notification to bob*
 
 **Message Type: -3400**
 
+Parameters and OBD Responses same to above. 
+
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 *Bob replies*
 
 **Message Type: -3500**
+
+Parameters and OBD Responses same to above. 
 
 
 ## Alice deposit USDT to channel A2B for transfer
@@ -754,17 +909,101 @@ pubkey:   0380874d124f259b31ee8cf3256d784f0269ae9cf3b577e5c271c452572f8b28e5
 
 **Message Type: 2001**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+from_address         		| ------- |   data    | address of funder, from where the BTC is transferred.
+from_address_private_key  	| ------- |   data    | private key.
+to_address           		| ------- |   data    | the channel multi-sig address.
+amount			   	| 0.0001  |   data    | 
+property_id		  	| ------- |   data    | the omni asset id that has been funding.
+ 
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | peer id of funder
+to             | ------- |   body    | peer id of fundee
+hex            | ------- |   result  | 
+txid	       | ------- |   result  | transaction id
+
+<br/>
 
 *Send a notification to bob*
 
 **Message Type: -34**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+temporary_channel_id         | ------- |   data    | 
+funding_tx_hex               | ------- |   data    | 
+temp_address_pub_key         | ------- |   data    | 
+temp_address_private_key     | ------- |   data    | 
+channel_address_private_key  | ------- |   data    | private key of the channel that Alice holds
+ 
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status           | ------- |   body    | true or false
+from	         | ------- |   body    | peer id of funder
+to               | ------- |   body    | peer id of fundee
+amount_a         | ------- |   result  | how much has been funded
+amount_b         | ------- |   result  | none required
+channel_id       | ------- |   result  | channel officially created
+channel_info_id  | ------- |   result  | 
+create_at        | ------- |   result  | 
+create_by        | ------- |   result  | created by the funder
+curr_state       | ------- |   result  | 
+fundee_sign_at   | ------- |   result  | 
+funder_address   | ------- |   result  | 
+funder_pub_key_2_for_commitment   | ------- |   result  | 
+funding_output_index"             | ------- |   result  |
+funding_tx_hex                    | ------- |   result  | 
+funding_txid                      | ------- |   result  | 
+id                                | ------- |   result  | 
+peer_id_a                         | ------- |   result  | 
+peer_id_b                         | ------- |   result  | 
+property_id                       | ------- |   result  | 
+
+<br/>
 
 *Bob replies*
 
 **Message Type: -35**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id         			| ------- |   data    | 
+fundee_channel_address_private_key  	| ------- |   data    | private key of the channel that Bob holds
+funding_txid                		| ------- |   data    | transaction id missing???
+approval                    		| ------- |   data    | true or false
+ 
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | peer id of fundee
+to             | ------- |   body    | peer id of funder
+channel_id            | ------- |   result  | 
+amount_a 	      | ------- |   result  | how much the funder deposited
+amount_b	      | ------- |   result  | none required
+channel_id            | ------- |   result  | 
+channel_info_id       | ------- |   result  | 
+create_at             | ------- |   result  | 
+create_by             | ------- |   result  | 
+curr_state            | ------- |   result  | 
+fundee_sign_at        | ------- |   result  | 
+funder_address        | ------- |   result  | 
+funder_pub_key_2_for_commitment         | ------- |   result  | 
+funding_output_index                    | ------- |   result  | 
+funding_tx_hex                          | ------- |   result  | 
+funding_txid                            | ------- |   result  | 
+id                                      | ------- |   result  | 
+peer_id_a                               | ------- |   result  | 
+property_id                             | ------- |   result  | 
+
 
 <!-- ## Bob Deposit Assets to Channels B2C -->
 
@@ -1374,14 +1613,82 @@ curr_temp_pub_key：     02ef5cc2ab1dd7a840834991fcdf0554e59c550a7d5ff6934eff09c
 
 **Message Type: -351**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id         		| ------- |   data    | 
+amount  			| ------- |   data    | amount to pay
+curr_temp_address_pub_key       | ------- |   data    | temporary multi-sig address
+curr_temp_address_private_key   | ------- |   data    | the private key of the temporary multi-sig address currently in use. 
+property_id		   	| ------- |   data    | the omni asset id that has been funding.
+channel_address_private_key     | ------- |   data    | Alice's private key of the channel
+last_temp_address_private_key   | ------- |   data    | the private key of the last temporary multi-sig address
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | peer id of funder
+to             | ------- |   body    | peer id of fundee
+amount 	       | ------- |   result  | 
+channel_address_private_key  		| ------- |   result    | 
+channel_id 				| ------- |   result    | 
+curr_temp_address_private_key 		| ------- |   result    | 
+curr_temp_address_pub_key 		| ------- |   result    | 
+last_temp_address_private_key 		| ------- |   result    | 
+property_id 				| ------- |   result    | 
+request_commitment_hash 		| ------- |   result    | 
+
+<br/>
 
 *Bob replies*
 
 **Message Type: -352**
 
-## Launch HTLC
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id         			| ------- |   data    | 
+curr_temp_address_pub_key               | ------- |   data    | to be added
+curr_temp_address_private_key           | ------- |   data    | to be added
+last_temp_private_key     		| ------- |   data    | to be added
+request_commitment_hash			| ------- |   data    | to be added
+channel_address_private_key 		| ------- |   data    | private key of the channel that Bob holds
+approval
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status           | ------- |   body    | true or false
+from	         | ------- |   body    | peer id of funder
+to               | ------- |   body    | peer id of fundee
+amount_b         | ------- |   result  | how much has been payed
+amount_m         | ------- |   result  | the balance of the sender 
+channel_id       | ------- |   result  | channel officially created
+create_at        | ------- |   result  | 
+create_by        | ------- |   result  | created by the funder
+curr_state       | ------- |   result  | 
+id               | ------- |   result  | 
+input_amount 	 | ------- |   result  | 
+input_txid 	 | ------- |   result  | 
+input_vout	 | ------- |   result  | 
+last_commitment_tx_id 	| ------- |   result  | to be added
+last_edit_time 		| ------- |   result  | 
+last_hash 		| ------- |   result  | 
+multi_address 		| ------- |   result  | to be added
+owner 			| ------- |   result  | 
+peer_id_a 		| ------- |   result  | 
+peer_id_b 		| ------- |   result  | 
+property_id 		| ------- |   result  | 
+redeem_script 		| ------- |   result  | to be added
+script_pub_key 		| ------- |   result  | to be added
+send_at 		| ------- |   result  | 
+sign_at 		| ------- |   result  | 
+temp_address_pub_key 	| ------- |   result  | to be added
+transaction_sign_hex_to_other 	| ------- |   result  | to be added
+
+
+## Launch a HTLC
 
 <!-- right -->
 
@@ -1448,6 +1755,17 @@ curr_temp_pub_key：     02ef5cc2ab1dd7a840834991fcdf0554e59c550a7d5ff6934eff09c
 
 <!-- center -->
 
+We will launch a HTLC (Hashed Timelock Contract) transfer for testing purpose. 
+It tests Alice transfer assets to Carol through Bob (middleman).
+
+a) There IS NOT a direct channel between Alice and Carol.
+
+b) There is a direct channel between Alice and Bob.
+
+c) There is a direct channel between Bob and Carol.
+
+<br/>
+
 *Alice launch a request to transfer to Carol*
 
 **Message Type: -40**
@@ -1471,6 +1789,15 @@ amount         | ------- |   result  | amount of transfer
 approval       | ------- |   result  | true or false
 property_id    | ------- |   result  | assets id
 request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Carol receieved request from Alice, and Carol generate a preimage R as a secret.
+
+Carol send H (Hash of the preimage R) to Alice. Alice will looking for a middleman
+that can transfer assets directly to Carol. Alice will tell the middleman if can 
+produce to Alice an unknown 20-byte random input data R from a known hash H, 
+within three days, then Alice will settle the contract by paying the middleman assets.
 
 <br/>
 
@@ -1500,7 +1827,7 @@ id             | ------- |   result  |
 request_hash   | ------- |   result  | hash of this HTLC request
 
 
-## Alice looking for a path to transfer to Carol
+## Alice looking for a path to transfer to Carol and Send H to Bob
 
 <!-- right -->
 
@@ -1530,7 +1857,7 @@ request_hash   | ------- |   result  | hash of this HTLC request
 }
 ```
 
-> Bob's temp address data:
+> Bob's temp address data for create HTLC commitment transactions:
 
 ```shell
 Bob RSMC
@@ -1578,7 +1905,7 @@ pubkey:   03d2edfe1f0a527f70473dbacb386e4e6a9cc0ea0cabf71f6c0a3dd516a8e6099f
 }
 ```
 
-> Alice's temp address data:
+> Alice's temp address data for create HTLC commitment transactions:
 
 ```shell
 Alice RSMC
@@ -1597,7 +1924,7 @@ privkey cNzNyejXtgC4ySXCVXqa6egVinYLDtGhkRkGd271ZW6AJrVKYZ2w
 pubkey 030cb3034f7374d5bb614e27169df99d346748a1a7a365a27b1138f5db7ad2b0f3
 ```
 
-> Alice send:
+> Alice create HTLC commitment transactions:
 
 ```json
 {
@@ -1633,24 +1960,102 @@ pubkey 030cb3034f7374d5bb614e27169df99d346748a1a7a365a27b1138f5db7ad2b0f3
 
 <!-- center -->
 
+Alice will looking for a path to reach Carol by pathfinding algorithm.
+For testing purpose now, there is three client Alice, Bob, Carol, and 
+they are all connected to an OBD server. 
+
+The real situation should be that a network of many OBD servers is 
+spread all over the world, a large number of clients are connected 
+to these OBDs, and then we need to find the shortest path to transfer 
+assets from one client to another.
+
+<br/>
+
 *Alice found a path and launch a request to middleman Bob*
 
 *Alice send H to Bob*
 
 **Message Type: -42**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+h         | ------- |   data    | Hash of the preimage R
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+h              | ------- |   result  | Hash of the preimage R
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Bob (middleman) receieved request from Alice and agree.
 
 *Bob replies*
 
 **Message Type: -44**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+approval       | ------- |   data    | true or false
+channel_address_private_key         | ------- |   data    | 
+last_temp_address_private_key       | ------- |   data    | 
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_private_key  | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+approval       | ------- |   result  | true or false
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Bob agree request, Alice create related commitment transactions between Alice and Bob.
 
 *Alice create HTLC commitment transactions*
 
 **Message Type: -45**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+channel_address_private_key         | ------- |   data    | 
+last_temp_address_private_key       | ------- |   data    | 
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_for_ht1a_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_for_ht1a_private_key  | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+h              | ------- |   result  | Hash of the preimage R
+h_and_r_info_request_hash   | ------- |   result  | hash of this HTLC request
+
 
 ## Bob Send H to Carol through the Path
 
@@ -1683,7 +2088,7 @@ pubkey 030cb3034f7374d5bb614e27169df99d346748a1a7a365a27b1138f5db7ad2b0f3
 }
 ```
 
-> Carol's temp address data:
+> Carol's temp address data for create HTLC commitment transactions:
 
 ```shell
 Carol RSMC
@@ -1730,7 +2135,7 @@ pubkey 03e96c6692bef50af7c6c777ff1bd65b1134d18c98be801e00f8e6247db65950b8
 }
 ```
 
-> Bob's temp address data:
+> Bob's temp address data for create HTLC commitment transactions:
 
 ```shell
 Bob RSMC
@@ -1749,7 +2154,7 @@ privkey cUoDGr5cdNarcv43YXFdXBY2zf9721y6u6MiDnk56TSJWCGKvTbL
 pubkey 02977ddeffc04ac0c99c74db308a4db39e60b338d99f3d1661f5ae24f3e17ad414
 ```
 
-> Bob send:
+> Bob create HTLC commitment transactions:
 
 ```json
 {
@@ -1785,28 +2190,104 @@ pubkey 02977ddeffc04ac0c99c74db308a4db39e60b338d99f3d1661f5ae24f3e17ad414
 
 <!-- center -->
 
+Setp 2 of the path, Bob (middleman) has got the H and send it to Carol. 
+
+That's mean if Carol can produce to Bob an unknown 20-byte random input 
+data R from a known hash H, within two days, then Bob will settle the 
+contract by paying Carol assets.
+
+<br/>
+
 *Bob (middleman) Send H to Carol (destination)*
 
 **Message Type: -43**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+h         | ------- |   data    | Hash of the preimage R
+h_and_r_info_request_hash | ------- |   data    | hash of this HTLC request
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+h              | ------- |   result  | Hash of the preimage R
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Carol (destination) receieved request from Bob and agree.
 
 *Carol replies*
 
 **Message Type: -44**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+approval       | ------- |   data    | true or false
+channel_address_private_key         | ------- |   data    | 
+last_temp_address_private_key       | ------- |   data    | 
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_private_key  | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+approval       | ------- |   result  | true or false
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Carol agree request, Bob create related commitment transactions between Bob and Carol.
 
 *Bob create HTLC commitment transactions*
 
 **Message Type: -45**
 
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+channel_address_private_key         | ------- |   data    | 
+last_temp_address_private_key       | ------- |   data    | 
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_for_ht1a_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_for_ht1a_private_key  | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+h              | ------- |   result  | Hash of the preimage R
+h_and_r_info_request_hash   | ------- |   result  | hash of this HTLC request
+
+
 ## Carol Send R to Bob through the Path
 
 <!-- right -->
 
-> Carol's temp address data:
+> Carol's temp address data for create HTLC commitment transactions:
 
 ```shell
 Carol HTLC HEnb commitment transaction:
@@ -1816,7 +2297,7 @@ privkey cR14XVjQ4yXunTnpqXZ1FMangq5bZNqsQ4gnsVpJ1KAMkxZVqo3F
 pubkey 020eaa8f0c0f2761215af43dd7fccb11df8cafffcff4e8f186bd1b8a8a11e5f680
 ```
 
-> Carol send:
+> Carol (destination) Send R (Preimage_R) to Bob (middleman):
 
 ```json
 {
@@ -1848,7 +2329,7 @@ pubkey 020eaa8f0c0f2761215af43dd7fccb11df8cafffcff4e8f186bd1b8a8a11e5f680
 }
 ```
 
-> Bob replies:
+> Bob replies and create rest HTLC commitment transactions:
 
 ```json
 {
@@ -1880,22 +2361,72 @@ pubkey 020eaa8f0c0f2761215af43dd7fccb11df8cafffcff4e8f186bd1b8a8a11e5f680
 
 <!-- center -->
 
+So, from previous step (Setp 2), Bob ask Carol if Carol can produce to Bob an unknown 20-byte random input data R from a known hash H, within two days, then Bob will settle the contract by paying assets.
+
+Of course Carol has the preimage R, because she generated it. Then now, Carol send R to Bob.
+
+<br/>
+
 *Carol (destination) Send R (Preimage_R) to Bob (middleman)*
 
 **Message Type: -46**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+r              | ------- |   data    | Preimage_R
+channel_address_private_key         | ------- |   data    | 
+curr_htlc_temp_address_private_key      | ------- |   data    | 
+curr_htlc_temp_address_for_he1b_pub_key  | ------- |   data    | 
+curr_htlc_temp_address_for_he1b_private_key  | ------- |   data    | 
 
-*Bob replies*
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+id             | ------- |   result  | 
+r              | ------- |   result  | Preimage_R
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Bob receieved the R, and check out if R is correct.
+If correct, then create rest HTLC commitment transactions.
+
+*Bob replies and create rest HTLC commitment transactions.*
 
 **Message Type: -47**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+r              | ------- |   data    | Preimage_R
+channel_address_private_key       | ------- |   data    | 
+curr_htlc_temp_address_private_key      | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+r              | ------- |   result  | Preimage_R
+request_hash   | ------- |   result  | hash of this HTLC request
+
 
 ## Bob Send R to Alice through the Path
 
 <!-- right -->
 
-> Bob's temp address data:
+> Bob's temp address data for create rest HTLC commitment transactions:
 
 ```shell
 Bob HTLC HEnb commitment transaction:
@@ -1905,7 +2436,7 @@ privkey cTeQ2e9Hw6y1RHjCCF9x3MR7pn3yPySgxSYy5rtvmVvM7ZNh9jUZ
 pubkey 03ebdfc067f822e9ae0d76759c422bfd3aee342e21ca716dc16b81b335da73d69e
 ```
 
-> Bob send:
+> Bob (middleman) Send R (Preimage_R) to Alice (launcher):
 
 ```json
 {
@@ -1937,7 +2468,7 @@ pubkey 03ebdfc067f822e9ae0d76759c422bfd3aee342e21ca716dc16b81b335da73d69e
 }
 ```
 
-> Alice replies:
+> Alice replies and create rest HTLC commitment transactions:
 
 ```json
 {
@@ -1968,22 +2499,68 @@ pubkey 03ebdfc067f822e9ae0d76759c422bfd3aee342e21ca716dc16b81b335da73d69e
 
 <!-- center -->
 
+Bob send R to Alice, and Alice will create rest HTLC commitment transactions to pay assets to Bob.
+
 *Bob (middleman) Send R (Preimage_R) to Alice (launcher)*
 
 **Message Type: -46**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+r              | ------- |   data    | Preimage_R
+channel_address_private_key         | ------- |   data    | 
+curr_htlc_temp_address_private_key      | ------- |   data    | 
+curr_htlc_temp_address_for_he1b_pub_key  | ------- |   data    | 
+curr_htlc_temp_address_for_he1b_private_key  | ------- |   data    | 
 
-*Alice replies*
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+id             | ------- |   result  | 
+r              | ------- |   result  | Preimage_R
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Alice receieved the R, and check out if R is correct.
+If correct, then create rest HTLC commitment transactions.
+
+*Alice replies and create rest HTLC commitment transactions.*
 
 **Message Type: -47**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+r              | ------- |   data    | Preimage_R
+channel_address_private_key       | ------- |   data    | 
+curr_htlc_temp_address_private_key      | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+r              | ------- |   result  | Preimage_R
+request_hash   | ------- |   result  | hash of this HTLC request
+
 
 ## Close HTLC
 
 <!-- right -->
 
-> Alice's temp address data:
+> Alice's temp address data for create commitment transactions:
 
 ```shell
 Alice RSMC 
@@ -1992,7 +2569,7 @@ privkey cTiDwaM3y5LE2HuWWgvRTC9mgHiovf2zntjSgCPyLLeuUTmKk1BY
 pubkey 02fed65567b2ab00e2cbb28b46a687ce8fd0894486989cba54975b45bbc6a85ed8
 ```
 
-> Alice send:
+> Alice launch a request to close HTLC channel A2B:
 
 ```json
 {
@@ -2029,7 +2606,7 @@ pubkey 02fed65567b2ab00e2cbb28b46a687ce8fd0894486989cba54975b45bbc6a85ed8
 }
 ```
 
-> Bob's temp address data:
+> Bob's temp address data for create commitment transactions:
 
 ```shell
 Bob RSMC 
@@ -2038,7 +2615,7 @@ privkey cU78aif2a4YR5xK8HxBTrPKjdjhD8W4SSZNTw4yFEdwi59JMrYQY
 pubkey 0298bdca47bbb76b1022eb7d18534961a12ce6dd80308c839576602b771e324fba
 ```
 
-> Bob replies:
+> Bob replies and create BR & a newer commitment transactions:
 
 ```json
 {
@@ -2069,7 +2646,7 @@ pubkey 0298bdca47bbb76b1022eb7d18534961a12ce6dd80308c839576602b771e324fba
 }
 ```
 
-> Carol's temp address data:
+> Carol's temp address data for create commitment transactions:
 
 ```shell
 Carol RSMC 
@@ -2078,7 +2655,7 @@ privkey cNDBq3ZKKQEduVyygfcQRzxbhTS3Gt2zz6VEizkp6WyRXn8RdBtH
 pubkey 03080445b531e1df053ce9f1e3d01cdf679f693b23a991ce74145cb0b2e29a2b2d
 ```
 
-> Carol send:
+> Carol launch a request to close HTLC channel B2C:
 
 ```json
 {
@@ -2115,7 +2692,7 @@ pubkey 03080445b531e1df053ce9f1e3d01cdf679f693b23a991ce74145cb0b2e29a2b2d
 }
 ```
 
-> Bob's temp address data:
+> Bob's temp address data for create commitment transactions:
 
 ```shell
 Bob RSMC 
@@ -2124,7 +2701,7 @@ privkey cRNxX8S287DA1hkMZHVwnQiMdQVwBBdqpaGYDP1wrRdzT7pSm5kU
 pubkey 02a08635fb1c664aa2bc1a87e76f8dc0b3170c0d45d0f899b3f192093afa1bcd8c
 ```
 
-> Bob replies:
+> Bob replies and create BR & a newer commitment transactions:
 
 ```json
 {
@@ -2157,28 +2734,136 @@ pubkey 02a08635fb1c664aa2bc1a87e76f8dc0b3170c0d45d0f899b3f192093afa1bcd8c
 
 <!-- center -->
 
+For continue using OBD to transfer assets OR some reasons
+Alice need to close this HTLC channel between she and Bob.
+Then Alice launch the closing request.
+
 *Alice (launcher) request to close HTLC of A2B channel*
 
 **Message Type: -48**
 
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id   | ------- |   data    | Id of a channel
+channel_address_private_key              | ------- |   data    | 
+last_rsmc_temp_address_private_key       | ------- |   data    | 
+last_htlc_temp_address_private_key      | ------- |   data    | 
+last_htlc_temp_address_for_htnx_private_key      | ------- |   data    | 
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key      | ------- |   data    | 
 
+<br/>
 
-<br/><br/><br/><br/><br/><br/><br/><br/>
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+channel_id              | ------- |   result  | Id of a channel
+create_at   | ------- |   result  | time of created
+create_by   | ------- |   result  | creator
+curr_rsmc_temp_address_pub_key   | ------- |   result  | 
+curr_state   | ------- |   result  | 
+id   | ------- |   result  | 
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Bob agree the closing request, and create BR (Breach Remedy)
+& a newer commitment transactions (known as Cxa or Cxb).
 
 *Bob replies*
 
 **Message Type: -49**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_close_htlc_hash   | ------- |   data    | hash of this closing request
+channel_address_private_key              | ------- |   data    | 
+last_rsmc_temp_address_private_key       | ------- |   data    | 
+last_htlc_temp_address_private_key      | ------- |   data    | 
+last_htlc_temp_address_for_htnx_private_key      | ------- |   data  |
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key  | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+msg            | ------- |   result  | success or failed
+
+<br/>
+
+For continue using OBD to transfer assets OR some reasons
+Carol need to close this HTLC channel between she and Bob.
+Then Carol launch the closing request.
 
 *Carol (destination) request to close HTLC of B2C channel*
 
 **Message Type: -48**
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id   | ------- |   data    | Id of a channel
+channel_address_private_key              | ------- |   data    | 
+last_rsmc_temp_address_private_key       | ------- |   data    | 
+last_htlc_temp_address_private_key      | ------- |   data    | 
+last_htlc_temp_address_for_htnx_private_key      | ------- |   data    | 
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key      | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+channel_id              | ------- |   result  | Id of a channel
+create_at   | ------- |   result  | time of created
+create_by   | ------- |   result  | creator
+curr_rsmc_temp_address_pub_key   | ------- |   result  | 
+curr_state   | ------- |   result  | 
+id   | ------- |   result  | 
+request_hash   | ------- |   result  | hash of this HTLC request
+
+<br/>
+
+Bob agree the closing request, and create BR (Breach Remedy)
+& a newer commitment transactions (known as Cxa or Cxb).
 
 *Bob replies*
 
 **Message Type: -49**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_close_htlc_hash   | ------- |   data    | hash of this closing request
+channel_address_private_key              | ------- |   data    | 
+last_rsmc_temp_address_private_key       | ------- |   data    | 
+last_htlc_temp_address_private_key      | ------- |   data    | 
+last_htlc_temp_address_for_htnx_private_key      | ------- |   data  |
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key  | ------- |   data    | 
+
+<br/>
+
+**OBD Responses:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+msg            | ------- |   result  | success or failed
 
 <!-- 十二、关闭HTLC状态下的通道 -->
