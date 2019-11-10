@@ -1,12 +1,20 @@
 # HTLC in OBD
 
-Hashed Timelock Contract (HTLC) Testing in OBD.
+HTLC(Hashed Timelock Contract) is the second foundamental module in lightning network. In general, any two clients need no direct channels between them for transferring tokens or exchanging information, they can use their direct channels to build a bridge for this purpose. HTLC is designed for chaining the channels together in delivering messages from one client to another.
 
-A bidirectional payment channel only permits secure transfer of funds inside a channel. 
-To be able to construct secure transfers using a network of channels across multiple hops 
-to the final destination requires an additional construction, a Hashed Timelock Contract (HTLC).
+`
+[Alice --(10 USDT)--> Bob] ==(Bob has two channels)== [Bob --(10 USDT)--> Carol] ==(Carol has two channels)== [Carol --(10 USDT)--> David]
+`  
 
-The purpose of an HTLC is to allow for global state across multiple nodes via hashes. 
+**[A B]** stands for the channel built by A and B
+
+A formal HTL contract describes the following procedure:
+
+<aside class="notice">
+If Bob can tell Alice the secret R, which is the pre-image of <code>Hash(R)</code> that some one else (Carol) in the chain shared with Bob 3 days ago in exchange of 10 USDT in the channel <code>[Bob Carol]</code>, then Bob will get the 10 USDT fund inside the channel <code>[Alice Bob]</code>, otherwise Alice gets her 10 USDT back.
+</aside>
+ 
+Readers shall find the latest specification in [OmniBOLT 04: HTLC and Payment Routing](https://github.com/LightningOnOmnilayer/Omni-BOLT-spec/blob/master/OmniBOLT-04-HTLC-and-Payment-Routing.md)
 
 ## Prepare Data for Client
 
@@ -38,13 +46,14 @@ privkey: cMxR8h9z5oKrdyuXVR9uzBbyyaJz1karxH1FW5xezhKzxQc7sCJV
 
 <!-- center -->
 
-**For testing, we generate three client data of Alice, Bob, Carol**
+Payments via HTLC involve many clients and channels among them, in order for demonstration the complete process, we simply setup three clients: Alice, Bob and Carol, and assume only Bob established channel with other clients. OBD has its backend routing algorithm to find the right path for a payment, but it is not exposed to developers.
+
 
 ## Prepare Data for Channel Address
 
 <!-- right -->
 
-> Channel A2B:
+> Channel [Aice Bob]:
 
 ```shell
 channel_address：2NFhMhDJT9TsnBCG6L2amH3eDXxgwW6EJh7
@@ -52,7 +61,7 @@ redeem_script：5221029cf4b150da0065d5c08bf088e8a5367d35ff72e4e79b39efb401530d19
 channelId: [174,36,154,103,145,76,58,237,32,61,201,81,17,156,135,216,66,28,83,203,251,152,138,102,158,113,131,32,241,229,43,75]
 ```
 
-> Channel B2C:
+> Channel [Bob Carol]:
 
 ```shell
 channel_address：2MzQW254vB6mHsUvLHxCnKZ73Gcw7kSrvsd
