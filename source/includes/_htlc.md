@@ -23,7 +23,7 @@ Readers shall find the latest specification in [OmniBOLT 04: HTLC and Payment Ro
 > Alice's data:
 
 ```shell
-adderss: muYrqVWTKnkaVAMuqn59Ta6GL912ixpxit
+address: muYrqVWTKnkaVAMuqn59Ta6GL912ixpxit
 pubkey:  029cf4b150da0065d5c08bf088e8a5367d35ff72e4e79b39efb401530d19fa3f3c
 privkey: cToieuvo3JjkEUKa3tjd6J98RXKDTo1d2hUSVgKpZ1KwBvGhQFL8
 ```
@@ -31,7 +31,7 @@ privkey: cToieuvo3JjkEUKa3tjd6J98RXKDTo1d2hUSVgKpZ1KwBvGhQFL8
 > Bob's data:
 
 ```shell
-adderss: mtSJixJ8eCguXDAdkGGoQu3nG1n77a6td8
+address: mtSJixJ8eCguXDAdkGGoQu3nG1n77a6td8
 pubkey:  03da1b78a5ab4a5e4e13515e5104dbfc1d2d349d89039c15eda9c0118b7edaa91f
 privkey: cTr7SHQ7FR6Ej8ZU8vDpbt3y9GuF3hnBqn81Tv9Tdi5TeakqKavt
 ```
@@ -39,7 +39,7 @@ privkey: cTr7SHQ7FR6Ej8ZU8vDpbt3y9GuF3hnBqn81Tv9Tdi5TeakqKavt
 > Carol's data:
 
 ```shell
-adderss: mgoiBkppoJMc8cC8XRYNvFEjath5DrKqj8
+address: mgoiBkppoJMc8cC8XRYNvFEjath5DrKqj8
 pubkey:  034094927aa69a96d82d7e67146cf9b8dcd775919d1373d5319454e6004c0cdf7a
 privkey: cMxR8h9z5oKrdyuXVR9uzBbyyaJz1karxH1FW5xezhKzxQc7sCJV
 ```
