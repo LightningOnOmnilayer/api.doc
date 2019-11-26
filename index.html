@@ -238,7 +238,7 @@
               </ul>
           </li>
           <li>
-            <a href="#user-login" class="toc-h1 toc-link" data-title="User Login">User Login</a>
+            <a href="#user-sign-up-and-login" class="toc-h1 toc-link" data-title="User Sign up and Login">User Sign up and Login</a>
           </li>
           <li>
             <a href="#create-channel" class="toc-h1 toc-link" data-title="create channel">create channel</a>
@@ -300,7 +300,7 @@
                     <a href="#prepare-data-for-channel-address" class="toc-h2 toc-link" data-title="Prepare Data for Channel Address">Prepare Data for Channel Address</a>
                   </li>
                   <li>
-                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                    <a href="#sign-up-and-login" class="toc-h2 toc-link" data-title="Sign Up and Login">Sign Up and Login</a>
                   </li>
                   <li>
                     <a href="#open-channel-between-alice-and-bob-a2b" class="toc-h2 toc-link" data-title="Open Channel between Alice and Bob（A2B）">Open Channel between Alice and Bob（A2B）</a>
@@ -555,38 +555,84 @@ After you created your users and their addresses, you shall replace <code>Alice<
 <aside class="success">
 Now, we have our environment ready. Let's start to communicate with OBD!
 </aside>
-<h1 id='user-login'>User Login</h1>
+<h1 id='user-sign-up-and-login'>User Sign up and Login</h1>
 <!-- right -->
 
 <blockquote>
-<p>Alice request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-    <span class="s2">"type"</span>:1,
-    <span class="s2">"data"</span>:<span class="o">{</span>
-            <span class="s2">"peer_id"</span>:<span class="s2">"alice"</span>
-            <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>OBD Response:</p>
+<p>Alice sign up:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"alice login"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"alice@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Bob request:</p>
+<p>OBD Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"2835aee2-6743-4f9f-8958-758608b506e9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"2835aee2-6743-4f9f-8958-758608b506e9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"alice@mail.com sign up successful."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Alice login:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"alice@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>OBD Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"alice@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"alice@mail.com login"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Bob sign up:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"bob@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>OBD Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"33305afa-3950-4dda-98b5-6da416d09ab3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"33305afa-3950-4dda-98b5-6da416d09ab3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"bob@mail.com sign up successful."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Bob login:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"type"</span>:1,
     <span class="s2">"data"</span>:<span class="o">{</span>
-            <span class="s2">"peer_id"</span>:<span class="s2">"bob"</span>
-            <span class="o">}</span>
+        <span class="s2">"peer_id"</span>:<span class="s2">"bob@mail.com"</span>,
+        <span class="s2">"password"</span>:<span class="s2">"123456"</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
 <blockquote>
@@ -595,16 +641,18 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"bob@mail.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"bob login"</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"bob@mail.com login"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <!-- center -->
 
 <p>This endpoint manages users created by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.</p>
 
-<p><strong>Message Type: 1</strong></p>
+<p><br/></p>
+
+<p><strong>Message Type: 101 - User Sign Up</strong></p>
 
 <p><strong>Websocket Request:</strong></p>
 
@@ -617,10 +665,80 @@ Now, we have our environment ready. Let's start to communicate with OBD!
 </tr>
 </thead><tbody>
 <tr>
-<td>peer_iD</td>
+<td>peer_id</td>
 <td>-------</td>
 <td>data</td>
 <td>Global peer ID for a user in OBD network</td>
+</tr>
+<tr>
+<td>password</td>
+<td>-------</td>
+<td>data</td>
+<td>Password for login to OBD network</td>
+</tr>
+</tbody></table>
+
+<p><strong>Websocket Response：</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>-------</td>
+<td>body</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>from</td>
+<td>-------</td>
+<td>body</td>
+<td>Global peer ID for a user in OBD network</td>
+</tr>
+<tr>
+<td>to</td>
+<td>-------</td>
+<td>body</td>
+<td>to whom should know the sign up of this peer</td>
+</tr>
+<tr>
+<td>result</td>
+<td>-------</td>
+<td>body</td>
+<td>response data from OBD</td>
+</tr>
+</tbody></table>
+
+<p><br/></p>
+
+<p><strong>Message Type: 1 - User Login</strong></p>
+
+<p><strong>Websocket Request:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>peer_id</td>
+<td>-------</td>
+<td>data</td>
+<td>Global peer ID for a user in OBD network</td>
+</tr>
+<tr>
+<td>password</td>
+<td>-------</td>
+<td>data</td>
+<td>Password for login to OBD network</td>
 </tr>
 </tbody></table>
 
@@ -2656,21 +2774,21 @@ If Bob can tell Alice the secret R, which is the pre-image of <code>Hash(R)</cod
 <blockquote>
 <p>Alice&#39;s data:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>adderss: muYrqVWTKnkaVAMuqn59Ta6GL912ixpxit
+<pre class="highlight shell tab-shell"><code>address: muYrqVWTKnkaVAMuqn59Ta6GL912ixpxit
 pubkey:  029cf4b150da0065d5c08bf088e8a5367d35ff72e4e79b39efb401530d19fa3f3c
 privkey: cToieuvo3JjkEUKa3tjd6J98RXKDTo1d2hUSVgKpZ1KwBvGhQFL8
 </code></pre>
 <blockquote>
 <p>Bob&#39;s data:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>adderss: mtSJixJ8eCguXDAdkGGoQu3nG1n77a6td8
+<pre class="highlight shell tab-shell"><code>address: mtSJixJ8eCguXDAdkGGoQu3nG1n77a6td8
 pubkey:  03da1b78a5ab4a5e4e13515e5104dbfc1d2d349d89039c15eda9c0118b7edaa91f
 privkey: cTr7SHQ7FR6Ej8ZU8vDpbt3y9GuF3hnBqn81Tv9Tdi5TeakqKavt
 </code></pre>
 <blockquote>
 <p>Carol&#39;s data:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>adderss: mgoiBkppoJMc8cC8XRYNvFEjath5DrKqj8
+<pre class="highlight shell tab-shell"><code>address: mgoiBkppoJMc8cC8XRYNvFEjath5DrKqj8
 pubkey:  034094927aa69a96d82d7e67146cf9b8dcd775919d1373d5319454e6004c0cdf7a
 privkey: cMxR8h9z5oKrdyuXVR9uzBbyyaJz1karxH1FW5xezhKzxQc7sCJV
 </code></pre>
@@ -2698,16 +2816,50 @@ channel:
 <!-- center -->
 
 <p><strong>For testing, we generate two multisig addresses.</strong></p>
-<h2 id='login'>Login</h2>
+<h2 id='sign-up-and-login'>Sign Up and Login</h2>
 <!-- right -->
 
+<blockquote>
+<p>Alice sign up:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"alice@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Bob sign up:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"bob@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Carol sign up:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"carol@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>Alice login:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"alice"</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"alice@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2717,7 +2869,8 @@ channel:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"bob"</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"bob@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2727,13 +2880,42 @@ channel:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"carol"</span><span class="w">
+        </span><span class="s2">"peer_id"</span><span class="p">:</span><span class="s2">"carol@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"password"</span><span class="p">:</span><span class="s2">"123456"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <!-- center -->
 
-<p>Three client login.</p>
+<p>Three clients sign up.</p>
+
+<p><strong>Message Type: 101</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>peer_id</td>
+<td>-------</td>
+<td>data</td>
+<td>Global peer ID for a user in OBD network</td>
+</tr>
+<tr>
+<td>password</td>
+<td>-------</td>
+<td>data</td>
+<td>Password for login to OBD network</td>
+</tr>
+</tbody></table>
+
+<p><br/></p>
+
+<p>Three clients login.</p>
 
 <p><strong>Message Type: 1</strong></p>
 
@@ -2749,7 +2931,13 @@ channel:
 <td>peer_id</td>
 <td>-------</td>
 <td>data</td>
-<td>id of a client</td>
+<td>Global peer ID for a user in OBD network</td>
+</tr>
+<tr>
+<td>password</td>
+<td>-------</td>
+<td>data</td>
+<td>Password for login to OBD network</td>
 </tr>
 </tbody></table>
 <h2 id='open-channel-between-alice-and-bob-a2b'>Open Channel between Alice and Bob（A2B）</h2>
