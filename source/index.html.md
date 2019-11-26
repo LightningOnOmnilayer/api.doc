@@ -178,64 +178,138 @@ omni address | N/A | Address created by omnicore-cli, same to the bitcoin core a
 Now, we have our environment ready. Let's start to communicate with OBD!
 </aside>
 
-# User Login  
+# User Sign up and Login  
 
 <!-- right -->
-> Alice request:
 
-```shell
+> Alice sign up:
+
+```json
 {
-	"type":1,
+	"type":101,
 	"data":{
-        	"peer_id":"alice"
-        	}
+        "peer_id":"alice@mail.com",
+        "password":"123456"
+    }
 }
 ```
 > OBD Response:
 
 ```json
 {
-	"type":1,
-	"status":true,
-	"from":"alice",
-	"to":"all",
-	"result":"alice login"
+    "type":101,
+    "status":true,
+    "from":"2835aee2-6743-4f9f-8958-758608b506e9",
+    "to":"2835aee2-6743-4f9f-8958-758608b506e9",
+    "result":"alice@mail.com sign up successful."
 }
 ```
-> Bob request:
+
+> Alice login:
+
+```json
+{
+	"type":1,
+	"data":{
+        "peer_id":"alice@mail.com",
+        "password":"123456"
+    }
+}
+```
+
+> OBD Response:
+
+```json
+{
+    "type":1,
+    "status":true,
+    "from":"alice@mail.com",
+    "to":"all",
+    "result":"alice@mail.com login"
+}
+```
+
+> Bob sign up:
+
+```json
+{
+	"type":101,
+	"data":{
+        "peer_id":"bob@mail.com",
+        "password":"123456"
+    }
+}
+```
+
+> OBD Response:
+
+```json
+{
+    "type":101,
+    "status":true,
+    "from":"33305afa-3950-4dda-98b5-6da416d09ab3",
+    "to":"33305afa-3950-4dda-98b5-6da416d09ab3",
+    "result":"bob@mail.com sign up successful."
+}
+```
+
+> Bob login:
 
 ```shell
 {
 	"type":1,
 	"data":{
-        	"peer_id":"bob"
-        	}
+        "peer_id":"bob@mail.com",
+        "password":"123456"
+    }
 }
 ```
+
 > OBD Response:
 
 ```json
 {
-	"type":1,
-	"status":true,
-	"from":"bob",
-	"to":"all",
-	"result":"bob login"
+    "type":1,
+    "status":true,
+    "from":"bob@mail.com",
+    "to":"all",
+    "result":"bob@mail.com login"
 }
 ```
-
 
 <!-- center -->
 This endpoint manages users created by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account.
 
-**Message Type: 1**
+<br/>
+
+**Message Type: 101 - User Sign Up**
 
 **Websocket Request:**
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-peer_iD   | ------- |   data    | Global peer ID for a user in OBD network
+peer_id   | ------- |   data    | Global peer ID for a user in OBD network
+password  | ------- |   data    | Password for login to OBD network
 
+**Websocket Response：**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status    | ------- |   body    | true or false
+from      | ------- |   body    | Global peer ID for a user in OBD network
+to        | ------- |   body    | to whom should know the sign up of this peer
+result    | ------- |   body    | response data from OBD
+
+<br/>
+
+**Message Type: 1 - User Login**
+
+**Websocket Request:**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+peer_id   | ------- |   data    | Global peer ID for a user in OBD network
+password  | ------- |   data    | Password for login to OBD network
 
 **Websocket Response：**
 
@@ -245,7 +319,6 @@ status    | ------- |   body    | true or false
 from      | ------- |   body    | Global peer ID for a user in OBD network
 to        | ------- |   body    | to whom should know the login of this peer
 result    | ------- |   body    | response data from OBD
-
 
 
 <aside class="warning">This is not ready for production environment, only for test. The complete set of wallet functions are on our schedule.</aside>

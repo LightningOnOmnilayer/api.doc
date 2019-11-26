@@ -74,9 +74,45 @@ channel:
 
 **For testing, we generate two multisig addresses.**
 
-## Login
+## Sign Up and Login
 
 <!-- right -->
+
+> Alice sign up:
+
+```json
+{
+	"type":101,
+	"data":{
+        "peer_id":"alice@mail.com",
+        "password":"123456"
+    }
+}
+```
+
+> Bob sign up:
+
+```json
+{
+	"type":101,
+	"data":{
+        "peer_id":"bob@mail.com",
+        "password":"123456"
+    }
+}
+```
+
+> Carol sign up:
+
+```json
+{
+	"type":101,
+	"data":{
+        "peer_id":"carol@mail.com",
+        "password":"123456"
+    }
+}
+```
 
 > Alice login:
 
@@ -84,7 +120,8 @@ channel:
 {
 	"type":1,
 	"data":{
-        "peer_id":"alice"
+        "peer_id":"alice@mail.com",
+        "password":"123456"
     }
 }
 ```
@@ -95,7 +132,8 @@ channel:
 {
 	"type":1,
 	"data":{
-        "peer_id":"bob"
+        "peer_id":"bob@mail.com",
+        "password":"123456"
     }
 }
 ```
@@ -106,20 +144,33 @@ channel:
 {
 	"type":1,
 	"data":{
-        "peer_id":"carol"
+        "peer_id":"carol@mail.com",
+        "password":"123456"
     }
 }
 ```
 
 <!-- center -->
 
-Three client login.
+Three clients sign up.
+
+**Message Type: 101**
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+peer_id   | ------- |   data    | Global peer ID for a user in OBD network
+password  | ------- |   data    | Password for login to OBD network
+
+<br/>
+
+Three clients login.
 
 **Message Type: 1**
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-peer_id   | ------- |   data    | id of a client
+peer_id   | ------- |   data    | Global peer ID for a user in OBD network
+password  | ------- |   data    | Password for login to OBD network
 
 ## Open Channel between Alice and Bob（A2B）
 
