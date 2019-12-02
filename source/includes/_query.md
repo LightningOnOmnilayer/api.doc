@@ -1,13 +1,18 @@
-# Query
+<!-- # Query
 
-This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty. 
+This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty.  -->
 
-## Query list of commitment transactions
+# GetAllCommitmentTransactions
 
-<!-- right -->
-> either Alice or Bob:
+## Simple Type -35101 Protocol
 
-```shell
+Type -35101 Protocol is used to get a list of commitment transactions in one channel. 
+
+## Websocket Request: Message Type -35101
+
+> Request:
+
+```json
 {
     	"type": -35101,
     	"data":{
@@ -15,7 +20,12 @@ This section collects all the messages used in querying the latest status of the
     	}
     }
 ```
- 
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+
+## Websocket Response:
 
 > OBD Responses:
 
@@ -23,14 +33,14 @@ This section collects all the messages used in querying the latest status of the
 {
 	"type": -35101,
 	"status":true,
-	"from":"alice",
-	"to":"alice",
+	"from":"<user_id>",
+	"to":"<user_id>",
 	"result":[{
 		"amount_b":0,
 		"amount_m":6,
 		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
 		"create_at":"2019-09-21T01:01:54.262628+08:00",
-		"create_by":"bob",
+		"create_by":"<user_id>",
 		"curr_hash":"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0",
 		"curr_state":10,
 		"id":4,
@@ -41,9 +51,9 @@ This section collects all the messages used in querying the latest status of the
 		"last_edit_time":"2019-09-21T01:01:54.262628+08:00",
 		"last_hash":"",
 		"multi_address":"2N3zxWFsT2nocWPiM7Qpc8rngQDv7PEX6yz",
-		"owner":"alice",
-		"peer_id_a":"alice",
-		"peer_id_b":"bob",
+		"owner":"<user_id>",
+		"peer_id_a":"<user_id>",
+		"peer_id_b":"<user_id>",
 		"property_id":121,
 		"redeem_script":"522103ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae",
 		"script_pub_key":"a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac87",
@@ -58,21 +68,6 @@ This section collects all the messages used in querying the latest status of the
 }
 
 ```
-
-<!-- center -->
-
-What is this message really querying about? The latest channel status?
-
-**Message Type: -35101**
- 
-**Either Alice or Bob Requests:**
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-channel_id  | ------- |   data    | 
-
- 
-**OBD Responses:**
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
@@ -108,15 +103,17 @@ txid_to_other                                       | ------- |   result  |
 txid_to_temp_multi_address                          | ------- |   result  | 
  
 
+# GetLatestCommitmentTransaction
 
-## Latest commitment transaction
+## Simple Type -35104 Protocol
 
-<!-- right -->
- 
-> Either Alice or Bob can query: 
+Type -35104 Protocol is used to get a latest commitment transaction.
 
- 
-```shell
+## Websocket Request: Message Type -35104
+
+> Request:
+
+```json
 {
 	"type": -35104,
 	"data":{
@@ -125,6 +122,11 @@ txid_to_temp_multi_address                          | ------- |   result  |
 }
 ```
 
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id  | ------- |   data    | 
+
+## Websocket Response:
 
 > OBD Responses：
 
@@ -132,14 +134,14 @@ txid_to_temp_multi_address                          | ------- |   result  |
 {
 	"type": -35104,
 	"status":true,
-	"from":"alice",
-	"to":"alice",
+	"from":"<user_id>",
+	"to":"<user_id>",
 	"result":{
 		"amount_b":0,
 		"amount_m":6,
 		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
 		"create_at":"2019-09-21T01:01:54.262628+08:00",
-		"create_by":"bob",
+		"create_by":"<user_id>",
 		"curr_hash":"8a55f150c34e2720a587dde3809e81959701e1dd3f78c1e1fc9960c132566fe0",
 		"curr_state":10,
 		"id":4,
@@ -150,9 +152,9 @@ txid_to_temp_multi_address                          | ------- |   result  |
 		"last_edit_time":"2019-09-21T01:01:54.262628+08:00",
 		"last_hash":"",
 		"multi_address":"2N3zxWFsT2nocWPiM7Qpc8rngQDv7PEX6yz",
-		"owner":"alice",
-		"peer_id_a":"alice",
-		"peer_id_b":"bob",
+		"owner":"<user_id>",
+		"peer_id_a":"<user_id>",
+		"peer_id_b":"<user_id>",
 		"property_id":121,
 		"redeem_script":"522103ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae","script_pub_key":"a91475f6a2aa9461985bed4b847104ca81b73cf2f1ac87",
 		"send_at":"0001-01-01T00:00:00Z",
@@ -166,21 +168,6 @@ txid_to_temp_multi_address                          | ------- |   result  |
 }
 
 ```
-
-
-<!-- center -->
- 
-
-**Message Type: -35104**
- 
-**Either Alice or Bob can query:**
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-channel_id  | ------- |   data    | 
- 
- 
-**OBD Responses:**
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
@@ -217,15 +204,17 @@ txid_to_other    				| ------- |   result  |
 txid_to_temp_multi_address     			| ------- |   result  | 
 
 
+# GetLatestRevockableDeliveryTransaction
 
-## Latest Revockable Delivery Transaction
+## Simple Type -35105 Protocol
 
-<!-- right -->
+Type -35105 Protocol is used to get a latest Revockable Delivery transaction.
+
+## Websocket Request: Message Type -35105
+
+> Request:
  
-> Either Alice or Bob can query: 
-
- 
-```shell
+```json
 {
 	"type": -35105,
 	"data":{
@@ -234,27 +223,22 @@ txid_to_temp_multi_address     			| ------- |   result  |
 }
 ``` 
 
-
-<!-- center -->
- 
-
-**Message Type: -35105**
- 
-**Either Alice or Bob can query:**
-
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
  
 
-## Latest Breach Remedy Transaction
+# GetLatestBreachRemedyTransaction
 
-<!-- right -->
- 
-> Either Alice or Bob can query: 
+## Simple Type -35106 Protocol
 
+Type -35106 Protocol is used to get a latest Breach Remedy transaction.
+
+## Websocket Request: Message Type -35106
+
+> Request:
  
-```shell
+```json
 {
 	"type": -35106,
 	"data":{
@@ -263,27 +247,22 @@ channel_id  | ------- |   data    |
 }
 ``` 
 
-
-<!-- center -->
- 
-
-**Message Type: -35106**
- 
-**Either Alice or Bob can query:**
-
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
  
 
-## List all Revockable Delivery Transactions
+# GetAllRevockableDeliveryTransactions
 
-<!-- right -->
- 
-> Either Alice or Bob can query: 
+## Simple Type -35108 Protocol
 
- 
-```shell
+Type -35108 Protocol is used to get all of Revockable Delivery transactions.
+
+## Websocket Request: Message Type -35108
+
+> Request:
+
+```json
 {
 	"type": -35108,
 	"data":{
@@ -292,27 +271,22 @@ channel_id  | ------- |   data    |
 }
 ``` 
 
-
-<!-- center -->
- 
-
-**Message Type: -35108**
- 
-**Either Alice or Bob can query:**
-
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
  
  
-## List all Breach Remedy Transactions
+# GetAllBreachRemedyTransactions
 
-<!-- right -->
- 
-> Either Alice or Bob can query: 
+## Simple Type -35109 Protocol
 
+Type -35109 Protocol is used to get all of Breach Remedy transactions.
+
+## Websocket Request: Message Type -35109
+
+> Request:
  
-```shell
+```json
 {
 	"type": -35109,
 	"data":{
@@ -321,50 +295,63 @@ channel_id  | ------- |   data    |
 }
 ``` 
 
-
-<!-- center -->
- 
-
-**Message Type: -35109**
- 
-**Either Alice or Bob can query:**
-
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
  
 
-## List all Channels
+# GetAllChannels
 
-<!-- right -->
- 
-> Either Alice or Bob can query: 
+## Simple Type -3202 Protocol
 
- 
-```shell
+Type -3202 Protocol is used to get all of channels.
+
+## Websocket Request: Message Type -3202
+
+> Request:
+
+```json
 {
 	"type": -3202, 
 }
 ``` 
 
-
-<!-- center -->
- 
-
-**Message Type: -3202**
- 
-**Either Alice or Bob can fetch the list of all channels**
-
 This message has no arguments.
 
-## List all Commitment Transactions Broadcasted
 
-<!-- right -->
- 
-> Either Alice or Bob can query: 
+# GetChannelDetail
 
+## Simple Type -3207 Protocol
+
+Type -3207 Protocol is used to get detail data of a channel.
+
+## Websocket Request: Message Type -3207
+
+> Request:
+
+```json
+{
+	"type": -3207, 
+	"data": <id>, 
+}
+``` 
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+id        | ------- |   data    | id of channel in database table
  
-```shell
+
+# GetAllBroadcastedCommitmentTransactions
+
+## Simple Type -35110 Protocol
+
+Type -35110 Protocol is used to get all of Broadcasted Commitment Transactions.
+
+## Websocket Request: Message Type -35110
+
+> Request:
+ 
+```json
 {
 	"type": -35110,
 	"data":{
@@ -373,75 +360,43 @@ This message has no arguments.
 }
 ``` 
 
-
-<!-- center -->
- 
-
-**Message Type: -35110**
- 
-**Either Alice or Bob can query:**
-
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
  
 
-## List all Commitment Transactions Broadcasted
+# GetH
 
-<!-- right -->
+## Simple Type -4001 Protocol
+
+Type -4001 Protocol is used to get a list of H (Hash_Preimage_R).
+
+*Only HTLC creator can query*
+
+## Websocket Request: Message Type -4001
+
+> Request:
  
-> Either Alice or Bob can query: 
-
- 
-```shell
-{
-	"type": -35110,
-	"data":{
-		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197]
-	}
-}
-``` 
-
-
-<!-- center -->
- 
-
-**Message Type: -35110**
- 
-**Either Alice or Bob can query:**
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-channel_id  | ------- |   data    | 
- 
-
-<!-- Added by Kevin 2019-11-6 -->
-
-## Get HTLC base data and the H (Hash_Preimage_R)
-
-<!-- right -->
- 
-> Only HTLC creator can query: 
-
 ```json
 {
 	"type": -4001
 }
 ``` 
 
-<!-- center -->
- 
-**Message Type: -4001**
- 
-**Only HTLC creator can query:**
-
 This message has no arguments.
 
-## Get HTLC base data and the R (Preimage_R)
 
-<!-- right -->
- 
-> Only HTLC Receiever can query: 
+# GetR
+
+## Simple Type -4101 Protocol
+
+Type -4101 Protocol is used to get a list of R (Preimage_R).
+
+*Only HTLC Receiever can query*
+
+## Websocket Request: Message Type -4101
+
+> Request:
 
 ```json
 {
@@ -449,60 +404,52 @@ This message has no arguments.
 }
 ``` 
 
+This message has no arguments.
+
+## Websocket Response:
+
 > OBD Responses:
 
 ```json
 {
     "type": -4101, 
     "status": true, 
-    "from": "carol", 
-    "to": "carol", 
+    "from": "<user_id>", 
+    "to": "<user_id>", 
     "result": [
         {
             "amount": 5, 
             "create_at": "2019-11-04T15:02:25.2004375+08:00", 
-            "create_by": "alice", 
+            "create_by": "<user_id>", 
             "curr_state": 20, 
             "h": "83519233492eb05ddd547757f2c3d151ad9392b2ebf48fc1a88e07e61dd82a45", 
             "id": 1, 
             "property_id": 121, 
             "r": "2de142c8006a3462241e96a610b59f3d92d8259c", 
-            "recipient_peer_id": "carol", 
+            "recipient_peer_id": "<user_id>", 
             "request_hash": "742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636", 
-            "sender_peer_id": "alice", 
+            "sender_peer_id": "<user_id>", 
             "sign_at": "2019-11-04T15:08:31.5417759+08:00", 
-            "sign_by": "carol"
+            "sign_by": "<user_id>"
         }, 
         {
             "amount": 5, 
             "create_at": "2019-11-06T08:02:50.8302374+08:00", 
-            "create_by": "alice", 
+            "create_by": "<user_id>", 
             "curr_state": 20, 
             "h": "e7626f2b7207006d6515399c587c09c3bfb5ed3b12f63c12b0d40e634f9dd9a3", 
             "id": 2, 
             "property_id": 121, 
             "r": "2de142c8006a3462241e96a610b59f3d92d8259c", 
-            "recipient_peer_id": "carol", 
+            "recipient_peer_id": "<user_id>", 
             "request_hash": "1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9", 
-            "sender_peer_id": "alice", 
+            "sender_peer_id": "<user_id>", 
             "sign_at": "2019-11-06T08:03:41.3545586+08:00", 
-            "sign_by": "carol"
+            "sign_by": "<user_id>"
         }
     ]
 }
 ```
-
-<!-- center -->
- 
-**Message Type: -4101**
- 
-**Only HTLC Receiever can query:**
-
-This message has no arguments.
-
-<br/>
-
-**OBD Responses:**
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
@@ -524,12 +471,18 @@ sign_at           | ------- |   result  |
 sign_by           | ------- |   result  | 
 
 
-## The middleman node get the R (Preimage_R) by channel id
+# GetRWithChannelID
 
-<!-- right -->
+## Simple Type -4103 Protocol
+
+Type -4103 Protocol is used to get the R (Preimage_R) by a channel id.
+
+*Only middleman node can query*
+
+## Websocket Request: Message Type -4103
+
+> Request:
  
-> Only middleman node can query: 
-
 ```json
 {
 	"type":-4103,
@@ -539,21 +492,44 @@ sign_by           | ------- |   result  |
 }
 ``` 
 
-<!-- center -->
- 
-**Message Type: -4103**
- 
-**Only middleman node can query:**
-
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
 
-## HTLC Receiever get the R by H
 
-<!-- right -->
+# GetRoutingWithH
+
+## Simple Type -4104 Protocol
+
+Type -4104 Protocol is used to get routing info by the H (Hash_Preimage_R).
+
+## Websocket Request: Message Type -4104
+
+> Request:
  
-> HTLC Receiever can query: 
+```json
+{
+	"type":-4104,
+	"data":"77aba5c815ad8143da057a3fcc6c1132368110302431987c5d6f260253956f3b"
+}
+``` 
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+h         | ------- |   data    | the H (Hash_Preimage_R)
+
+
+# GetRWithH
+
+## Simple Type -4105 Protocol
+
+Type -4105 Protocol is used to get the R (Preimage_R) by a H (Hash_Preimage_R).
+
+*HTLC Receiever can query*
+
+## Websocket Request: Message Type -4105
+
+> Request:
 
 ```json
 {
@@ -562,35 +538,27 @@ channel_id  | ------- |   data    |
 }
 ``` 
 
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+H         | ------- |   data    | Hash_Preimage_R
+
+## Websocket Response:
+
 > OBD Responses:
 
 ```json
 {
     "type": -4105, 
     "status": true, 
-    "from": "carol", 
-    "to": "carol", 
+    "from": "<user_id>", 
+    "to": "<user_id>", 
     "result": "\"2de142c8006a3462241e96a610b59f3d92d8259c\""
 }
 ```
-
-<!-- center -->
- 
-**Message Type: -4105**
- 
-**HTLC Receiever can query:**
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-H         | ------- |   data    | Hash_Preimage_R
-
-<br/>
-
-**OBD Responses:**
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 status            | ------- |   body    | true or false
 from	          | ------- |   body    | sender
 to                | ------- |   body    | receiever
-string            | ------- |   result  | result
+r                 | ------- |   result  | the R (Preimage_R)
