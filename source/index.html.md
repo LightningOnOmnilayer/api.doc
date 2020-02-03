@@ -42,7 +42,7 @@ For kernel developers in our community, the above steps are the easiest way to g
 ## Simple Type 101 Protocol
 
 Type 101 Protocol is used to sign up a new user by hirarchecal deterministic wallet system integrated in OBD.
-OBD returns mnemonic words to the client who signs up, and create a new user by the hash the mnemonic words as the UserID.
+OBD returns mnemonic words to the client who signs up, and create a new user by the hash of the mnemonic words as the UserID.
 
 <!-- Comment by Kevin 2019-11-29
 This endpoint manages users created by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account. -->
