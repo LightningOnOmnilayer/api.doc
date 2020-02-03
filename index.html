@@ -787,7 +787,7 @@
 <p>For kernel developers in our community, the above steps are the easiest way to get started. Just open <a href="https://github.com/LightningOnOmnilayer/LightningOnOmni#step-4-test-channel-operations-using-websocket-testing-tool">LightningOnOmni</a> project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.</p>
 <h1 id='signup'>SignUp</h1><h2 id='simple-type-101-protocol'>Simple Type 101 Protocol</h2>
 <p>Type 101 Protocol is used to sign up a new user by hirarchecal deterministic wallet system integrated in OBD.
-It returns mnemonic words to user, and its hash us the UserID.</p>
+OBD returns mnemonic words to the client who signs up, and create a new user by the hash the mnemonic words as the UserID.</p>
 
 <!-- Comment by Kevin 2019-11-29
 This endpoint manages users created by an OBD instance. Here we use Alice and Bob for testing purpose. The complete hirarchecal deterministic wallet system will be integrated soon, functions being including but not limited to: generat user mnemonic words, public/private key paires, PIN code, restore account. -->
