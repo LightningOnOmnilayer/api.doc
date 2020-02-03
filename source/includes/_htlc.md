@@ -16,7 +16,7 @@ Type 1001 Protocol is used to create a new address by omni core rpc command.
 
 This message has no arguments.
 
-## Websocket Response:
+## Websocket Response: Message Type 1001
 
 > OBD Responses:
 
@@ -56,7 +56,7 @@ Type -200 Protocol is used to create a new address with mnemonic words.
 
 This message has no arguments.
 
-## Websocket Response:
+## Websocket Response: Message Type -200
 
 > OBD Responses:
 
@@ -110,7 +110,7 @@ Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 index     | ------- |   data    | number of generated sort with mnemonic words
 
-## Websocket Response:
+## Websocket Response: Message Type -201
 
 > OBD Responses:
 
@@ -142,11 +142,11 @@ pub_key   | ------- |   result  | public key of address
 wif       | ------- |   result  | other format private key of address
 
 
-# HTLCPayment
+# Add HTLC
 
 ## Simple Type -40 Protocol
 
-Type -40 Protocol is used to launch a payment by HTLC system.
+Create a HTLC.
 
 ## Websocket Request: Message Type -40
 
@@ -169,7 +169,7 @@ property_id         | ------- |   data    | assets id
 amount	            | ------- |   data    | amount of transfer
 recipient_peer_id   | ------- |   data    | peer id of receiever
 
-## Websocket Response:
+## Websocket Response: Message Type -40
 
 > OBD Responses:
 
@@ -199,7 +199,7 @@ property_id    | ------- |   result  | assets id
 request_hash   | ------- |   result  | hash of this HTLC request
 
 
-# ResponseHTLCPayment
+# HTLC Signed
 
 ## Simple Type -41 Protocol
 
@@ -228,7 +228,7 @@ property_id   | ------- |   data    | assets id
 amount	      | ------- |   data    | amount of transfer
 approval      | ------- |   data    | true or false
 
-## Websocket Response:
+## Websocket Response: Message Type -41
 
 > OBD Responses:
 
@@ -260,7 +260,7 @@ request_hash   | ------- |   result  | hash of this HTLC request
 
 # SendH2Middleman
 
-## Simple Type -42 Protocol
+## Simple Type -42 Protocol (Deprecated)
 
 Type -42 Protocol is used for looking for a path to transfer to target 
 and Send H to middleman.
@@ -282,7 +282,7 @@ Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 h         | ------- |   data    | Hash of the preimage R
 
-## Websocket Response:
+## Websocket Response: Message Type -42
 
 > OBD Responses:
 
@@ -310,7 +310,7 @@ request_hash   | ------- |   result  | hash of this HTLC request
 
 # ResponseByMiddleman
 
-## Simple Type -44 Protocol
+## Simple Type -44 Protocol(Deprecated)
 
 Type -44 Protocol is used to response a routing request by middleman. 
 
@@ -345,7 +345,7 @@ curr_rsmc_temp_address_private_key  | ------- |   data    |
 curr_htlc_temp_address_pub_key      | ------- |   data    | 
 curr_htlc_temp_address_private_key  | ------- |   data    | 
 
-## Websocket Response:
+## Websocket Response: Message Type -44
 
 > OBD Responses:
 
@@ -410,7 +410,7 @@ curr_htlc_temp_address_private_key  | ------- |   data    |
 curr_htlc_temp_address_for_ht1a_pub_key      | ------- |   data    | 
 curr_htlc_temp_address_for_ht1a_private_key  | ------- |   data    | 
 
-## Websocket Response:
+## Websocket Response: Message Type -45
 
 > OBD Responses:
 
@@ -463,7 +463,7 @@ Parameter | default | placement | Description
 h         | ------- |   data    | Hash of the preimage R
 h_and_r_info_request_hash | ------- |   data    | hash of this HTLC request
 
-## Websocket Response:
+## Websocket Response: Message Type -43
 
 > OBD Responses:
 
@@ -489,17 +489,19 @@ h              | ------- |   result  | Hash of the preimage R
 request_hash   | ------- |   result  | hash of this HTLC request
 
 
-# SendR
+# Forward R
 
 ## Simple Type -46 Protocol
 
-Type -46 Protocol is used to send R to a node.
+Type -46 Protocol is used to forward R to a node.
 
-*Carol (destination) Send R (Preimage_R) to Bob (middleman)*
+<aside class="succeed">
+<code>Carol</code> (destination) Send R (Preimage_R) to <code>Bob</code> (middleman).
+</aside>
 
-So, from previous step (Setp 2), Bob ask Carol if Carol can produce to Bob an unknown 20-byte random input data R from a known hash H, within two days, then Bob will settle the contract by paying assets.
+Bob asks Carol if Carol can present an unknown 20-byte random R subject to Hash(R) = H, within two days for example, then Bob will settle the contract by paying assets.
 
-Of course Carol has the preimage R, because she generated it. Then now, Carol send R to Bob.
+Of course Carol has the preimage R, because she generated it, or "bought" it by her own assets. Then now, Carol send R to Bob.
 
 ## Websocket Request: Message Type -46
 
@@ -528,7 +530,7 @@ curr_htlc_temp_address_private_key      | ------- |   data    |
 curr_htlc_temp_address_for_he1b_pub_key  | ------- |   data    | 
 curr_htlc_temp_address_for_he1b_private_key  | ------- |   data    | 
 
-## Websocket Response:
+## Websocket Response: Message Type -46
 
 > OBD Responses:
 
@@ -556,16 +558,15 @@ r              | ------- |   result  | Preimage_R
 request_hash   | ------- |   result  | hash of this HTLC request
 
 
-# ResponseSendR
+# Verify R and Create HTLC Tx
 
 ## Simple Type -47 Protocol
 
-Type -47 Protocol is used to response the request of send R.
+Reciever(Bob) reverify R. If correct, then creates rest HTLC commitment transactions.
 
-Bob receieved the R, and check out if R is correct.
-If correct, then create rest HTLC commitment transactions.
-
-*Bob replies and create rest HTLC commitment transactions.*
+<aside class="succeed">
+<code>Bob</code> replies and create rest HTLC commitment transactions.
+</aside>
 
 ## Websocket Request: Message Type -47
 
@@ -590,7 +591,7 @@ r              | ------- |   data    | Preimage_R
 channel_address_private_key       | ------- |   data    | 
 curr_htlc_temp_address_private_key      | ------- |   data    | 
 
-## Websocket Response:
+## Websocket Response: Message Type -47
 
 > OBD Responses:
 
@@ -655,7 +656,7 @@ last_htlc_temp_address_for_htnx_private_key      | ------- |   data    |
 curr_rsmc_temp_address_pub_key      | ------- |   data    | 
 curr_rsmc_temp_address_private_key      | ------- |   data    | 
 
-## Websocket Response:
+## Websocket Response: Message Type -48
 
 > OBD Responses:
 
@@ -691,13 +692,13 @@ id   | ------- |   result  |
 request_hash   | ------- |   result  | hash of this HTLC request
 
 
-# ResponseCloseHTLC
+# CloseHTLC Signed
 
 ## Simple Type -49 Protocol
 
 Type -49 Protocol is used to response the request of close HTLC channel.
 
-*Bob replies and create BR & a newer commitment transactions*
+*Bob replies and create BR & a newer commitment transactions*(??? need more comments on this) 
 
 ## Websocket Request: Message Type -49
 
@@ -728,7 +729,7 @@ last_htlc_temp_address_for_htnx_private_key      | ------- |   data  |
 curr_rsmc_temp_address_pub_key      | ------- |   data    | 
 curr_rsmc_temp_address_private_key  | ------- |   data    | 
 
-## Websocket Response:
+## Websocket Response: Message Type -49
 
 > OBD Responses:
 
@@ -776,7 +777,7 @@ Parameter | default | placement | Description
 channel_id   | ------- |   data    | 
 
 
-# ResponseCloseHtlcChannel
+# CloseHtlcChannel Signed
 
 ## Simple Type -51 Protocol
 

@@ -1,11 +1,23 @@
-# SendOmniAsset
+# FundingAsset
 
 ## Simple Type 2001 Protocol
 
-Type 2001 Protocol is used for transfering omni assets.
+<!-- center -->
+Alice starts to deposit omni assets to the channel. This is quite similar to the the btc funding procedure.
+
+<!-- right -->
+> Alice's example data:
+
+```shell
+address: mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
+privkey: cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy  
+channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE  
+```
 
 ## Websocket Request: Message Type 2001
 
+
+<!-- right -->
 > Request:
 
 ```json
@@ -21,6 +33,8 @@ Type 2001 Protocol is used for transfering omni assets.
 }
 ```
 
+<!-- center -->
+
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 from_address   | ------- |   data    | address of funder, from where the BTC is transferred.
@@ -31,6 +45,7 @@ property_id		  	| ------- |   data    | the omni asset id that has been funding.
  
 ## Websocket Response:
 
+<!-- right -->
 > OBD Responses:
 
 ```json
@@ -46,6 +61,7 @@ property_id		  	| ------- |   data    | the omni asset id that has been funding.
 }
 ```
 
+<!-- center -->
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 status         | ------- |   body    | true or false
@@ -55,15 +71,16 @@ hex            | ------- |   result  |
 txid	       | ------- |   result  | transaction id
 
 
-# NotifySendingOmniAsset
+# AssetFundingCreated
 
 ## Simple Type -34 Protocol
 
-Type -34 Protocol is used to notify the transfering omni asset event 
-to the partner of the channel .
+Type -34 Protocol is used to notify the success of omni asset funding transaction 
+to the counter partner of the channel.
 
 ## Websocket Request: Message Type -34
 
+<!-- right -->
 > Request:
  
 ```json
@@ -78,6 +95,7 @@ to the partner of the channel .
 }
 ```
 
+<!-- center -->
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 temporary_channel_id         | ------- |   data    | 
@@ -86,7 +104,7 @@ temp_address_pub_key         | ------- |   data    |
 temp_address_private_key     | ------- |   data    | 
 channel_address_private_key  | ------- |   data    | private key of the channel that Alice holds
  
-## Websocket Response:
+## Websocket Response: Message Type -34
 
 > OBD Responses：
 
@@ -141,14 +159,16 @@ peer_id_b                         | ------- |   result  |
 property_id                       | ------- |   result  | 
 
 
-# ResponseSendingOmniAsset
+# AssetFundingSigned
 
 ## Simple Type -35 Protocol
 
 Type -35 Protocol is used to response the transfering omni asset event 
 by the partner of the channel .
 
-*Bob tells his OBD to reply Alice that he knows the funding by message -35, and OBD has created commitment transactions (C1a & RD1a)*
+<aside class="success">
+<code>Bob</code> tells his OBD to reply <code>Alice</code> that he knows the funding by message -35, and OBD will creat commitment transactions (C1a & RD1a).
+</aside>
 
 ## Websocket Request: Message Type -35
 
@@ -171,7 +191,7 @@ channel_id    | ------- |   data    |
 fundee_channel_address_private_key  | ------- |   data    | private key of the channel that Bob holds
 approval                    		| ------- |   data    | true or false
 
-## Websocket Response:
+## Websocket Response: Message Type -35
 
 > OBD Responses：
 

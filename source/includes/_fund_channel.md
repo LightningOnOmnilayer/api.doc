@@ -1,8 +1,9 @@
-# SendBitcoin
+# FundingBTC
 
 ## Simple Type 1009 Protocol
 
-Type 1009 Protocol is used for transfering bitcoin.
+Type 1009 Protocol is used for depositing bitcoin into a channel. Since the basic Omnilayer protocal uses BTC as miner fee in transferring assets, this message 1009 is special for depositing BTC for future transactions.  
+
 
 ## Websocket Request: Message Type 1009
 
@@ -29,7 +30,7 @@ to_address           		| ------- |   data    | the channel multi-sig address.
 amount			   	| 0.0001  |   data    | 
 miner_fee		   	| 0.00001 |   data    | 
  
-## Websocket Response:
+## Websocket Response: Message Type 1009
 
 > OBD Responses:
 
@@ -56,14 +57,15 @@ hex            | ------- |   result  |
 txid	       | ------- |   result  | transaction id
 
 
-# NotifySendingBitcoin
+# BTCFundingCreated
 
 ## Simple Type -3400 Protocol
 
-Type -3400 Protocol is used to notify the transfering bitcoin event 
-to the partner of the channel .
+Type -3400 Protocol is used to notify the success of funding BTC to the counterpart of the channel.
 
-*Alice tells her OBD to notify Bob that she created the funding transaction by payloads packed in the message -3400.*
+<aside class="notice">
+<code>Alice</code> tells her OBD to notify <code>Bob</code> that she created the funding transaction by payloads packed in this message -3400. 
+</aside>
 
 ## Websocket Request: Message Type -3400
 
@@ -85,7 +87,7 @@ temporary_channel_id         | ------- |   data    |
 channel_address_private_key  | ------- |   data    | private key of the channel that Alice holds
 funding_tx_hex               | ------- |   data    | 
 
-## Websocket Response:
+## Websocket Response: Message Type -3400
 
 > OBD Responses：
 
@@ -114,7 +116,7 @@ funding_txid   | ------- |   result  | funding transaction id
 temporary_channel_id  | ------- |   result  |
 
 
-# ResponseSendingBitcoin
+# BTCFundingSigned
 
 ## Simple Type -3500 Protocol
 
@@ -122,6 +124,10 @@ Type -3500 Protocol is used to response the transfering bitcoin event
 by the partner of the channel .
 
 *Bob tells his OBD to reply Alice that he knows the funding by message -3500.*
+<aside class="success">
+<code>Bob</code> tells his OBD to reply Alice that he knows the funding by message -3500.
+</aside>
+
 
 ## Websocket Request: Message Type -3500
 
@@ -146,7 +152,7 @@ channel_address_private_key  | ------- |   data    | private key of the channel 
 funding_txid                 | ------- |   data    | 
 approval                     | ------- |   data    | true or false
  
-## Websocket Response:
+## Websocket Response: Message Type -3500
 
 > OBD Responses：
 
