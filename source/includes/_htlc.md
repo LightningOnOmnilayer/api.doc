@@ -142,6 +142,34 @@ pub_key   | ------- |   result  | public key of address
 wif       | ------- |   result  | other format private key of address
 
 
+# Invoice
+
+## Simple Type -4003 Protocol
+
+Display an invoice for a payment.
+
+## Websocket Request: Message Type -4003
+
+>Request:
+
+```json
+{
+    "type":-4003,
+    "data":{
+        "property_id":121,
+        "amount":5,
+        "recipient_peer_id":"710f4d8e1c5a2fe9dd4337a43ae4d5719369d6ac8da184f5aea336ecb71a9585"
+    }
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+property_id         | ------- |   data    | assets id
+amount	            | ------- |   data    | amount of transfer
+recipient_peer_id   | ------- |   data    | peer id of receiever
+
+
 # Add HTLC
 
 ## Simple Type -40 Protocol

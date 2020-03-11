@@ -17,6 +17,7 @@ includes:
   - deposit_tokens
   - payments_in_channel
   - htlc
+  - atomic_swap
   - query
   
 search: true
