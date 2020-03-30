@@ -802,8 +802,8 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://github.com/LightningOnOmnilayer/LightningOnOmni'>Join our dev community</a></li>
-            <li><a href='https://github.com/LightningOnOmnilayer/Omni-BOLT-spec'>Help in OmniBOLT specification</a></li>
+            <li><a href='https://github.com/omnilaboratory/obd'>Join our dev community</a></li>
+            <li><a href='https://github.com/omnilaboratory/OmniBOLT-spec'>Help in OmniBOLT specification</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -813,7 +813,7 @@
         <h1 id='omnibolt-daemon-websocket-messages-reference'>OmniBOLT Daemon Websocket Messages Reference</h1>
 <p>Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18), which provides the complete services of token transactions on bitcoin network. And current OBD implementation is deeply binded to OmniCore. </p>
 
-<p>We assume you have already gone through our <a href="https://github.com/LightningOnOmnilayer/LightningOnOmni#installation">installation instruction</a>, so that you are familar with:</p>
+<p>We assume you have already gone through our <a href="https://github.com/omnilaboratory/obd#installation">installation instruction</a>, so that you are familar with:</p>
 
 <ul>
 <li>Pulling source code and compile to get obdserver;<br></li>
@@ -823,7 +823,7 @@
 <li>OBD responses you correctly;<br></li>
 </ul>
 
-<p>For kernel developers in our community, the above steps are the easiest way to get started. Just open <a href="https://github.com/LightningOnOmnilayer/LightningOnOmni#step-4-test-channel-operations-using-websocket-testing-tool">LightningOnOmni</a> project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.</p>
+<p>For kernel developers in our community, the above steps are the easiest way to get started. Just open <a href="https://github.com/omnilaboratory/obd#step-4-test-channel-operations-using-websocket-testing-tool">LightningOnOmni</a> project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.</p>
 <h1 id='signup'>SignUp</h1><h2 id='simple-type-101-protocol'>Simple Type 101 Protocol</h2>
 <p>Type 101 Protocol is used to sign up a new user by hirarchecal deterministic wallet system integrated in OBD.
 OBD returns mnemonic words to the client who signs up, and create a new user by the hash of the mnemonic words as the UserID.</p>
@@ -4422,7 +4422,7 @@ Then Alice launch the closing request.</p>
 </tr>
 </tbody></table>
 <h1 id='swap'>swap</h1><h2 id='simple-type-80-protocol'>Simple Type -80 Protocol</h2>
-<p>Type -80 Protocol notifies the counterparty an atomic swap is created. The background and process of atomic swap can be <a href="https://github.com/LightningOnOmnilayer/Omni-BOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels">found here in chapter 5</a> of the OmniBOLT specification, </p>
+<p>Type -80 Protocol notifies the counterparty an atomic swap is created. The background and process of atomic swap can be <a href="https://github.com/omnilaboratory/OmniBOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels">found here in chapter 5</a> of the OmniBOLT specification, </p>
 <h2 id='websocket-request-message-type-80'>Websocket Request: Message Type -80</h2>
 <blockquote>
 <p>Request:</p>
