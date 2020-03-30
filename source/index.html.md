@@ -7,8 +7,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - golang
 
 toc_footers:
-  - <a href='https://github.com/LightningOnOmnilayer/LightningOnOmni'>Join our dev community</a>
-  - <a href='https://github.com/LightningOnOmnilayer/Omni-BOLT-spec'>Help in OmniBOLT specification</a>
+  - <a href='https://github.com/omnilaboratory/obd'>Join our dev community</a>
+  - <a href='https://github.com/omnilaboratory/OmniBOLT-spec'>Help in OmniBOLT specification</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
  
@@ -27,7 +27,7 @@ search: true
 
 Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18), which provides the complete services of token transactions on bitcoin network. And current OBD implementation is deeply binded to OmniCore. 
 
-We assume you have already gone through our [installation instruction](https://github.com/LightningOnOmnilayer/LightningOnOmni#installation), so that you are familar with:
+We assume you have already gone through our [installation instruction](https://github.com/omnilaboratory/obd#installation), so that you are familar with:
 
  * Pulling source code and compile to get obdserver;  
  * Configuring OmniCore node for OBD;  
@@ -35,7 +35,7 @@ We assume you have already gone through our [installation instruction](https://g
  * Using a simple web based [websocket client](https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn?hl=en) for Chrome to do experiments;  
  * OBD responses you correctly;  
 
-For kernel developers in our community, the above steps are the easiest way to get started. Just open [LightningOnOmni](https://github.com/LightningOnOmnilayer/LightningOnOmni#step-4-test-channel-operations-using-websocket-testing-tool) project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.
+For kernel developers in our community, the above steps are the easiest way to get started. Just open [LightningOnOmni](https://github.com/omnilaboratory/obd#step-4-test-channel-operations-using-websocket-testing-tool) project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.
 
 
 # SignUp

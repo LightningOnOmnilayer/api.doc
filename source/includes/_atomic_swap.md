@@ -2,7 +2,7 @@
 
 ## Simple Type -80 Protocol
 
-Type -80 Protocol notifies the counterparty an atomic swap is created. The background and process of atomic swap can be [found here in chapter 5](https://github.com/LightningOnOmnilayer/Omni-BOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels) of the OmniBOLT specification, 
+Type -80 Protocol notifies the counterparty an atomic swap is created. The background and process of atomic swap can be [found here in chapter 5](https://github.com/omnilaboratory/OmniBOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels) of the OmniBOLT specification, 
 
 ## Websocket Request: Message Type -80
 
