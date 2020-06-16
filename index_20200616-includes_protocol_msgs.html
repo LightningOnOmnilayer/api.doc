@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;golang&quot;]">
+  <body class="index_20200616-includes_protocol_msgs" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;golang&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -233,27 +233,32 @@
                     <a href="#login" class="toc-h2 toc-link" data-title="logIn">logIn</a>
                   </li>
                   <li>
-                    <a href="#logout" class="toc-h2 toc-link" data-title="logOut">logOut</a>
-                  </li>
-                  <li>
-                    <a href="#connectpeer" class="toc-h2 toc-link" data-title="connectPeer">connectPeer</a>
-                  </li>
-                  <li>
                     <a href="#createaddress" class="toc-h2 toc-link" data-title="createAddress">createAddress</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#basic-lightning-network-operations" class="toc-h1 toc-link" data-title="Basic Lightning Network Operations">Basic Lightning Network Operations</a>
+            <a href="#lightning-network-operations" class="toc-h1 toc-link" data-title="Lightning Network Operations">Lightning Network Operations</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#connectremotepeer" class="toc-h2 toc-link" data-title="connectRemotePeer">connectRemotePeer</a>
+                    <a href="#openchannel" class="toc-h2 toc-link" data-title="OpenChannel">OpenChannel</a>
                   </li>
                   <li>
-                    <a href="#openchannel" class="toc-h2 toc-link" data-title="openChannel">openChannel</a>
+                    <a href="#websocket-response-message-type-32" class="toc-h2 toc-link" data-title="Websocket Response: Message Type -32">Websocket Response: Message Type -32</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#acceptchannel" class="toc-h1 toc-link" data-title="AcceptChannel">AcceptChannel</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#simple-type-33-protocol" class="toc-h2 toc-link" data-title="Simple Type -33 Protocol">Simple Type -33 Protocol</a>
                   </li>
                   <li>
-                    <a href="#acceptchannel" class="toc-h2 toc-link" data-title="acceptChannel">acceptChannel</a>
+                    <a href="#websocket-request-message-type-33" class="toc-h2 toc-link" data-title="Websocket Request: Message Type -33">Websocket Request: Message Type -33</a>
+                  </li>
+                  <li>
+                    <a href="#websocket-response-message-type-33" class="toc-h2 toc-link" data-title="Websocket Response: Message Type -33">Websocket Response: Message Type -33</a>
                   </li>
                   <li>
                     <a href="#fundingbtc" class="toc-h2 toc-link" data-title="fundingBTC">fundingBTC</a>
@@ -559,36 +564,6 @@ This endpoint manages users created by an OBD instance. Here we use Alice and Bo
 <td>response data from OBD</td>
 </tr>
 </tbody></table>
-<h2 id='logout'>logOut</h2><h3 id='simple-type-102002-protocol'>Simple Type -102002 Protocol</h3>
-<p>Log out.</p>
-<h2 id='connectpeer'>connectPeer</h2><h3 id='simple-type-102003'>Simple Type -102003</h3>
-<p>connect to a remote counterparty&#39;s OBD server.</p>
-<h3 id='websocket-request-message-type-102003'>Websocket Request: Message Type -102003</h3>
-<blockquote>
-<p>Request: </p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-102003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"remote_node_address"</span><span class="p">:</span><span class="s2">"/ip4/62.234.216.108/tcp/3001/p2p/Qmdqwooq9Ab7Bry1NT3bgbrj2i57ugEKZwoZTGPLiKnMF8"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>remote_node_address</td>
-<td>-------</td>
-<td>body</td>
-<td>node address of the remote obd server.</td>
-</tr>
-</tbody></table>
 <h2 id='createaddress'>createAddress</h2><h3 id='simple-type-10300-protocol'>Simple Type -10300 Protocol</h3>
 <p>Create address by mnemonic words.</p>
 <h3 id='websocket-request-message-type-10300'>Websocket Request: Message Type -10300</h3>
@@ -600,23 +575,22 @@ This endpoint manages users created by an OBD instance. Here we use Alice and Bo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This message has no parameter.</p>
-<h1 id='basic-lightning-network-operations'>Basic Lightning Network Operations</h1><h2 id='connectremotepeer'>connectRemotePeer</h2><h3 id='simple-type-102001-protocol-2'>Simple Type -102001 Protocol</h3>
+<h1 id='lightning-network-operations'>Lightning Network Operations</h1>
 <!-- # create channel -->
-<h2 id='openchannel'>openChannel</h2><h3 id='simple-type-10032-protocol'>Simple Type -10032 Protocol</h3>
-<p>Type -32 Protocol is used to request to create a channel with someone else(Bob). </p>
+<h2 id='openchannel'>OpenChannel</h2><h3 id='simple-type-32-protocol'>Simple Type -32 Protocol</h3>
+<p>Type -32 Protocol is used to request to create a channel with someone. </p>
 
 <p>Alice sends request to her OBD instance, her OBD helps her complete the message, and routes her request to Bob&#39;s OBD for creating a channel between them. </p>
-<h3 id='websocket-request-message-type-10032'>Websocket Request: Message Type -10032</h3>
+<h3 id='websocket-request-message-type-32'>Websocket Request: Message Type -32</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100032</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipient_node_peer_id"</span><span class="p">:</span><span class="s2">"QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipient_user_peer_id"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-32</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"funding_pubkey"</span><span class="p">:</span><span class="s2">"02c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc66"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+        </span><span class="s2">"funding_pubkey"</span><span class="p">:</span><span class="s2">"021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"recipient_peer_id"</span><span class="p">:</span><span class="s2">"&lt;user_id&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -634,19 +608,13 @@ This endpoint manages users created by an OBD instance. Here we use Alice and Bo
 <td>public key of funder, who wish to deposite BTC and other tokens to the channel</td>
 </tr>
 <tr>
-<td>recipient_node_peer_id</td>
+<td>recipient_peer_id</td>
 <td>-------</td>
 <td>body</td>
-<td>peer id of the obd node where the fundee logged in.</td>
-</tr>
-<tr>
-<td>recipient_user_peer_id</td>
-<td>-------</td>
-<td>body</td>
-<td>the user id of the fundee.</td>
+<td>peer id of the fundee.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-10032'>Websocket Response: Message Type -10032</h3>
+<h2 id='websocket-response-message-type-32'>Websocket Response: Message Type -32</h2>
 <blockquote>
 <p>OBD Response:</p>
 </blockquote>
@@ -806,20 +774,20 @@ This endpoint manages users created by an OBD instance. Here we use Alice and Bo
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='acceptchannel'>acceptChannel</h2><h3 id='simple-type-10033-protocol'>Simple Type -10033 Protocol</h3>
-<p>Bob replies to accept, his OBD completes his message and routes it back to Alice&#39;s OBD.
+<h1 id='acceptchannel'>AcceptChannel</h1><h2 id='simple-type-33-protocol'>Simple Type -33 Protocol</h2>
+<p>Type -33 Protocol is used to response to request of creating channel.</p>
+
+<p>Bob replies to accept, his OBD completes his message and routes it to Alice&#39;s OBD.
 Then Alice sees the response of acceptance. </p>
-<h3 id='websocket-request-message-type-10033'>Websocket Request: Message Type -10033</h3>
+<h2 id='websocket-request-message-type-33'>Websocket Request: Message Type -33</h2>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100033</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipient_node_peer_id"</span><span class="p">:</span><span class="s2">"QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipient_user_peer_id"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2 "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-33</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"temporary_channel_id"</span><span class="p">:</span><span class="s2">"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"funding_pubkey"</span><span class="p">:</span><span class="s2">"028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"temporary_channel_id"</span><span class="p">:[</span><span class="mi">43</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">166</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">214</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">184</span><span class="p">,</span><span class="mi">177</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">209</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">245</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span><span class="mi">239</span><span class="p">,</span><span class="mi">207</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">183</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"funding_pubkey"</span><span class="p">:</span><span class="s2">"03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"approval"</span><span class="p">:</span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -848,10 +816,10 @@ Then Alice sees the response of acceptance. </p>
 <td>approval</td>
 <td>-------</td>
 <td>data</td>
-<td>true to accept or false to deny.</td>
+<td>true or false to deny.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-10033'>Websocket Response: Message Type -10033</h3>
+<h2 id='websocket-response-message-type-33'>Websocket Response: Message Type -33</h2>
 <blockquote>
 <p>OBD Responses:</p>
 </blockquote>
