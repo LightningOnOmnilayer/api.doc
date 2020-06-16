@@ -1,6 +1,6 @@
-# FundingAsset
+## fundingAsset
 
-## Simple Type 2001 Protocol
+### Simple Type -102120 Protocol
 
 <!-- center -->
 Alice starts to deposit omni assets to the channel. This is quite similar to the the btc funding procedure.
@@ -9,29 +9,30 @@ Alice starts to deposit omni assets to the channel. This is quite similar to the
 > Alice's example data:
 
 ```shell
-address: mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs  
-privkey: cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy  
-channel address：2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE  
+address: mre4gBmjKiBm8gwZmpCNcnnHiDY7TXr2wD  
+privkey: cVV22tLgBbLv1K1uW6z2doR4Copat1mejjND1jtW8CVkRLUSpPxf  
+channel address：2MvPieQLzkS2mhexzYExsSkXGTExJJzzANw  
 ```
 
-## Websocket Request: Message Type 2001
+### Websocket Request: Message Type -102120
 
 
 <!-- right -->
 > Request:
-
+ 
 ```json
 {
-	"type":2001,
-	"data":{
-		"from_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
-		"from_address_private_key":"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy",
-		"to_address":"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE",
-		"amount":6,
-		"property_id": 121
-	}
+    "type":-102120,
+    "data":{
+        "from_address":"mre4gBmjKiBm8gwZmpCNcnnHiDY7TXr2wD",
+	"from_address_private_key":"cVV22tLgBbLv1K1uW6z2doR4Copat1mejjND1jtW8CVkRLUSpPxf",
+        "to_address":"2MvPieQLzkS2mhexzYExsSkXGTExJJzzANw",
+        "amount":20,
+        "property_id":137
+    }
 }
 ```
+
 
 <!-- center -->
 
@@ -43,205 +44,154 @@ to_address           		| ------- |   data    | the channel multi-sig address.
 amount			   	| ------- |   data    | 
 property_id		  	| ------- |   data    | the omni asset id that has been funding.
  
-## Websocket Response:
+### Websocket Response:
 
 <!-- right -->
 > OBD Responses:
 
-```json
+```json 
 {
-	"type":2001,
-	"status":true,
-	"from":"<user_id>",
-	"to":"<user_id>",
-	"result":{
-		"hex":"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000"
-		"txid":"missing??? our development team?"	
-	}
-}
+    	"type":-102120,
+    	"status":true,
+    	"from":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
+    	"to":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
+    	"result":{
+        		"hex":"0200000001e062124a8f5476cd4cff020894525d360f6d0ab4a8d2b357a90f328c3dabe2d9010000006a47304402202616b9a0c38865c5a3cba97cdb228698272d954f315771c1b1fbd9e1310d4d150220589c13f8e2e4fd6b6cfd09e59f62faa899ff898f7b040cc972d5a09d6a448c11012102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc66ffffffff034a070a00000000001976a9147a019f584f6a65d114d5f17264c9eb32f763d72c88ac0000000000000000166a146f6d6e69000000000000008900000000773594001c0200000000000017a9142283a07c4fc44706e540c02edf1a1f3a4c433bfc8700000000"
+    	}
+} 
 ```
+
 
 <!-- center -->
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-status         | ------- |   body    | true or false
-from	       | ------- |   body    | peer id of funder
-to             | ------- |   body    | peer id of fundee
-hex            | ------- |   result  | 
-txid	       | ------- |   result  | transaction id
+status         | ------- |   body    | true or false.
+from	       | ------- |   body    | peer id of funder.
+to             | ------- |   body    | peer id of fundee.
+hex            | ------- |   result  | funding transaction hex. 
 
 
-# AssetFundingCreated
+## assetFundingCreated
 
-## Simple Type -34 Protocol
+### Simple Type -100034 Protocol
 
-Type -34 Protocol is used to notify the success of omni asset funding transaction 
-to the counter partner of the channel.
+Type -100034 Protocol is used to notify the success of omni asset funding transaction 
+to the counterparty of the channel.
 
-## Websocket Request: Message Type -34
+### Websocket Request: Message Type -100034
 
 <!-- right -->
 > Request:
  
-```json
+```json 
+
 {
-	"type":-34,
-	"data":{
-		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],  			"funding_tx_hex":"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000",		
-		"temp_address_pub_key":"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d",
-		"temp_address_private_key":"cSgTisoiZLzH5vrwHBMAXLC5nvND2ffcqqDtejMg12rEVrUMeP5R",
-		"channel_address_private_key":"cUAdadTkjeVFsNz5ifhkETfAzk5PvhnLWtmdSKgbyTTjSCE4MYWy"
-	}
+    "type":-100034,
+    "recipient_node_peer_id":"QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
+    "recipient_user_peer_id":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
+    "data":{
+        "temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef",  		"funding_tx_hex":"0200000001c0c7ec0dabae15d2a5e3fd8e740952839c588cd68d8eafe00ed5d3c0f01bf229000000006a473044022045405d082bd9826e00819094cc693c0b2e40926b1a30cefc18e171c9c12e60be02206ba7479690f849cca828a6711a484a5149d79299fc9c4e179bffcad5e7bfb773012102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc66ffffffff03f61c0c00000000001976a9147a019f584f6a65d114d5f17264c9eb32f763d72c88ac0000000000000000166a146f6d6e69000000000000008900000000b2d05e001c0200000000000017a914fcbbb71abf965dfde49fbf7442a4696ce2dd6c5f8700000000",
+        "temp_address_pub_key":"03985e8880628058da7c49b0968e4e7d2819240b60255a1c9b5f2407a4056b5f54",
+        "temp_address_private_key":"cTLc9tx1Hihqfu6jXXWQ8pFeiQb5aJ8ck88ik8RJuutP95dqTuqo",
+        "channel_address_private_key":"cVV22tLgBbLv1K1uW6z2doR4Copat1mejjND1jtW8CVkRLUSpPxf"
+    }
 }
 ```
 
 <!-- center -->
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-temporary_channel_id         | ------- |   data    | 
-funding_tx_hex               | ------- |   data    | 
-temp_address_pub_key         | ------- |   data    | 
-temp_address_private_key     | ------- |   data    | 
-channel_address_private_key  | ------- |   data    | private key of the channel that Alice holds
+temporary_channel_id         | ------- |   data    | temporary channel id. 
+funding_tx_hex               | ------- |   data    | asset funding transaction hex.
+temp_address_pub_key         | ------- |   data    | temporary address pub key.
+temp_address_private_key     | ------- |   data    | temporary address private key.
+channel_address_private_key  | ------- |   data    | private key of the channel that Alice holds.
  
-## Websocket Response: Message Type -34
+### Websocket Response: Message Type -110034
 
 > OBD Responses：
 
-```json
+```json  
 {
-	"type":-34,
+	"type":-110034,
 	"status":true,
-	"from":"<user_id>",
-	"to":"<user_id>",
-	"result":{
-		"amount_a":6,
-		"amount_b":0,
-		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
-		"channel_info_id":2,
-		"create_at":"2019-09-21T00:58:55.448353+08:00",
-		"create_by":"<user_id>",
-		"curr_state":10,
-		"fundee_sign_at":"0001-01-01T00:00:00Z",
-		"funder_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
-		"funder_pub_key_2_for_commitment":"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d",
-		"funding_output_index":2,"funding_tx_hex":"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000",
-		"funding_txid":"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b",
-		"id":2,
-		"peer_id_a":"<user_id>",
-		"peer_id_b":"<user_id>",
-		"property_id":121
-	}
-}
-```
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-status           | ------- |   body    | true or false
-from	         | ------- |   body    | peer id of funder
-to               | ------- |   body    | peer id of fundee
-amount_a         | ------- |   result  | how much has been funded
-amount_b         | ------- |   result  | none required
-channel_id       | ------- |   result  | channel officially created
-channel_info_id  | ------- |   result  | 
-create_at        | ------- |   result  | 
-create_by        | ------- |   result  | created by the funder
-curr_state       | ------- |   result  | 
-fundee_sign_at   | ------- |   result  | 
-funder_address   | ------- |   result  | 
-funder_pub_key_2_for_commitment   | ------- |   result  | 
-funding_output_index"             | ------- |   result  |
-funding_tx_hex                    | ------- |   result  | 
-funding_txid                      | ------- |   result  | 
-id                                | ------- |   result  | 
-peer_id_a                         | ------- |   result  | 
-peer_id_b                         | ------- |   result  | 
-property_id                       | ------- |   result  | 
-
-
-# AssetFundingSigned
-
-## Simple Type -35 Protocol
-
-Type -35 Protocol is used to response the transfering omni asset event 
-by the partner of the channel .
-
-<aside class="success">
-<code>Bob</code> tells his OBD to reply <code>Alice</code> that he knows the funding by message -35, and OBD will creat commitment transactions (C1a & RD1a).
-</aside>
-
-## Websocket Request: Message Type -35
-
-> Request:
-
-```json
-{
-	"type":-35,
-	"data":{
-		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
-		"fundee_channel_address_private_key":"cV6dif91LHD8Czk8BTgvYZR3ipUrqyMDMtUXSWsThqpHaQJUuHKA",
-		"approval":true
+	"from":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
+	"to":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
+	"result"{  		
+		"c1a_rsmc_hex":"0200000001c3328e96db5081329455b362d5e96237c760d1e65b67d8abadedf53949e1e2a9000000009200473044022048d693d88f34ff98ae1ca34e56f3c88394569caa491ef3d08b7f0a06c0515e1b022020b155a9ca07be5cf854200157781169a1e402018b3dd9418f26651924176c59010047522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03344700000000000017a9146816548153dd030f92540b24e9605c0c565cc378870000000000000000166a146f6d6e69000000000000008900000000773594001c0200000000000017a9146816548153dd030f92540b24e9605c0c565cc3788700000000",  			"funding_omni_hex":"0200000001e062124a8f5476cd4cff020894525d360f6d0ab4a8d2b357a90f328c3dabe2d9010000006a47304402202616b9a0c38865c5a3cba97cdb228698272d954f315771c1b1fbd9e1310d4d150220589c13f8e2e4fd6b6cfd09e59f62faa899ff898f7b040cc972d5a09d6a448c11012102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc66ffffffff034a070a00000000001976a9147a019f584f6a65d114d5f17264c9eb32f763d72c88ac0000000000000000166a146f6d6e69000000000000008900000000773594001c0200000000000017a9142283a07c4fc44706e540c02edf1a1f3a4c433bfc8700000000",
+		"rsmc_temp_address_pub_key":"03985e8880628058da7c49b0968e4e7d2819240b60255a1c9b5f2407a4056b5f54",
+		"temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef"
 	}
 }
 ``` 
 
+<!-- center -->
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-channel_id    | ------- |   data    | 
-fundee_channel_address_private_key  | ------- |   data    | private key of the channel that Bob holds
-approval                    		| ------- |   data    | true or false
+status           | ------- |   body    | true or false.
+from	         | ------- |   body    | peer id of funder.
+to               | ------- |   body    | peer id of fundee.    
+c1a_rsmc_hex	 | ------- |   result  | hex of the first commitment transaction constructed.
+funding_omni_hex | ------- |   result  | omni asset funding transaction hex.
+rsmc_temp_address_pub_key	| ------- |   result  | pub key of the temporary address that used to accept tokens RSMC output.
+temporary_channel_id		| ------- |   result  | temporary channel id. 
 
-## Websocket Response: Message Type -35
+<aside class="notice">
+<code>property id</code> and <code>amount</code> are all included in <code>funding_omni_hex</code>. The counterparty can easily validate the funding transaction by checking the hex. 
+</aside>
+
+
+## assetFundingSigned
+
+### Simple Type -100035 Protocol  
+
+<aside class="success">
+<code>Bob</code> tells his OBD to reply <code>Alice</code> that he knows the asset funding transaction by message -100035, and Alice's OBD will creat commitment transactions (C1a & RD1a).
+</aside>
+
+### Websocket Request: Message Type -100035
+
+> Request: 
+ 
+```json
+{
+	"type":-100035,
+	"recipient_node_peer_id":"QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
+	"recipient_user_peer_id":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
+	"data":{
+		"temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef",
+		"fundee_channel_address_private_key":"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd"
+    	}
+}
+``` 
+
+<!-- center -->
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+temporary_channel_id    		| ------- |   data    | temporary channel id.
+fundee_channel_address_private_key	| ------- |   data    | private key of the channel that Bob holds, used to sign the commitment transactions. 
+
+### Websocket Response: Message Type -110035
 
 > OBD Responses：
 
 ```json
 {
-	"type":-35,
+	"type":-110035,
 	"status":true,
-	"from":"<user_id>",
-	"to":"<user_id>",
+	"from":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
+	"to":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
 	"result":{
-		"amount_a":6,
-		"amount_b":0,
-		"channel_id":[59,253,135,228,203,197,78,61,223,84,135,17,136,165,253,7,69,70,182,254,95,86,78,118,149,122,33,222,129,249,52,197],
-		"channel_info_id":2,
-		"create_at":"2019-09-21T00:58:55.448353+08:00",
-		"create_by":"<user_id>",
-		"curr_state":20,
-		"fundee_sign_at":"2019-09-21T01:01:53.970256+08:00",
-		"funder_address":"mx4TDCXP2DedxcuA8RXaQ6c4q2GKAimUPs",
-		"funder_pub_key_2_for_commitment":"03ea01f8b137df5744ec2b0b91bc46139cabf228403264df65f6233bd7f0cbd17d",
-		"funding_output_index":2,
-		"funding_tx_hex":"02000000016aabc30d6ef0d7e1d02572ca30450421a7541b7bf3d9b9937240b977b228215c010000006a473044022077352945e8cbc96475ba6e8af7f808980eeb93560ecca416dc5e94e561af0ebe022044a1c15a436594bade0db2a955e05b629d8611f15b3603aea13100b0ec2798900121021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32dffffffff0384b30e00000000001976a914b5770ba3d6d34f5fdd8d582f81fb383975bb9c6d88ac0000000000000000166a146f6d6e6900000000000000790000000023c346001c0200000000000017a9145761a1d45b8a6e7caa10a4bcecca97630c67af468700000000",
-		"funding_txid":"c734f981de217a95764e565ffeb6464507fda588118754df3d4ec5cbe487fd3b",
-		"id":2,
-		"peer_id_a":"<user_id>",
-		"peer_id_b":"<user_id>",
-		"property_id":121
-	}
+		"channelId":"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9",
+		"temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef"
+    }
 }
 ```
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-status         | ------- |   body    | true or false
-from	       | ------- |   body    | peer id of fundee
-to             | ------- |   body    | peer id of funder
-channel_id            | ------- |   result  | 
-amount_a 	      | ------- |   result  | how much the funder deposited
-amount_b	      | ------- |   result  | none required
-channel_id            | ------- |   result  | 
-channel_info_id       | ------- |   result  | 
-create_at             | ------- |   result  | 
-create_by             | ------- |   result  | 
-curr_state            | ------- |   result  | 
-fundee_sign_at        | ------- |   result  | 
-funder_address        | ------- |   result  | 
-funder_pub_key_2_for_commitment         | ------- |   result  | 
-funding_output_index                    | ------- |   result  | 
-funding_tx_hex                          | ------- |   result  | 
-funding_txid                            | ------- |   result  | 
-id                                      | ------- |   result  | 
-peer_id_a                               | ------- |   result  | 
-property_id                             | ------- |   result  | 
+status         | ------- |   body    | true or false.
+from	       | ------- |   body    | peer id of fundee.
+to             | ------- |   body    | peer id of funder.
+channel_id            | ------- |   result  | officially generates the channel ID. 
+temporary_channel_id  | ------- |   result  | temporary channel id, won't appear again in following messages.  

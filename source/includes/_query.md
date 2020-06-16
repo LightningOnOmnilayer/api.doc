@@ -2,13 +2,15 @@
 
 This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty.  -->
 
-# GetAllCommitmentTransactions
+# Query
 
-## Simple Type -35101 Protocol
+## GetAllCommitmentTransactions
+
+###  Simple Type -35101 Protocol
 
 Type -35101 Protocol is used to get a list of commitment transactions in one channel. 
 
-## Websocket Request: Message Type -35101
+###  Websocket Request: Message Type -35101
 
 > Request:
 
@@ -25,7 +27,7 @@ Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
 
-## Websocket Response:
+###  Websocket Response:
 
 > OBD Responses:
 
@@ -103,13 +105,13 @@ txid_to_other                                       | ------- |   result  |
 txid_to_temp_multi_address                          | ------- |   result  | 
  
 
-# GetLatestCommitmentTransaction
+##  GetLatestCommitmentTransaction
 
-## Simple Type -35104 Protocol
+###  Simple Type -35104 Protocol
 
 Type -35104 Protocol is used to get a latest commitment transaction.
 
-## Websocket Request: Message Type -35104
+###  Websocket Request: Message Type -35104
 
 > Request:
 
@@ -126,7 +128,7 @@ Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 channel_id  | ------- |   data    | 
 
-## Websocket Response:
+###  Websocket Response:
 
 > OBD Responses：
 
@@ -204,13 +206,13 @@ txid_to_other    				| ------- |   result  |
 txid_to_temp_multi_address     			| ------- |   result  | 
 
 
-# GetLatestRevockableDeliveryTransaction
+##  GetLatestRevockableDeliveryTransaction
 
-## Simple Type -35105 Protocol
+###  Simple Type -35105 Protocol
 
 Type -35105 Protocol is used to get a latest Revockable Delivery transaction.
 
-## Websocket Request: Message Type -35105
+###  Websocket Request: Message Type -35105
 
 > Request:
  
@@ -228,13 +230,13 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-# GetLatestBreachRemedyTransaction
+##  GetLatestBreachRemedyTransaction
 
-## Simple Type -35106 Protocol
+###  Simple Type -35106 Protocol
 
 Type -35106 Protocol is used to get a latest Breach Remedy transaction.
 
-## Websocket Request: Message Type -35106
+###  Websocket Request: Message Type -35106
 
 > Request:
  
@@ -252,13 +254,13 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-# GetAllRevockableDeliveryTransactions
+## GetAllRevockableDeliveryTransactions
 
-## Simple Type -35108 Protocol
+### Simple Type -35108 Protocol
 
 Type -35108 Protocol is used to get all of Revockable Delivery transactions.
 
-## Websocket Request: Message Type -35108
+### Websocket Request: Message Type -35108
 
 > Request:
 
@@ -276,13 +278,13 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
  
-# GetAllBreachRemedyTransactions
+## GetAllBreachRemedyTransactions
 
-## Simple Type -35109 Protocol
+### Simple Type -35109 Protocol
 
 Type -35109 Protocol is used to get all of Breach Remedy transactions.
 
-## Websocket Request: Message Type -35109
+### Websocket Request: Message Type -35109
 
 > Request:
  
@@ -300,13 +302,13 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-# GetAllChannels
+## GetAllChannels
 
-## Simple Type -3202 Protocol
+### Simple Type -3202 Protocol
 
 Type -3202 Protocol is used to get all of channels.
 
-## Websocket Request: Message Type -3202
+### Websocket Request: Message Type -3202
 
 > Request:
 
@@ -319,13 +321,13 @@ Type -3202 Protocol is used to get all of channels.
 This message has no arguments.
 
 
-# GetChannelDetail
+## GetChannelDetail
 
-## Simple Type -3207 Protocol
+### Simple Type -3207 Protocol
 
 Type -3207 Protocol is used to get detail data of a channel.
 
-## Websocket Request: Message Type -3207
+### Websocket Request: Message Type -3207
 
 > Request:
 
@@ -341,13 +343,13 @@ Parameter | default | placement | Description
 id        | ------- |   data    | id of channel in database table
  
 
-# GetAllBroadcastedCommitmentTransactions
+## GetAllBroadcastedCommitmentTransactions
 
-## Simple Type -35110 Protocol
+### Simple Type -35110 Protocol
 
 Type -35110 Protocol is used to get all of Broadcasted Commitment Transactions.
 
-## Websocket Request: Message Type -35110
+### Websocket Request: Message Type -35110
 
 > Request:
  
@@ -365,15 +367,15 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-# GetH
+## GetH
 
-## Simple Type -4001 Protocol
+### Simple Type -4001 Protocol
 
 Type -4001 Protocol is used to get a list of H (Hash_Preimage_R).
 
 *Only HTLC creator can query*
 
-## Websocket Request: Message Type -4001
+### Websocket Request: Message Type -4001
 
 > Request:
  
@@ -386,15 +388,15 @@ Type -4001 Protocol is used to get a list of H (Hash_Preimage_R).
 This message has no arguments.
 
 
-# GetR
+## GetR
 
-## Simple Type -4101 Protocol
+### Simple Type -4101 Protocol
 
 Type -4101 Protocol is used to get a list of R (Preimage_R).
 
 *Only HTLC Receiever can query*
 
-## Websocket Request: Message Type -4101
+### Websocket Request: Message Type -4101
 
 > Request:
 
@@ -406,7 +408,7 @@ Type -4101 Protocol is used to get a list of R (Preimage_R).
 
 This message has no arguments.
 
-## Websocket Response:
+### Websocket Response:
 
 > OBD Responses:
 
@@ -471,15 +473,15 @@ sign_at           | ------- |   result  |
 sign_by           | ------- |   result  | 
 
 
-# GetRWithChannelID
+## GetRWithChannelID
 
-## Simple Type -4103 Protocol
+### Simple Type -4103 Protocol
 
 Type -4103 Protocol is used to get the R (Preimage_R) by a channel id.
 
 *Only middleman node can query*
 
-## Websocket Request: Message Type -4103
+### Websocket Request: Message Type -4103
 
 > Request:
  
@@ -497,13 +499,13 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
 
 
-# GetRoutingWithH
+## GetRoutingWithH
 
-## Simple Type -4104 Protocol
+### Simple Type -4104 Protocol
 
 Type -4104 Protocol is used to get routing info by the H (Hash_Preimage_R).
 
-## Websocket Request: Message Type -4104
+### Websocket Request: Message Type -4104
 
 > Request:
  
@@ -519,15 +521,15 @@ Parameter | default | placement | Description
 h         | ------- |   data    | the H (Hash_Preimage_R)
 
 
-# GetRWithH
+## GetRWithH
 
-## Simple Type -4105 Protocol
+### Simple Type -4105 Protocol
 
 Type -4105 Protocol is used to get the R (Preimage_R) by a H (Hash_Preimage_R).
 
 *HTLC Receiever can query*
 
-## Websocket Request: Message Type -4105
+### Websocket Request: Message Type -4105
 
 > Request:
 
@@ -542,7 +544,7 @@ Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 H         | ------- |   data    | Hash_Preimage_R
 
-## Websocket Response:
+### Websocket Response:
 
 > OBD Responses:
 

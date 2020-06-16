@@ -1,10 +1,12 @@
-# swap
+# Contracts
 
-## Simple Type -80 Protocol
+## atomicSwap
+
+### Simple Type -80 Protocol
 
 Type -80 Protocol notifies the counterparty an atomic swap is created. The background and process of atomic swap can be [found here in chapter 5](https://github.com/omnilaboratory/OmniBOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels) of the OmniBOLT specification, 
 
-## Websocket Request: Message Type -80
+### Websocket Request: Message Type -80
 
 > Request:
 
@@ -38,7 +40,7 @@ transaction_id     | ------- |   data  | The transaction ID of the commitment tr
 time_locker        | ------- |   data  | The time locker of HTLC 1.
 
 
-## Websocket Response: Message Type -80
+### Websocket Response: Message Type -80
 
 > OBD Responses:
 
@@ -78,13 +80,13 @@ transaction_id     | ------- |   data  | The transaction ID of the commitment tr
 time_locker        | ------- |   data  | The time locker HTLC 1. 
 
 
-# swap_accept
+## acceptSwap
 
-## Simple Type -81 Protocol
+### Simple Type -81 Protocol
 
 Type -81 Protocol accepts or rejects a swap.
 
-## Websocket Request: Message Type -81
+### Websocket Request: Message Type -81
 
 > Request:
 
@@ -120,5 +122,5 @@ target_transaction_id | ------- |   data  | The transaction ID of the commitment
 time_locker        | ------- |   data  | The time locker of HTLC 2.
 
 
-## Websocket Response: Message Type -81
+### Websocket Response: Message Type -81
 
