@@ -2,17 +2,17 @@
 
 ## atomicSwap
 
-### Simple Type -80 Protocol
+### Simple Type -100080 Protocol
 
-Type -80 Protocol notifies the counterparty an atomic swap is created. The background and process of atomic swap can be [found here in chapter 5](https://github.com/omnilaboratory/OmniBOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels) of the OmniBOLT specification, 
+Type -80 message notifies the counterparty an atomic swap is created. The background and process of atomic swap can be [found here in chapter 5](https://github.com/omnilaboratory/OmniBOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels) of the OmniBOLT specification, 
 
-### Websocket Request: Message Type -80
+### Websocket Request: Message Type -100080
 
 > Request:
 
 ```json
 {
-    "type":-80,
+    "type":-100080,
     "data":{
         "channel_id_from":"2e90c8e98074c9d711ef33c9b8ae9ff4437640f032e60ecf5626a4ca9b432b02",
         "channel_id_to":"35b10b403eaf04ed9efc15d756105c4cd9c921f1d871411eda54d499409ec8e8",
@@ -40,13 +40,13 @@ transaction_id     | ------- |   data  | The transaction ID of the commitment tr
 time_locker        | ------- |   data  | The time locker of HTLC 1.
 
 
-### Websocket Response: Message Type -80
+### Websocket Response: Message Type -110080
 
 > OBD Responses:
 
 ```json
 {
-    "type":-80,
+    "type":-110080,
     "status":true,
     "from":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
     "to":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
@@ -82,17 +82,17 @@ time_locker        | ------- |   data  | The time locker HTLC 1.
 
 ## acceptSwap
 
-### Simple Type -81 Protocol
+### Simple Type -100081 Protocol
 
 Type -81 Protocol accepts or rejects a swap.
 
-### Websocket Request: Message Type -81
+### Websocket Request: Message Type -100081
 
 > Request:
 
 ```json
 {
-    "type":-81,
+    "type":-100081,
     "data":{
         "channel_id_from":"35b10b403eaf04ed9efc15d756105c4cd9c921f1d871411eda54d499409ec8e8",
         "channel_id_to":"2e90c8e98074c9d711ef33c9b8ae9ff4437640f032e60ecf5626a4ca9b432b02",
@@ -122,5 +122,5 @@ target_transaction_id | ------- |   data  | The transaction ID of the commitment
 time_locker        | ------- |   data  | The time locker of HTLC 2.
 
 
-### Websocket Response: Message Type -81
+### Websocket Response: Message Type -110081
 
