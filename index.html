@@ -3628,14 +3628,14 @@ Then Alice launch the closing request.</p>
 <td>true or false</td>
 </tr>
 </tbody></table>
-<h1 id='contracts'>Contracts</h1><h2 id='atomicswap'>atomicSwap</h2><h3 id='simple-type-80-protocol'>Simple Type -80 Protocol</h3>
-<p>Type -80 Protocol notifies the counterparty an atomic swap is created. The background and process of atomic swap can be <a href="https://github.com/omnilaboratory/OmniBOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels">found here in chapter 5</a> of the OmniBOLT specification, </p>
-<h3 id='websocket-request-message-type-80'>Websocket Request: Message Type -80</h3>
+<h1 id='contracts'>Contracts</h1><h2 id='atomicswap'>atomicSwap</h2><h3 id='simple-type-100080-protocol'>Simple Type -100080 Protocol</h3>
+<p>Type -80 message notifies the counterparty an atomic swap is created. The background and process of atomic swap can be <a href="https://github.com/omnilaboratory/OmniBOLT-spec/blob/master/OmniBOLT-05-Atomic-Swap-among-Channels.md#omnibolt-5-atomic-swap-protocol-among-channels">found here in chapter 5</a> of the OmniBOLT specification, </p>
+<h3 id='websocket-request-message-type-100080'>Websocket Request: Message Type -100080</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-80</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100080</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"channel_id_from"</span><span class="p">:</span><span class="s2">"2e90c8e98074c9d711ef33c9b8ae9ff4437640f032e60ecf5626a4ca9b432b02"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"channel_id_to"</span><span class="p">:</span><span class="s2">"35b10b403eaf04ed9efc15d756105c4cd9c921f1d871411eda54d499409ec8e8"</span><span class="p">,</span><span class="w">
@@ -3712,12 +3712,12 @@ Then Alice launch the closing request.</p>
 <td>The time locker of HTLC 1.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-80'>Websocket Response: Message Type -80</h3>
+<h3 id='websocket-response-message-type-110080'>Websocket Response: Message Type -110080</h3>
 <blockquote>
 <p>OBD Responses:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-80</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-110080</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
@@ -3815,14 +3815,14 @@ Then Alice launch the closing request.</p>
 <td>The time locker HTLC 1.</td>
 </tr>
 </tbody></table>
-<h2 id='acceptswap'>acceptSwap</h2><h3 id='simple-type-81-protocol'>Simple Type -81 Protocol</h3>
+<h2 id='acceptswap'>acceptSwap</h2><h3 id='simple-type-100081-protocol'>Simple Type -100081 Protocol</h3>
 <p>Type -81 Protocol accepts or rejects a swap.</p>
-<h3 id='websocket-request-message-type-81'>Websocket Request: Message Type -81</h3>
+<h3 id='websocket-request-message-type-100081'>Websocket Request: Message Type -100081</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-81</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100081</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"channel_id_from"</span><span class="p">:</span><span class="s2">"35b10b403eaf04ed9efc15d756105c4cd9c921f1d871411eda54d499409ec8e8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"channel_id_to"</span><span class="p">:</span><span class="s2">"2e90c8e98074c9d711ef33c9b8ae9ff4437640f032e60ecf5626a4ca9b432b02"</span><span class="p">,</span><span class="w">
@@ -3906,7 +3906,7 @@ Then Alice launch the closing request.</p>
 <td>The time locker of HTLC 2.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-81'>Websocket Response: Message Type -81</h3><!-- # Query
+<h3 id='websocket-response-message-type-110081'>Websocket Response: Message Type -110081</h3><!-- # Query
 
 This section collects all the messages used in querying the latest status of the channel, as well as specific transactions and their status. Each party may use this tool set to surveil the behavior of his counterparty.  -->
 <h1 id='query'>Query</h1><h2 id='getallcommitmenttransactions'>GetAllCommitmentTransactions</h2><h3 id='simple-type-35101-protocol'>Simple Type -35101 Protocol</h3>
