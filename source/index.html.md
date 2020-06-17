@@ -36,7 +36,10 @@ We assume you have already gone through our [installation instruction](https://g
  * Using a simple web based [websocket client](https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn?hl=en) for Chrome to do experiments;  
  * OBD responses you correctly;  
 
-For kernel developers in our community, the above steps are the easiest way to get started. Just run the [GUI tool](https://github.com/omnilaboratory/DebuggingTool) or open [OmniBOLT Daemon](https://github.com/omnilaboratory/obd#step-4-test-channel-operations-using-websocket-testing-tool) project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from your websocket-test-client. You may intercept the messages and track message flows of OBD kernel.
+For kernel developers in our community, the above steps are the easiest way to get started. Just run the [GUI tool](https://github.com/omnilaboratory/DebuggingTool) and open [OmniBOLT Daemon](https://github.com/omnilaboratory/obd#step-4-test-channel-operations-using-websocket-testing-tool) project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from GUI tool. You may intercept the messages and track message flows of OBD kernel.
+
+
+Client JS SDK is also released with the GUI tool. This SDK implements HD functions, and is for wallet developers to easily play with obd. 
 
 
 # Wallet

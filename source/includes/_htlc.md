@@ -108,6 +108,7 @@ Pay an invoice. This protocol is the first step of a payment, which seeks a full
 ### Websocket Request: Message Type -100401
 
 >Request:
+
 ```json
 {
 	"type":-100401,
