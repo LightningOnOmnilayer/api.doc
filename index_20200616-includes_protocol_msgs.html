@@ -290,16 +290,10 @@
             <a href="#htlc-payment" class="toc-h1 toc-link" data-title="HTLC Payment">HTLC Payment</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#newaddress" class="toc-h2 toc-link" data-title="NewAddress">NewAddress</a>
+                    <a href="#addinvoice" class="toc-h2 toc-link" data-title="addInvoice">addInvoice</a>
                   </li>
                   <li>
-                    <a href="#newaddresswithmnemonic" class="toc-h2 toc-link" data-title="NewAddressWithMnemonic">NewAddressWithMnemonic</a>
-                  </li>
-                  <li>
-                    <a href="#getaddressinfo" class="toc-h2 toc-link" data-title="GetAddressInfo">GetAddressInfo</a>
-                  </li>
-                  <li>
-                    <a href="#invoice" class="toc-h2 toc-link" data-title="Invoice">Invoice</a>
+                    <a href="#payinvoice" class="toc-h2 toc-link" data-title="payInvoice">payInvoice</a>
                   </li>
                   <li>
                     <a href="#addhtlc" class="toc-h2 toc-link" data-title="addHTLC">addHTLC</a>
@@ -2050,88 +2044,65 @@ curr_temp_address：
 <td>true or false</td>
 </tr>
 </tbody></table>
-<h1 id='htlc-payment'>HTLC Payment</h1><h2 id='newaddress'>NewAddress</h2><h3 id='simple-type-1001-protocol'>Simple Type 1001 Protocol</h3>
-<p>Type 1001 Protocol is used to create a new address by omni core rpc command.</p>
-<h3 id='websocket-request-message-type-1001'>Websocket Request: Message Type 1001</h3>
+<h1 id='htlc-payment'>HTLC Payment</h1>
+<!-- currently deprecated, 2020-06-17-->
+
+<!-- 
+## NewAddress
+
+### Simple Type 1001 Protocol
+
+Type 1001 Protocol is used to create a new address by omni core rpc command.
+
+### Websocket Request: Message Type 1001
+
+> Request:
+
+```json
+{
+    "type": 1001
+}
+```
+
+This message has no arguments.
+
+### Websocket Response: Message Type 1001
+
+> OBD Responses:
+
+```json
+{
+    "type":1001,
+    "status":true,
+    "from":"434ecdd4-a8e4-4771-b194-c23dd55fcd20",
+    "to":"434ecdd4-a8e4-4771-b194-c23dd55fcd20",
+    "result":"mpzfjjB1Yv2BSrfeLAjDLrJzxzh4LYFe7x"
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status    | ------- |   body    | true or false
+from      | ------- |   body    | sender
+to        | ------- |   body    | receiever
+address   | ------- |   result  | The newly generated wallet address
+
+-->
+<h2 id='addinvoice'>addInvoice</h2><h3 id='simple-type-100402-protocol'>Simple Type -100402 Protocol</h3>
+<p>create an invoice.</p>
+<h3 id='websocket-request-message-type-100402'>Websocket Request: Message Type -100402</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1001</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This message has no arguments.</p>
-<h3 id='websocket-response-message-type-1001'>Websocket Response: Message Type 1001</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">1001</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"434ecdd4-a8e4-4771-b194-c23dd55fcd20"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"434ecdd4-a8e4-4771-b194-c23dd55fcd20"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="s2">"mpzfjjB1Yv2BSrfeLAjDLrJzxzh4LYFe7x"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>-------</td>
-<td>body</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>from</td>
-<td>-------</td>
-<td>body</td>
-<td>sender</td>
-</tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>address</td>
-<td>-------</td>
-<td>result</td>
-<td>The newly generated wallet address</td>
-</tr>
-</tbody></table>
-<h2 id='newaddresswithmnemonic'>NewAddressWithMnemonic</h2><h3 id='simple-type-200-protocol'>Simple Type -200 Protocol</h3>
-<p>Type -200 Protocol is used to create a new address with mnemonic words.</p>
-<h3 id='websocket-request-message-type-200'>Websocket Request: Message Type -200</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This message has no arguments.</p>
-<h3 id='websocket-response-message-type-200'>Websocket Response: Message Type -200</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-200</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"mfstT4mnj9AsT6XRKf6MWbFC2Ae99oMJf6"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"index"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"private_key"</span><span class="p">:</span><span class="s2">"0c379ade77ceefbc2b54ee76bab7d483a4dd37ebb8a3fc6f91ae6d01e2084bc5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="s2">"03c285a23081ea778b38e4fa4e870a9a2c0de2b526f6c915a62091bbe0e5b2c50d"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"wif"</span><span class="p">:</span><span class="s2">"cMzT53SEiF1PkoJaxp44pA8yhLFkqbRc9AWRZDyBTmHgnipdJ8zs"</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">req</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100402</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"h"</span><span class="p">:</span><span class="s2">"035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiry_time"</span><span class="p">:</span><span class="s2">"2020-07-15"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"description"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">137</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">4</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2144,179 +2115,23 @@ curr_temp_address：
 </tr>
 </thead><tbody>
 <tr>
-<td>status</td>
-<td>-------</td>
-<td>body</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>from</td>
-<td>-------</td>
-<td>body</td>
-<td>sender</td>
-</tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>address</td>
-<td>-------</td>
-<td>result</td>
-<td>The newly generated wallet address</td>
-</tr>
-<tr>
-<td>index</td>
-<td>-------</td>
-<td>result</td>
-<td>number of generated sort</td>
-</tr>
-<tr>
-<td>private_key</td>
-<td>-------</td>
-<td>result</td>
-<td>private key of address</td>
-</tr>
-<tr>
-<td>pub_key</td>
-<td>-------</td>
-<td>result</td>
-<td>public key of address</td>
-</tr>
-<tr>
-<td>wif</td>
-<td>-------</td>
-<td>result</td>
-<td>other format private key of address</td>
-</tr>
-</tbody></table>
-<h2 id='getaddressinfo'>GetAddressInfo</h2><h3 id='simple-type-201-protocol'>Simple Type -201 Protocol</h3>
-<p>Type -201 Protocol is used to get detail info of a address 
-generated by mnemonic words.</p>
-<h3 id='websocket-request-message-type-201'>Websocket Request: Message Type -201</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-201</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>index</td>
+<td>h</td>
 <td>-------</td>
 <td>data</td>
-<td>number of generated sort with mnemonic words</td>
+<td>the hash of r used to lock a HTLC.</td>
 </tr>
-</tbody></table>
-<h3 id='websocket-response-message-type-201'>Websocket Response: Message Type -201</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-201</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"mfstT4mnj9AsT6XRKf6MWbFC2Ae99oMJf6"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"index"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"private_key"</span><span class="p">:</span><span class="s2">"0c379ade77ceefbc2b54ee76bab7d483a4dd37ebb8a3fc6f91ae6d01e2084bc5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="s2">"03c285a23081ea778b38e4fa4e870a9a2c0de2b526f6c915a62091bbe0e5b2c50d"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"wif"</span><span class="p">:</span><span class="s2">"cMzT53SEiF1PkoJaxp44pA8yhLFkqbRc9AWRZDyBTmHgnipdJ8zs"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
+<td>expiry_time</td>
 <td>-------</td>
-<td>body</td>
-<td>true or false</td>
+<td>data</td>
+<td>expiry time.</td>
 </tr>
 <tr>
-<td>from</td>
+<td>description</td>
 <td>-------</td>
-<td>body</td>
-<td>sender</td>
+<td>data</td>
+<td>short memo.</td>
 </tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>address</td>
-<td>-------</td>
-<td>result</td>
-<td>The newly generated wallet address</td>
-</tr>
-<tr>
-<td>index</td>
-<td>-------</td>
-<td>result</td>
-<td>number of generated sort</td>
-</tr>
-<tr>
-<td>private_key</td>
-<td>-------</td>
-<td>result</td>
-<td>private key of address</td>
-</tr>
-<tr>
-<td>pub_key</td>
-<td>-------</td>
-<td>result</td>
-<td>public key of address</td>
-</tr>
-<tr>
-<td>wif</td>
-<td>-------</td>
-<td>result</td>
-<td>other format private key of address</td>
-</tr>
-</tbody></table>
-<h2 id='invoice'>Invoice</h2><h3 id='simple-type-4003-protocol'>Simple Type -4003 Protocol</h3>
-<p>Display an invoice for a payment.</p>
-<h3 id='websocket-request-message-type-4003'>Websocket Request: Message Type -4003</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-4003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">121</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"recipient_peer_id"</span><span class="p">:</span><span class="s2">"710f4d8e1c5a2fe9dd4337a43ae4d5719369d6ac8da184f5aea336ecb71a9585"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>property_id</td>
 <td>-------</td>
@@ -2329,11 +2144,105 @@ generated by mnemonic words.</p>
 <td>data</td>
 <td>amount of transfer</td>
 </tr>
+</tbody></table>
+<h3 id='websocket-response-message-type-110402'>Websocket Response: Message Type 110402</h3>
+<blockquote>
+<p>OBD Responses:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-110402</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">{</span><span class="w"> 
+        </span><span class="s2">"invoice"</span><span class="p">:</span><span class="s2">"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<table><thead>
 <tr>
-<td>recipient_peer_id</td>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invoice</td>
 <td>-------</td>
 <td>data</td>
-<td>peer id of receiever</td>
+<td>the invoice string encoded by beth32.</td>
+</tr>
+</tbody></table>
+<h2 id='payinvoice'>payInvoice</h2><h3 id='simple-type-100401-protocol'>Simple Type -100401 Protocol</h3>
+<p>Pay an invoice. This protocol is the first step of a payment, which seeks a full path of nodes, decide which path is the optimistic one, in terms of hops, node&#39;s histroy service quility, and fees.</p>
+<h3 id='websocket-request-message-type-100401'>Websocket Request: Message Type -100401</h3>
+<blockquote>
+<p>Request:
+<code>json
+{
+    &quot;type&quot;:-100401,
+    &quot;data&quot;{
+        &quot;invoice&quot;:&quot;obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4&quot;
+    }
+}
+</code></p>
+</blockquote>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invoice</td>
+<td>-------</td>
+<td>data</td>
+<td>the invoice string encoded by beth32.</td>
+</tr>
+</tbody></table>
+<h3 id='websocket-response-message-type-110401'>Websocket Response: Message Type -110401</h3>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-110401</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/3001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"min_cltv_expiry"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next_node_peerId"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"routing_packet"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>min_cltv_expiry</td>
+<td>-------</td>
+<td>result</td>
+<td>min cltv expiry.</td>
+</tr>
+<tr>
+<td>next_node_peerId</td>
+<td>-------</td>
+<td>result</td>
+<td>next hop.</td>
+</tr>
+<tr>
+<td>routing_packet</td>
+<td>-------</td>
+<td>result</td>
+<td>routing packet.</td>
 </tr>
 </tbody></table>
 <h2 id='addhtlc'>addHTLC</h2><h3 id='simple-type-40-protocol'>Simple Type -40 Protocol</h3>
