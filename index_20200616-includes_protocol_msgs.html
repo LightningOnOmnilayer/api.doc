@@ -2176,17 +2176,15 @@ address   | ------- |   result  | The newly generated wallet address
 <p>Pay an invoice. This protocol is the first step of a payment, which seeks a full path of nodes, decide which path is the optimistic one, in terms of hops, node&#39;s histroy service quility, and fees.</p>
 <h3 id='websocket-request-message-type-100401'>Websocket Request: Message Type -100401</h3>
 <blockquote>
-<p>Request:
-<code>json
-{
-    &quot;type&quot;:-100401,
-    &quot;data&quot;{
-        &quot;invoice&quot;:&quot;obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4&quot;
-    }
-}
-</code></p>
+<p>Request:</p>
 </blockquote>
-
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100401</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">{</span><span class="w">
+        </span><span class="s2">"invoice"</span><span class="p">:</span><span class="s2">"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Parameter</th>
