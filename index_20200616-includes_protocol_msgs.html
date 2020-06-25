@@ -299,31 +299,16 @@
                     <a href="#addhtlc" class="toc-h2 toc-link" data-title="addHTLC">addHTLC</a>
                   </li>
                   <li>
-                    <a href="#htlc-signed" class="toc-h2 toc-link" data-title="HTLC Signed">HTLC Signed</a>
+                    <a href="#htlcsigned" class="toc-h2 toc-link" data-title="HTLCSigned">HTLCSigned</a>
                   </li>
                   <li>
-                    <a href="#sendh2middleman" class="toc-h2 toc-link" data-title="SendH2Middleman">SendH2Middleman</a>
+                    <a href="#forwardr" class="toc-h2 toc-link" data-title="ForwardR">ForwardR</a>
                   </li>
                   <li>
-                    <a href="#responsebymiddleman" class="toc-h2 toc-link" data-title="ResponseByMiddleman">ResponseByMiddleman</a>
+                    <a href="#closehtlc" class="toc-h2 toc-link" data-title="closeHTLC">closeHTLC</a>
                   </li>
                   <li>
-                    <a href="#createhtlcctx" class="toc-h2 toc-link" data-title="CreateHtlcCTx">CreateHtlcCTx</a>
-                  </li>
-                  <li>
-                    <a href="#sendh2nextnode" class="toc-h2 toc-link" data-title="SendH2NextNode">SendH2NextNode</a>
-                  </li>
-                  <li>
-                    <a href="#forward-r" class="toc-h2 toc-link" data-title="Forward R">Forward R</a>
-                  </li>
-                  <li>
-                    <a href="#verify-r-and-create-htlc-tx" class="toc-h2 toc-link" data-title="Verify R and Create HTLC Tx">Verify R and Create HTLC Tx</a>
-                  </li>
-                  <li>
-                    <a href="#closehtlc" class="toc-h2 toc-link" data-title="CloseHTLC">CloseHTLC</a>
-                  </li>
-                  <li>
-                    <a href="#closehtlc-signed" class="toc-h2 toc-link" data-title="CloseHTLC Signed">CloseHTLC Signed</a>
+                    <a href="#closehtlcsigned" class="toc-h2 toc-link" data-title="closeHTLCSigned">closeHTLCSigned</a>
                   </li>
                   <li>
                     <a href="#closehtlcchannel" class="toc-h2 toc-link" data-title="CloseHtlcChannel">CloseHtlcChannel</a>
@@ -2044,51 +2029,7 @@ curr_temp_address：
 <td>true or false</td>
 </tr>
 </tbody></table>
-<h1 id='htlc-payment'>HTLC Payment</h1>
-<!-- currently deprecated, 2020-06-17-->
-
-<!-- 
-## NewAddress
-
-### Simple Type 1001 Protocol
-
-Type 1001 Protocol is used to create a new address by omni core rpc command.
-
-### Websocket Request: Message Type 1001
-
-> Request:
-
-```json
-{
-    "type": 1001
-}
-```
-
-This message has no arguments.
-
-### Websocket Response: Message Type 1001
-
-> OBD Responses:
-
-```json
-{
-    "type":1001,
-    "status":true,
-    "from":"434ecdd4-a8e4-4771-b194-c23dd55fcd20",
-    "to":"434ecdd4-a8e4-4771-b194-c23dd55fcd20",
-    "result":"mpzfjjB1Yv2BSrfeLAjDLrJzxzh4LYFe7x"
-}
-```
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-status    | ------- |   body    | true or false
-from      | ------- |   body    | sender
-to        | ------- |   body    | receiever
-address   | ------- |   result  | The newly generated wallet address
-
--->
-<h2 id='addinvoice'>addInvoice</h2><h3 id='simple-type-100402-protocol'>Simple Type -100402 Protocol</h3>
+<h1 id='htlc-payment'>HTLC Payment</h1><h2 id='addinvoice'>addInvoice</h2><h3 id='simple-type-100402-protocol'>Simple Type -100402 Protocol</h3>
 <p>create an invoice.</p>
 <h3 id='websocket-request-message-type-100402'>Websocket Request: Message Type -100402</h3>
 <blockquote>
@@ -2243,21 +2184,79 @@ address   | ------- |   result  | The newly generated wallet address
 <td>routing packet.</td>
 </tr>
 </tbody></table>
-<h2 id='addhtlc'>addHTLC</h2><h3 id='simple-type-40-protocol'>Simple Type -40 Protocol</h3>
-<p>Create a HTLC.</p>
-<h3 id='websocket-request-message-type-40'>Websocket Request: Message Type -40</h3>
+<h2 id='addhtlc'>addHTLC</h2><h3 id='simple-type-100040-protocol'>Simple Type -100040 Protocol</h3>
+<p>Add an HTLC.</p>
+
+<!-- right -->
+
+<blockquote>
+<p>current stage before adding a new HTLC:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>H and R
+<span class="o">{</span>
+        <span class="s2">"address"</span>:<span class="s2">"mgxXToovRhRictkY1oDZfPn36Kx6hu2rtV"</span>,
+        <span class="s2">"index"</span>:16,
+        <span class="s2">"pub_key"</span>:<span class="s2">"035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933"</span>,
+        <span class="s2">"wif"</span>:<span class="s2">"cUAa45B7TWp6FbK6N15WLq5pXDCKUJj98RSXm4QTV5WsQNeF6tmn"</span>
+<span class="o">}</span>
+alice<span class="s1">'s previous temp rsmc 
+
+{
+        "address":"mhAMwJW2bMtJ5iW4dp1EUT8nGi9LF1PXgj",
+        "index":6,
+        "pub_key":"03985e8880628058da7c49b0968e4e7d2819240b60255a1c9b5f2407a4056b5f54",
+        "wif":"cTLc9tx1Hihqfu6jXXWQ8pFeiQb5aJ8ck88ik8RJuutP95dqTuqo"
+}
+alice'</span>s current rsmc
+<span class="o">{</span>
+        <span class="s2">"address"</span>:<span class="s2">"mirZzX7MRF87hpw7ST3JS8RvnKh7EZ1P4s"</span>,
+        <span class="s2">"index"</span>:13,
+        <span class="s2">"pub_key"</span>:<span class="s2">"0253a778da18945a91fccfa40ad09ac4d276991ab70ad6e5b1009b68434d57b8b3"</span>,
+        <span class="s2">"wif"</span>:<span class="s2">"cNwgTtsRaWdDWdNVA4aPEoumS9prpYirE3Q1BuARrphjH9THVeH2"</span>
+<span class="o">}</span>
+alice<span class="s1">'s htlc
+{
+        "address":"mudzJLK5ncD1awLbZf2FhWJgbfe3sWKDMj",
+        "index":14,
+        "pub_key":"03f40b44a99393408d705806b09531c47d042ab332e7cd59c39e2aa67df0bc926c",
+        "wif":"cRVqzokvBvtzw91Nv4zkvmad7uRBf5eMfr5t5EDL7q2U6VxBTmoy"
+}
+alice'</span>s ht1a
+<span class="o">{</span>
+        <span class="s2">"address"</span>:<span class="s2">"mj8Pressjgn2mfzPTB2G7U2unvtVmSh6Aa"</span>,
+        <span class="s2">"index"</span>:15,
+        <span class="s2">"pub_key"</span>:<span class="s2">"036266f3a46ef8e413211c55d9c48a54b237ce5479470535ddc82880e19740f7a8"</span>,
+        <span class="s2">"wif"</span>:<span class="s2">"cUxBiu8jVgk9gDhdgpF3S4wFrpFBkAFujCEVgCRYBsQaTDtUdVMb"</span>
+<span class="o">}</span>
+</code></pre><h3 id='websocket-request-message-type-100040'>Websocket Request: Message Type -100040</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-40</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"recipient_peer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100040</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_node_peer_id"</span><span class="p">:</span><span class="s2">"Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_user_peer_id"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">  
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">137</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memo"</span><span class="p">:</span><span class="s2">"memo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"h"</span><span class="p">:</span><span class="s2">"035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"routing_packet"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cltv_expiry"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cVV22tLgBbLv1K1uW6z2doR4Copat1mejjND1jtW8CVkRLUSpPxf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cTLc9tx1Hihqfu6jXXWQ8pFeiQb5aJ8ck88ik8RJuutP95dqTuqo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"0253a778da18945a91fccfa40ad09ac4d276991ab70ad6e5b1009b68434d57b8b3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cNwgTtsRaWdDWdNVA4aPEoumS9prpYirE3Q1BuARrphjH9THVeH2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03f40b44a99393408d705806b09531c47d042ab332e7cd59c39e2aa67df0bc926c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cRVqzokvBvtzw91Nv4zkvmad7uRBf5eMfr5t5EDL7q2U6VxBTmoy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_for_ht1a_pub_key"</span><span class="p">:</span><span class="s2">"036266f3a46ef8e413211c55d9c48a54b237ce5479470535ddc82880e19740f7a8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_for_ht1a_private_key"</span><span class="p">:</span><span class="s2">"cUxBiu8jVgk9gDhdgpF3S4wFrpFBkAFujCEVgCRYBsQaTDtUdVMb"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
+<p>Payer requests his OBD by sending the created pub/priv keys and other info about the payee.  </p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2270,35 +2269,108 @@ address   | ------- |   result  | The newly generated wallet address
 <td>property_id</td>
 <td>-------</td>
 <td>data</td>
-<td>assets id</td>
+<td>assets id.</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>-------</td>
 <td>data</td>
-<td>amount of transfer</td>
+<td>amount of transfer.</td>
 </tr>
 <tr>
-<td>recipient_peer_id</td>
+<td>memo</td>
 <td>-------</td>
 <td>data</td>
-<td>peer id of receiever</td>
+<td>short memo for this tranfer.</td>
+</tr>
+<tr>
+<td>h</td>
+<td>-------</td>
+<td>data</td>
+<td>preimage of r to Lock a HTLC.</td>
+</tr>
+<tr>
+<td>routing_packet</td>
+<td>-------</td>
+<td>data</td>
+<td>routing info of next hop.</td>
+</tr>
+<tr>
+<td>cltv_expiry</td>
+<td>-------</td>
+<td>data</td>
+<td>cltv expiry.</td>
+</tr>
+<tr>
+<td>channel_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>payer&#39;s private key of channel address.</td>
+</tr>
+<tr>
+<td>last_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>previous private key of temporary multi-sig address that stores money of pay-to-rsmc.</td>
+</tr>
+<tr>
+<td>curr_rsmc_temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>rsmc temp address for current HTLC.</td>
+</tr>
+<tr>
+<td>curr_rsmc_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of rsmc temp address for current HTLC.</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>pub key of htlc temp address.</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of htlc temp address.</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_for_ht1a_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>pub key of ht1a temp address.</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_for_ht1a_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>private key of ht1a temp address.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-40'>Websocket Response: Message Type -40</h3>
+<h3 id='websocket-response-message-type-110040'>Websocket Response: Message Type -110040</h3>
 <blockquote>
 <p>OBD Responses:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-40</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"approval"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-110040</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cltv_expiry"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commitment_tx_hash"</span><span class="p">:</span><span class="s2">"4a5854c6cc0d1930500e05353aff416b8cdd1859dc2c2af44b46089e23938023"</span><span class="p">,</span><span class="w">            </span><span class="s2">"counterparty_tx_hex"</span><span class="p">:</span><span class="s2">"0200000002ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cdeb020000009200473044022042a2b6efa34c52409cdbd4971526824830e6fb1d49a7747634f9ab5ece6f28ad02206f40b96b2f13144eee9e2d686eaa7e880e8da29999c5a840662b04f221e537ad010047522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aefffffffffcabe9c10966c7640e41fcbc1e597991d4da4edc2f6e257c6159c1d7c34a8b8200000000920047304402200f7c74406f0c6553fd141caf19305c42d9dcdf487dda56e30144a02325a76ebd02205eba8119193b05fa1829c4d3117c9582987347e7a2e5cdccd7cd151a2a8e5128010047522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03d7470000000000001976a9147a019f584f6a65d114d5f17264c9eb32f763d72c88ac0000000000000000166a146f6d6e6900000000000000890000000011e1a30022020000000000001976a914ceb05f96f5b3cbd12d7bff5f9f45252b3f67bf7088ac00000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_for_ht1a_pub_key"</span><span class="p">:</span><span class="s2">"036266f3a46ef8e413211c55d9c48a54b237ce5479470535ddc82880e19740f7a8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03f40b44a99393408d705806b09531c47d042ab332e7cd59c39e2aa67df0bc926c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"0253a778da18945a91fccfa40ad09ac4d276991ab70ad6e5b1009b68434d57b8b3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"h"</span><span class="p">:</span><span class="s2">"035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933"</span><span class="p">,</span><span class="w">           </span><span class="s2">"htlc_tx_hex"</span><span class="p">:</span><span class="s2">"0200000001e062124a8f5476cd4cff020894525d360f6d0ab4a8d2b357a90f328c3dabe2d900000000920047304402204709f197d1def131fdee07957ff110fca149a33db87ec8e59032000034668c99022009e0dfe7af7c0b065c1770e94f7733684b9df1f000ad85d105824238b0e8d232010047522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03344700000000000017a9147abd515aab0f074a6ae0b993e75f10107dd382bb870000000000000000166a146f6d6e6900000000000000890000000017d784001c0200000000000017a9147abd515aab0f074a6ae0b993e75f10107dd382bb8700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cTLc9tx1Hihqfu6jXXWQ8pFeiQb5aJ8ck88ik8RJuutP95dqTuqo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memo"</span><span class="p">:</span><span class="s2">"memo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"routing_packet"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">            </span><span class="s2">"rsmc_tx_hex"</span><span class="p">:</span><span class="s2">"0200000001c3328e96db5081329455b362d5e96237c760d1e65b67d8abadedf53949e1e2a900000000920047304402205868611dc0c9437adc3fc6ef9e2b14b1d8449f66c8d20758a58287733118324f0220454da7c12c60ae0639af6fd0d4f87cf8608318bd00ecd75e455efbad8d479b08010047522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03344700000000000017a9143e19c938d5330b5d5a244573c778acfaf7e674c3870000000000000000166a146f6d6e690000000000000089000000004d7c6d001c0200000000000017a9143e19c938d5330b5d5a244573c778acfaf7e674c38700000000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2335,37 +2407,131 @@ address   | ------- |   result  | The newly generated wallet address
 <td>amount of transfer</td>
 </tr>
 <tr>
-<td>approval</td>
+<td>channel_id</td>
 <td>-------</td>
 <td>result</td>
-<td>true or false</td>
+<td>channel id</td>
 </tr>
 <tr>
-<td>property_id</td>
+<td>cltv_expiry</td>
 <td>-------</td>
 <td>result</td>
-<td>assets id</td>
+<td>cltv expiry</td>
 </tr>
 <tr>
-<td>request_hash</td>
+<td>commitment_tx_hash</td>
 <td>-------</td>
 <td>result</td>
-<td>hash of this HTLC request</td>
+<td>cltv expiry</td>
+</tr>
+<tr>
+<td>counterparty_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td>cltv expiry</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_for_ht1a_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>pub key of curr temp address for ht1a</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>pub key of curr htlc temp address</td>
+</tr>
+<tr>
+<td>curr_rsmc_temp_address_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>pub key of curr rsmc temp address</td>
+</tr>
+<tr>
+<td>h</td>
+<td>-------</td>
+<td>result</td>
+<td>preimage of r to Lock a HTLC.</td>
+</tr>
+<tr>
+<td>htlc_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td>hex of the htlc transaction.</td>
+</tr>
+<tr>
+<td>last_temp_address_private_key</td>
+<td>-------</td>
+<td>result</td>
+<td>private key of the previous temp address</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>-------</td>
+<td>result</td>
+<td>short memo for this tranfer.</td>
+</tr>
+<tr>
+<td>routing_packet</td>
+<td>-------</td>
+<td>result</td>
+<td>routing info of next hop.</td>
+</tr>
+<tr>
+<td>rsmc_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td>rsmc transaction hex</td>
 </tr>
 </tbody></table>
-<h2 id='htlc-signed'>HTLC Signed</h2><h3 id='simple-type-41-protocol'>Simple Type -41 Protocol</h3>
-<p>Type -41 Protocol is used to response HTLC Payment request.</p>
-<h3 id='websocket-request-message-type-41'>Websocket Request: Message Type -41</h3>
+<h2 id='htlcsigned'>HTLCSigned</h2><h3 id='simple-type-100041-protocol'>Simple Type -100041 Protocol</h3>
+<p>Type -100041 Protocol is used to response an incoming HTLC.</p>
+
+<!-- right -->
+
+<blockquote>
+<p>current stage before signing a new incoming HTLC:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>bob<span class="s1">'s lastest temp  rsmc 
+{
+        "address":"mo9sVgTYnrx1rdxxj3XYswAcUwnQKmGKoN",
+        "index":7,
+        "pub_key":"03b2e7ecc5ff62feb342943a1364f555e8302f507f78c6392c82b9e12c95ccb40b",
+        "wif":"cPnHVbg3ZZoXhvgu5pWSx18zf9Dw5jfp7wMaDEx4JzHd9zqh1etk"
+}
+
+bob'</span>s rsmc
+<span class="o">{</span>
+        <span class="s2">"address"</span>:<span class="s2">"myz18rSHrtZR4DSHGy1WUPTK1QCrsxJJow"</span>,
+        <span class="s2">"index"</span>:25,
+        <span class="s2">"pub_key"</span>:<span class="s2">"0360917f53381f2b05bb3ec299b6bf7e7446a5c6ed287d65cfc6e38858c3800172"</span>,
+        <span class="s2">"wif"</span>:<span class="s2">"cTWtQC6WWosXNaqFbnotZdqHi5Y74vEARaqGoqPHX3285QKdz1wD"</span>
+    <span class="o">}</span>
+
+bob<span class="s1">'s htlc
+{
+        "address":"n39P3nHJbS4BMm8tuMwoFmrfgMBQzZG3TJ",
+        "index":26,
+        "pub_key":"0218da225a18821ec4353cd4d4c10735e5ce56552166c072e43d977bb50da30f18",
+        "wif":"cUYShY9qJdX3S1d74dK9Q3QYAypKPMVG9gYvB3iZe3J9GyLCG9G6"
+}
+</span></code></pre><h3 id='websocket-request-message-type-100041'>Websocket Request: Message Type -100041</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-41</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"approval"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100041</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_node_peer_id"</span><span class="p">:</span><span class="s2">"Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_user_peer_id"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"alice_commitment_tx_hash"</span><span class="p">:</span><span class="s2">"4a5854c6cc0d1930500e05353aff416b8cdd1859dc2c2af44b46089e23938023"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cPnHVbg3ZZoXhvgu5pWSx18zf9Dw5jfp7wMaDEx4JzHd9zqh1etk"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"0360917f53381f2b05bb3ec299b6bf7e7446a5c6ed287d65cfc6e38858c3800172"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cTWtQC6WWosXNaqFbnotZdqHi5Y74vEARaqGoqPHX3285QKdz1wD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"0218da225a18821ec4353cd4d4c10735e5ce56552166c072e43d977bb50da30f18"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cUYShY9qJdX3S1d74dK9Q3QYAypKPMVG9gYvB3iZe3J9GyLCG9G6"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2378,28 +2544,46 @@ address   | ------- |   result  | The newly generated wallet address
 </tr>
 </thead><tbody>
 <tr>
-<td>request_hash</td>
+<td>alice_commitment_tx_hash</td>
 <td>-------</td>
 <td>data</td>
-<td>hash of this HTLC request</td>
+<td>payer&#39;s commitment tx hash.</td>
 </tr>
 <tr>
-<td>property_id</td>
+<td>channel_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td>assets id</td>
+<td>payee&#39;s private key of the channel address.</td>
 </tr>
 <tr>
-<td>amount</td>
+<td>last_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td>amount of transfer</td>
+<td>private key of payee&#39;s last temp address.</td>
 </tr>
 <tr>
-<td>approval</td>
+<td>curr_rsmc_temp_address_pub_key</td>
 <td>-------</td>
 <td>data</td>
-<td>true or false</td>
+<td>payee&#39;s pub key of current rsmc temp address.</td>
+</tr>
+<tr>
+<td>curr_rsmc_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>payee&#39;s private key of current rsmc temp address.</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_pub_key</td>
+<td>-------</td>
+<td>data</td>
+<td>payee&#39;s pub key of current htlc temp address.</td>
+</tr>
+<tr>
+<td>curr_htlc_temp_address_private_key</td>
+<td>-------</td>
+<td>data</td>
+<td>payee&#39;s private key of current htlc temp address.</td>
 </tr>
 </tbody></table>
 <h3 id='websocket-response-message-type-41'>Websocket Response: Message Type -41</h3>
@@ -2407,15 +2591,49 @@ address   | ------- |   result  | The newly generated wallet address
 <p>OBD Responses:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-41</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"approval"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83519233492eb05ddd547757f2c3d151ad9392b2ebf48fc1a88e07e61dd82a45"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-110041</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"amount_to_counterparty"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_to_htlc"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount_to_rsmc"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"begin_block_height"</span><span class="p">:</span><span class="mi">1764129</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2020-06-09T16:17:12.2961533+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_hash"</span><span class="p">:</span><span class="s2">"4a5854c6cc0d1930500e05353aff416b8cdd1859dc2c2af44b46089e23938023"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">        </span><span class="s2">"from_counterparty_side_for_me_tx_hex"</span><span class="p">:</span><span class="s2">"0200000001c3328e96db5081329455b362d5e96237c760d1e65b67d8abadedf53949e1e2a900000000d900473044022027a4d0d62644f35397259b935fb1b5a12e7fb5ba4d2ecb95c6594462b03f0bf1022055a667b71720c1d69f0cc9276e73abbe037aaf4d273c4182d727326e87093fbd0147304402204b82eae5542ed8359463cef4fbb195b5c0b0f5e7f48fa359342d041ae163254702207ce784d75958d20137b0990cd112d2a4156c2fe34a5b92f7db31262de64e01000147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03344700000000000017a9143990d4cce9619dcaf5bb619fb19f36d0f43c38ac870000000000000000166a146f6d6e6900000000000000890000000011e1a3001c0200000000000017a9143990d4cce9619dcaf5bb619fb19f36d0f43c38ac8700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_cltv_expiry"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_h"</span><span class="p">:</span><span class="s2">"035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_multi_address"</span><span class="p">:</span><span class="s2">"2N4SDDibGaVVxggNTs9wufh22qQH39Tj3gq"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_multi_address_script_pub_key"</span><span class="p">:</span><span class="s2">"a9147abd515aab0f074a6ae0b993e75f10107dd382bb87"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_r"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">        </span><span class="s2">"htlc_redeem_script"</span><span class="p">:</span><span class="s2">"522103f40b44a99393408d705806b09531c47d042ab332e7cd59c39e2aa67df0bc926c21028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52ae"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_routing_packet"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_sender"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03f40b44a99393408d705806b09531c47d042ab332e7cd59c39e2aa67df0bc926c"</span><span class="p">,</span><span class="w">       </span><span class="s2">"htlc_tx_hex"</span><span class="p">:</span><span class="s2">"0200000001e062124a8f5476cd4cff020894525d360f6d0ab4a8d2b357a90f328c3dabe2d900000000d90047304402204709f197d1def131fdee07957ff110fca149a33db87ec8e59032000034668c99022009e0dfe7af7c0b065c1770e94f7733684b9df1f000ad85d105824238b0e8d2320147304402204875292df9ca67b03c5f1337574a4eb65814077097779ed6423ad64e2cc4722c02204936d4b6b923e004fcea4d4746b29a8e409d2b89d7232c938cbfe814d35c378d0147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03344700000000000017a9147abd515aab0f074a6ae0b993e75f10107dd382bb870000000000000000166a146f6d6e6900000000000000890000000017d784001c0200000000000017a9147abd515aab0f074a6ae0b993e75f10107dd382bb8700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"htlc_txid"</span><span class="p">:</span><span class="s2">"3f3a44ce9e42b6e38b9dc6aad770ab4e453211427d6e2c1cb169898fc7d0e871"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_amount"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_txid"</span><span class="p">:</span><span class="s2">"ebcdb6658a38cd5e072646fc51d8061571b5df59a66c4898a3cf4b86b19650ea"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"input_vout"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_commitment_tx_id"</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_edit_time"</span><span class="p">:</span><span class="s2">"2020-06-09T16:17:12.2961533+08:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_hash"</span><span class="p">:</span><span class="s2">"1ea1bf809c292a594d40fff5a701b7544cf24478522d77af7fe0d045b7ba89e0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">137</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rsmc_input_txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rsmc_multi_address"</span><span class="p">:</span><span class="s2">"2MxuampceMui3WgELn4SoXxohNvdyvdQebn"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rsmc_multi_address_script_pub_key"</span><span class="p">:</span><span class="s2">"a9143e19c938d5330b5d5a244573c778acfaf7e674c387"</span><span class="p">,</span><span class="w">           </span><span class="s2">"rsmc_redeem_script"</span><span class="p">:</span><span class="s2">"52210253a778da18945a91fccfa40ad09ac4d276991ab70ad6e5b1009b68434d57b8b321028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52ae"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"0253a778da18945a91fccfa40ad09ac4d276991ab70ad6e5b1009b68434d57b8b3"</span><span class="p">,</span><span class="w">               </span><span class="s2">"rsmc_tx_hex"</span><span class="p">:</span><span class="s2">"0200000001c3328e96db5081329455b362d5e96237c760d1e65b67d8abadedf53949e1e2a900000000d90047304402205868611dc0c9437adc3fc6ef9e2b14b1d8449f66c8d20758a58287733118324f0220454da7c12c60ae0639af6fd0d4f87cf8608318bd00ecd75e455efbad8d479b0801473044022071b1ab8ce14e612a595741cb02bba57d3ab2c114c8fc0fe9eb2be6baeae11d54022003e9979b46f45a6629f50028563cb59b319a28569afb462bf5350ab7ffa941f40147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03344700000000000017a9143e19c938d5330b5d5a244573c778acfaf7e674c3870000000000000000166a146f6d6e690000000000000089000000004d7c6d001c0200000000000017a9143e19c938d5330b5d5a244573c778acfaf7e674c38700000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rsmc_txid"</span><span class="p">:</span><span class="s2">"2904a9967cbbb5a43a0376f50342e75555d1a71986bbc6cff26142f2309a12a1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"send_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sign_at"</span><span class="p">:</span><span class="s2">"2020-06-09T16:20:15.1304179+08:00"</span><span class="p">,</span><span class="w">      </span><span class="s2">"to_counterparty_tx_hex"</span><span class="p">:</span><span class="s2">"0200000002ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cdeb02000000d900473044022042a2b6efa34c52409cdbd4971526824830e6fb1d49a7747634f9ab5ece6f28ad02206f40b96b2f13144eee9e2d686eaa7e880e8da29999c5a840662b04f221e537ad0147304402204151fdb70c4ad5b4732268d9ab0f9c6fbb1539322224ffa277f7f1f3e4573a1e022034cee39ccacbaffaa2d85e1361290a3ab9a281b51f9fc70e098c230d0e3f58140147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aefffffffffcabe9c10966c7640e41fcbc1e597991d4da4edc2f6e257c6159c1d7c34a8b8200000000d90047304402200f7c74406f0c6553fd141caf19305c42d9dcdf487dda56e30144a02325a76ebd02205eba8119193b05fa1829c4d3117c9582987347e7a2e5cdccd7cd151a2a8e51280147304402201b0034af1fdb7c4134eb32a01bc605e6010101eb39cb4dc53e7f4c8f1dfaaa7302201be53089f8fae856404e31a73e60acf744d05eef188bf0e00f1180b83a0761380147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03d7470000000000001976a9147a019f584f6a65d114d5f17264c9eb32f763d72c88ac0000000000000000166a146f6d6e6900000000000000890000000011e1a30022020000000000001976a914ceb05f96f5b3cbd12d7bff5f9f45252b3f67bf7088ac00000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"to_counterparty_txid"</span><span class="p">:</span><span class="s2">"4fa372d11bb2cbb5637e67fe2e68b9b21265ac04456a921d9aa599ff12dd72a1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tx_type"</span><span class="p">:</span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2452,491 +2670,177 @@ address   | ------- |   result  | The newly generated wallet address
 <td>true or false</td>
 </tr>
 <tr>
-<td>h</td>
+<td>amount_to_counterparty</td>
 <td>-------</td>
 <td>result</td>
-<td>Hash_Preimage_R</td>
+<td>portion of this payment to the counterparty.</td>
 </tr>
 <tr>
-<td>id</td>
+<td>amount_to_htlc</td>
 <td>-------</td>
 <td>result</td>
-<td></td>
+<td>portion of this payment to the HTLC temporary address.</td>
 </tr>
 <tr>
-<td>request_hash</td>
+<td>amount_to_rsmc</td>
 <td>-------</td>
 <td>result</td>
-<td>hash of this HTLC request</td>
+<td>portion of this payment to the RSMC temporary address.</td>
+</tr>
+<tr>
+<td>begin_block_height</td>
+<td>-------</td>
+<td>result</td>
+<td>current block height using in timing.</td>
 </tr>
 </tbody></table>
-<h2 id='sendh2middleman'>SendH2Middleman</h2><h3 id='simple-type-42-protocol-deprecated'>Simple Type -42 Protocol (Deprecated)</h3>
-<p>Type -42 Protocol is used for looking for a path to transfer to target 
-and Send H to middleman.</p>
-<h3 id='websocket-request-message-type-42'>Websocket Request: Message Type -42</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-42</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"h"</span><span class="p">:</span><span class="s2">"83519233492eb05ddd547757f2c3d151ad9392b2ebf48fc1a88e07e61dd82a45"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>h</td>
-<td>-------</td>
-<td>data</td>
-<td>Hash of the preimage R</td>
-</tr>
-</tbody></table>
-<h3 id='websocket-response-message-type-42'>Websocket Response: Message Type -42</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-42</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83519233492eb05ddd547757f2c3d151ad9392b2ebf48fc1a88e07e61dd82a45"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>-------</td>
-<td>body</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>from</td>
-<td>-------</td>
-<td>body</td>
-<td>sender</td>
-</tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>h</td>
-<td>-------</td>
-<td>result</td>
-<td>Hash of the preimage R</td>
-</tr>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>result</td>
-<td>hash of this HTLC request</td>
-</tr>
-</tbody></table>
-<h2 id='responsebymiddleman'>ResponseByMiddleman</h2><h3 id='simple-type-44-protocol-deprecated'>Simple Type -44 Protocol(Deprecated)</h3>
-<p>Type -44 Protocol is used to response a routing request by middleman. </p>
-<h3 id='websocket-request-message-type-44'>Websocket Request: Message Type -44</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-44</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"approval"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cTr7SHQ7FR6Ej8ZU8vDpbt3y9GuF3hnBqn81Tv9Tdi5TeakqKavt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cURFDvYsF49hazcGK3i4344H1r3pSjHwdqL2yQ85qxdzpub3rozx"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03c5d2756dea6d6259080d7e1ab3f8597e7e9a83b5667eff70ea49ca3addb6f293"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cN3o7Se2qcSq7Z3wYL9DLxn1cr5Du5rmmxsQeoeF6LC7yXcZZotN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03d2edfe1f0a527f70473dbacb386e4e6a9cc0ea0cabf71f6c0a3dd516a8e6099f"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cPRy5pB8Ek2DabfQ74x8giqDdPtwTvptgRnq8qEP7KduzdmMFmJM"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>data</td>
-<td>hash of this HTLC request</td>
-</tr>
-<tr>
-<td>approval</td>
-<td>-------</td>
-<td>data</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>channel_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>last_temp_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_rsmc_temp_address_pub_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_rsmc_temp_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_htlc_temp_address_pub_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_htlc_temp_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id='websocket-response-message-type-44'>Websocket Response: Message Type -44</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-44</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"approval"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>-------</td>
-<td>body</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>from</td>
-<td>-------</td>
-<td>body</td>
-<td>sender</td>
-</tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>approval</td>
-<td>-------</td>
-<td>result</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>result</td>
-<td>hash of this HTLC request</td>
-</tr>
-</tbody></table>
-<h2 id='createhtlcctx'>CreateHtlcCTx</h2><h3 id='simple-type-45-protocol'>Simple Type -45 Protocol</h3>
-<p>Type -45 Protocol is used to create HTLC commitment transactions.</p>
-<h3 id='websocket-request-message-type-45'>Websocket Request: Message Type -45</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cToieuvo3JjkEUKa3tjd6J98RXKDTo1d2hUSVgKpZ1KwBvGhQFL8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cVsKRbL4ijWULmbU78nghKYL79GLYo7q9ccgmSR5c6zJWKfEEdJN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03dab6d7b005e8b15a2dc8d7005b45111876813c24a54ff15316a76ba376cf020f"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cSYJ3vwcgMPDqegXFJ2YgCYNNgKS9tNxCaRkZnn3ourQSdGNkJCk"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"03d16de84b72460055b18e6d572b49c4ab0e1d889c0bf0705becb22e16b65ca916"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cR7wXNwPjMrDCpnJoinTiMK384YyKNTfyctLQ2CCdQobdanEqgAs"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_for_ht1a_pub_key"</span><span class="p">:</span><span class="s2">"030cb3034f7374d5bb614e27169df99d346748a1a7a365a27b1138f5db7ad2b0f3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_for_ht1a_private_key"</span><span class="p">:</span><span class="s2">"cNzNyejXtgC4ySXCVXqa6egVinYLDtGhkRkGd271ZW6AJrVKYZ2w"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>data</td>
-<td>hash of this HTLC request</td>
-</tr>
-<tr>
-<td>channel_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>last_temp_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_rsmc_temp_address_pub_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_rsmc_temp_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_htlc_temp_address_pub_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_htlc_temp_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_htlc_temp_address_for_ht1a_pub_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_htlc_temp_address_for_ht1a_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id='websocket-response-message-type-45'>Websocket Response: Message Type -45</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7626f2b7207006d6515399c587c09c3bfb5ed3b12f63c12b0d40e634f9dd9a3"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"h_and_r_info_request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>-------</td>
-<td>body</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>from</td>
-<td>-------</td>
-<td>body</td>
-<td>sender</td>
-</tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>h</td>
-<td>-------</td>
-<td>result</td>
-<td>Hash of the preimage R</td>
-</tr>
-<tr>
-<td>h_and_r_info_request_hash</td>
-<td>-------</td>
-<td>result</td>
-<td>hash of this HTLC request</td>
-</tr>
-</tbody></table>
-<h2 id='sendh2nextnode'>SendH2NextNode</h2><h3 id='simple-type-43-protocol'>Simple Type -43 Protocol</h3>
-<p>Type -43 Protocol is used to send the H to next node.</p>
 
-<p><em>Bob (middleman) Send H to Carol (destination)</em></p>
-<h3 id='websocket-request-message-type-43'>Websocket Request: Message Type -43</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-43</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"h"</span><span class="p">:</span><span class="s2">"83519233492eb05ddd547757f2c3d151ad9392b2ebf48fc1a88e07e61dd82a45"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"h_and_r_info_request_hash"</span><span class="p">:</span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>h</td>
-<td>-------</td>
-<td>data</td>
-<td>Hash of the preimage R</td>
-</tr>
-<tr>
-<td>h_and_r_info_request_hash</td>
-<td>-------</td>
-<td>data</td>
-<td>hash of this HTLC request</td>
-</tr>
-</tbody></table>
-<h3 id='websocket-response-message-type-43'>Websocket Response: Message Type -43</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-43</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e7626f2b7207006d6515399c587c09c3bfb5ed3b12f63c12b0d40e634f9dd9a3"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>-------</td>
-<td>body</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>from</td>
-<td>-------</td>
-<td>body</td>
-<td>sender</td>
-</tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>h</td>
-<td>-------</td>
-<td>result</td>
-<td>Hash of the preimage R</td>
-</tr>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>result</td>
-<td>hash of this HTLC request</td>
-</tr>
-</tbody></table>
-<h2 id='forward-r'>Forward R</h2><h3 id='simple-type-46-protocol'>Simple Type -46 Protocol</h3>
-<p>Type -46 Protocol is used to forward R to a node.</p>
+<p>A HTLC has three output: to counterparty, to htlc, to rsmc. The three fields are filled by payee&#39;s obd when constructing HTLC transactions on payee&#39;s obd. The remaining fields are for notifying purpose when obd module developers debug. For wallet developers, these fields shall be ignored.  </p>
+
+<!-- 
+## CreateHtlcCTx
+
+### Simple Type -45 Protocol
+
+Type -45 Protocol is used to create HTLC commitment transactions.
+
+### Websocket Request: Message Type -45
+
+> Request:
+
+```json
+{
+    "type": -45,
+    "data": {
+        "request_hash":"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636",
+        "channel_address_private_key":"cToieuvo3JjkEUKa3tjd6J98RXKDTo1d2hUSVgKpZ1KwBvGhQFL8",
+        "last_temp_address_private_key":"cVsKRbL4ijWULmbU78nghKYL79GLYo7q9ccgmSR5c6zJWKfEEdJN",
+        "curr_rsmc_temp_address_pub_key":"03dab6d7b005e8b15a2dc8d7005b45111876813c24a54ff15316a76ba376cf020f",
+        "curr_rsmc_temp_address_private_key":"cSYJ3vwcgMPDqegXFJ2YgCYNNgKS9tNxCaRkZnn3ourQSdGNkJCk",
+        "curr_htlc_temp_address_pub_key":"03d16de84b72460055b18e6d572b49c4ab0e1d889c0bf0705becb22e16b65ca916",
+        "curr_htlc_temp_address_private_key":"cR7wXNwPjMrDCpnJoinTiMK384YyKNTfyctLQ2CCdQobdanEqgAs",
+        "curr_htlc_temp_address_for_ht1a_pub_key":"030cb3034f7374d5bb614e27169df99d346748a1a7a365a27b1138f5db7ad2b0f3",
+        "curr_htlc_temp_address_for_ht1a_private_key":"cNzNyejXtgC4ySXCVXqa6egVinYLDtGhkRkGd271ZW6AJrVKYZ2w"
+    }
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+request_hash   | ------- |   data    | hash of this HTLC request
+channel_address_private_key         | ------- |   data    | 
+last_temp_address_private_key       | ------- |   data    | 
+curr_rsmc_temp_address_pub_key      | ------- |   data    | 
+curr_rsmc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_private_key  | ------- |   data    | 
+curr_htlc_temp_address_for_ht1a_pub_key      | ------- |   data    | 
+curr_htlc_temp_address_for_ht1a_private_key  | ------- |   data    | 
+
+### Websocket Response: Message Type -45
+
+> OBD Responses:
+
+```json
+{
+    "type": -45, 
+    "status": true, 
+    "from": "<user_id>", 
+    "to": "<user_id>", 
+    "result": {
+        "h": "e7626f2b7207006d6515399c587c09c3bfb5ed3b12f63c12b0d40e634f9dd9a3", 
+        "h_and_r_info_request_hash": "1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9"
+    }
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from           | ------- |   body    | sender
+to             | ------- |   body    | receiever
+h              | ------- |   result  | Hash of the preimage R
+h_and_r_info_request_hash   | ------- |   result  | hash of this HTLC request
+
+
+
+
+## SendH2NextNode
+
+### Simple Type -43 Protocol
+
+Type -43 Protocol is used to send the H to next node.
+
+*Bob (middleman) Send H to Carol (destination)*
+
+### Websocket Request: Message Type -43
+
+> Request:
+
+```json
+{
+    "type": -43,
+    "data": {
+        "h":"83519233492eb05ddd547757f2c3d151ad9392b2ebf48fc1a88e07e61dd82a45",
+        "h_and_r_info_request_hash":"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"
+    }
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+h         | ------- |   data    | Hash of the preimage R
+h_and_r_info_request_hash | ------- |   data    | hash of this HTLC request
+
+### Websocket Response: Message Type -43
+
+> OBD Responses:
+
+```json
+{
+    "type": -43, 
+    "status": true, 
+    "from": "<user_id>", 
+    "to": "<user_id>", 
+    "result": {
+        "h": "e7626f2b7207006d6515399c587c09c3bfb5ed3b12f63c12b0d40e634f9dd9a3", 
+        "request_hash": "1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9"
+    }
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from           | ------- |   body    | sender
+to             | ------- |   body    | receiever
+h              | ------- |   result  | Hash of the preimage R
+request_hash   | ------- |   result  | hash of this HTLC request
+
+-->
+<h2 id='forwardr'>ForwardR</h2><h3 id='simple-type-100045-protocol'>Simple Type -100045 Protocol</h3>
+<p>Type -100045 Protocol is used to forward R to a user.</p>
 
 <aside class="succeed">
 <code>Carol</code> (destination) Send R (Preimage_R) to <code>Bob</code> (middleman).
 </aside>
 
-<p>Bob asks Carol if Carol can present an unknown 20-byte random R subject to Hash(R) = H, within two days for example, then Bob will settle the contract by paying assets.</p>
-
-<p>Of course Carol has the preimage R, because she generated it, or &quot;bought&quot; it by her own assets. Then now, Carol send R to Bob.</p>
-<h3 id='websocket-request-message-type-46'>Websocket Request: Message Type -46</h3>
+<p>Bob asks Carol if Carol can present an unknown 20-byte random R subject to Hash(R) = H, within two days for example, then Bob will settle the contract by paying assets. This message is from Bob&#39;s client to Bob&#39;s OBD.  </p>
+<h3 id='websocket-request-message-type-100045'>Websocket Request: Message Type -100045</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-46</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"d77d7df74ca33a672802387fffc6575a09dc7c45"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cMxR8h9z5oKrdyuXVR9uzBbyyaJz1karxH1FW5xezhKzxQc7sCJV"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cVW35aEjd56ZFHTSDtq9iUzHAfH6rWGVJcmYBn9QEp9ygSfkgZeG"</span><span class="p">,</span><span class="w">        
-        </span><span class="s2">"curr_htlc_temp_address_for_he1b_pub_key"</span><span class="p">:</span><span class="s2">"020eaa8f0c0f2761215af43dd7fccb11df8cafffcff4e8f186bd1b8a8a11e5f680"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_for_he1b_private_key"</span><span class="p">:</span><span class="s2">"cR14XVjQ4yXunTnpqXZ1FMangq5bZNqsQ4gnsVpJ1KAMkxZVqo3F"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100045</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_node_peer_id"</span><span class="p">:</span><span class="s2">"Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_user_peer_id"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"cUAa45B7TWp6FbK6N15WLq5pXDCKUJj98RSXm4QTV5WsQNeF6tmn"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_for_he1b_pub_key"</span><span class="p">:</span><span class="s2">"02d93e3a855ec5603d74c6f379da184c5fcc05372ca48b4791e1afa1d6587db715"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_htlc_temp_address_for_he1b_private_key"</span><span class="p">:</span><span class="s2">"cVpq1dvQdh16iyR1j1FbCDCMxXD27GXMRU7mna3Pe6yPvSVrmgUG"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -2963,40 +2867,42 @@ and Send H to middleman.</p>
 <td>channel_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>bob&#39;s private key of channel address.</td>
 </tr>
 <tr>
 <td>curr_htlc_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>bob&#39;s private key of current htlc temp address.</td>
 </tr>
 <tr>
 <td>curr_htlc_temp_address_for_he1b_pub_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>bob&#39;s pub key of current htlc temp address.</td>
 </tr>
 <tr>
 <td>curr_htlc_temp_address_for_he1b_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>bob&#39;s private key of current  htlc temp address for he1b.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-46'>Websocket Response: Message Type -46</h3>
+<h3 id='websocket-response-message-type-110045'>Websocket Response: Message Type -110045</h3>
 <blockquote>
 <p>OBD Responses:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-46</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2de142c8006a3462241e96a610b59f3d92d8259c"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9"</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-110045</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"he1b_temp_pub_key"</span><span class="p">:</span><span class="s2">"02d93e3a855ec5603d74c6f379da184c5fcc05372ca48b4791e1afa1d6587db715"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"he1b_tx_hex"</span><span class="p">:</span><span class="s2">"02000xxxxxxxxxxxxxxxxxbf97538700000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"herd1b_tx_hex"</span><span class="p">:</span><span class="s2">"6f6d6xxxxxxxxxxxxxxx001976a914ceb05f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"msg_hash"</span><span class="p">:</span><span class="s2">"5f28fc568453f3c5625a5dc4e918a3d5b3aa75f7a447ee44166880698d2dc61e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"cUAa45B7TWp6FbK6N15WLq5pXDCKUJj98RSXm4QTV5WsQNeF6tmn"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3033,147 +2939,63 @@ and Send H to middleman.</p>
 <td></td>
 </tr>
 <tr>
+<td>channel_id</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>he1b_temp_pub_key</td>
+<td>-------</td>
+<td>result</td>
+<td>temp pub key of HE1B.</td>
+</tr>
+<tr>
+<td>he1b_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td>transaction hex of HE1B.</td>
+</tr>
+<tr>
+<td>herd1b_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td>transaction hex of HERD1B.</td>
+</tr>
+<tr>
+<td>msg_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
 <td>r</td>
 <td>-------</td>
 <td>result</td>
-<td>Preimage_R</td>
-</tr>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>result</td>
-<td>hash of this HTLC request</td>
+<td>the preimage.</td>
 </tr>
 </tbody></table>
-<h2 id='verify-r-and-create-htlc-tx'>Verify R and Create HTLC Tx</h2><h3 id='simple-type-47-protocol'>Simple Type -47 Protocol</h3>
-<p>Reciever(Bob) reverify R. If correct, then creates rest HTLC commitment transactions.</p>
-
-<aside class="succeed">
-<code>Bob</code> replies and create rest HTLC commitment transactions.
-</aside>
-<h3 id='websocket-request-message-type-47'>Websocket Request: Message Type -47</h3>
+<h2 id='closehtlc'>closeHTLC</h2><h3 id='simple-type-100049-protocol'>Simple Type -100049 Protocol</h3>
+<p>Type -100049 message is used to close a HTLC.</p>
+<h3 id='websocket-request-message-type-100049'>Websocket Request: Message Type -100049</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-47</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="s2">"742db9677d53316b8faef7c9f40766e4f39dd6b82487c103960e9170de8ce636"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="s2">"d77d7df74ca33a672802387fffc6575a09dc7c45"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cTr7SHQ7FR6Ej8ZU8vDpbt3y9GuF3hnBqn81Tv9Tdi5TeakqKavt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"curr_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cNon6RZ9uLq6EPpGYt8tDZjQLMWVZDAXcrFy3LH1ZmHQJDbKWnye"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>data</td>
-<td>hash of this HTLC request</td>
-</tr>
-<tr>
-<td>r</td>
-<td>-------</td>
-<td>data</td>
-<td>Preimage_R</td>
-</tr>
-<tr>
-<td>channel_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-<tr>
-<td>curr_htlc_temp_address_private_key</td>
-<td>-------</td>
-<td>data</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id='websocket-response-message-type-47'>Websocket Response: Message Type -47</h3>
-<blockquote>
-<p>OBD Responses:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-47</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2de142c8006a3462241e96a610b59f3d92d8259c"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1fe82bc9152741670c4ee2b4853df9346c1cc63fce6d1c896e7eeca8cc62c9d9"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>default</th>
-<th>placement</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>-------</td>
-<td>body</td>
-<td>true or false</td>
-</tr>
-<tr>
-<td>from</td>
-<td>-------</td>
-<td>body</td>
-<td>sender</td>
-</tr>
-<tr>
-<td>to</td>
-<td>-------</td>
-<td>body</td>
-<td>receiever</td>
-</tr>
-<tr>
-<td>r</td>
-<td>-------</td>
-<td>result</td>
-<td>Preimage_R</td>
-</tr>
-<tr>
-<td>request_hash</td>
-<td>-------</td>
-<td>result</td>
-<td>hash of this HTLC request</td>
-</tr>
-</tbody></table>
-<h2 id='closehtlc'>CloseHTLC</h2><h3 id='simple-type-48-protocol'>Simple Type -48 Protocol</h3>
-<p>Type -48 Protocol is used to close a HTLC channel.</p>
-
-<p>For continue using OBD to transfer assets OR some reasons
-Alice need to close this HTLC channel between she and Bob.
-Then Alice launch the closing request.</p>
-<h3 id='websocket-request-message-type-48'>Websocket Request: Message Type -48</h3>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-48</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"channel_id"</span><span class="p">:[</span><span class="mi">174</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">154</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="mi">237</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">156</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">216</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">102</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">113</span><span class="p">,</span><span class="mi">131</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">241</span><span class="p">,</span><span class="mi">229</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">75</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cToieuvo3JjkEUKa3tjd6J98RXKDTo1d2hUSVgKpZ1KwBvGhQFL8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cSYJ3vwcgMPDqegXFJ2YgCYNNgKS9tNxCaRkZnn3ourQSdGNkJCk"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cR7wXNwPjMrDCpnJoinTiMK384YyKNTfyctLQ2CCdQobdanEqgAs"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_htlc_temp_address_for_htnx_private_key"</span><span class="p">:</span><span class="s2">"cNzNyejXtgC4ySXCVXqa6egVinYLDtGhkRkGd271ZW6AJrVKYZ2w"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100049</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_node_peer_id"</span><span class="p">:</span><span class="s2">"Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_user_peer_id"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cVV22tLgBbLv1K1uW6z2doR4Copat1mejjND1jtW8CVkRLUSpPxf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cNwgTtsRaWdDWdNVA4aPEoumS9prpYirE3Q1BuARrphjH9THVeH2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cRVqzokvBvtzw91Nv4zkvmad7uRBf5eMfr5t5EDL7q2U6VxBTmoy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_htlc_temp_address_for_htnx_private_key"</span><span class="p">:</span><span class="s2">"cUxBiu8jVgk9gDhdgpF3S4wFrpFBkAFujCEVgCRYBsQaTDtUdVMb"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"02fed65567b2ab00e2cbb28b46a687ce8fd0894486989cba54975b45bbc6a85ed8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"curr_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cTiDwaM3y5LE2HuWWgvRTC9mgHiovf2zntjSgCPyLLeuUTmKk1BY"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <table><thead>
 <tr>
@@ -3193,58 +3015,61 @@ Then Alice launch the closing request.</p>
 <td>channel_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Alice&#39;s private key of the channel address.</td>
 </tr>
 <tr>
 <td>last_rsmc_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Alice&#39;s private key of last rsmc temp address.</td>
 </tr>
 <tr>
 <td>last_htlc_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Alice&#39;s private key of last htlc temp address.</td>
 </tr>
 <tr>
 <td>last_htlc_temp_address_for_htnx_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Alice&#39;s private key of last htlc temp address for htnx.</td>
 </tr>
 <tr>
 <td>curr_rsmc_temp_address_pub_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Alice&#39;s pub key of current rsmc temp address.</td>
 </tr>
 <tr>
 <td>curr_rsmc_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Alice&#39;s private key of curr rsmc temp address.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-48'>Websocket Response: Message Type -48</h3>
+<h3 id='websocket-response-message-type-100049'>Websocket Response: Message Type -100049</h3>
 <blockquote>
 <p>OBD Responses:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-48</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">174</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">154</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="mi">237</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">201</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">156</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">216</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">203</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">102</span><span class="p">,</span><span class="mi">158</span><span class="p">,</span><span class="mi">113</span><span class="p">,</span><span class="mi">131</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">241</span><span class="p">,</span><span class="mi">229</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">75</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"create_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-06T08:45:40.4120228+08:00"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"create_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02fed65567b2ab00e2cbb28b46a687ce8fd0894486989cba54975b45bbc6a85ed8"</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"request_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa6cdcd0974eeabbeffca3d70d0a66cd7549b002de7cd56eee1c7e60b94dc0be"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-49</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/3001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/3001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commitment_tx_hash"</span><span class="p">:</span><span class="s2">"7a9f1db251531e6846812638cb7d7b2d1e9a25bab93a0c6d8f2ecb404754fdab"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"02fed65567b2ab00e2cbb28b46a687ce8fd0894486989cba54975b45bbc6a85ed8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_htlc_temp_address_for_htnx_private_key"</span><span class="p">:</span><span class="s2">"cUxBiu8jVgk9gDhdgpF3S4wFrpFBkAFujCEVgCRYBsQaTDtUdVMb"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cRVqzokvBvtzw91Nv4zkvmad7uRBf5eMfr5t5EDL7q2U6VxBTmoy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cNwgTtsRaWdDWdNVA4aPEoumS9prpYirE3Q1BuARrphjH9THVeH2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"msg_hash"</span><span class="p">:</span><span class="s2">"ed80ad44aeeca449e6f686d3adbf6c231fa9667c9e560d20d874df8b92ec02d6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rsmc_hex"</span><span class="p">:</span><span class="s2">"020xxxxxxxxxxxxxxxxxd7dbe2d391d22d19014e6cb4a8b6c33251d28700000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to_counterparty_tx_hex"</span><span class="p">:</span><span class="s2">"02000xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxc988ac00000000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <table><thead>
 <tr>
@@ -3276,65 +3101,78 @@ Then Alice launch the closing request.</p>
 <td>channel_id</td>
 <td>-------</td>
 <td>result</td>
-<td>Id of a channel</td>
+<td>channel id.</td>
 </tr>
 <tr>
-<td>create_at</td>
+<td>commitment_tx_hash</td>
 <td>-------</td>
 <td>result</td>
-<td>time of created</td>
-</tr>
-<tr>
-<td>create_by</td>
-<td>-------</td>
-<td>result</td>
-<td>creator</td>
+<td>commitment tx hash.</td>
 </tr>
 <tr>
 <td>curr_rsmc_temp_address_pub_key</td>
 <td>-------</td>
 <td>result</td>
-<td></td>
+<td>curr rsmc temp address pub key.</td>
 </tr>
 <tr>
-<td>curr_state</td>
+<td>last_htlc_temp_address_for_htnx_private_key</td>
 <td>-------</td>
 <td>result</td>
 <td></td>
 </tr>
 <tr>
-<td>id</td>
+<td>last_htlc_temp_address_private_key</td>
 <td>-------</td>
 <td>result</td>
 <td></td>
 </tr>
 <tr>
-<td>request_hash</td>
+<td>last_rsmc_temp_address_private_key</td>
 <td>-------</td>
 <td>result</td>
-<td>hash of this HTLC request</td>
+<td></td>
+</tr>
+<tr>
+<td>msg_hash</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>rsmc_hex</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
+</tr>
+<tr>
+<td>to_counterparty_tx_hex</td>
+<td>-------</td>
+<td>result</td>
+<td></td>
 </tr>
 </tbody></table>
-<h2 id='closehtlc-signed'>CloseHTLC Signed</h2><h3 id='simple-type-49-protocol'>Simple Type -49 Protocol</h3>
-<p>Type -49 Protocol is used to response the request of close HTLC channel.</p>
-
-<p><em>Bob replies and create BR &amp; a newer commitment transactions</em>(??? need more comments on this) </p>
-<h3 id='websocket-request-message-type-49'>Websocket Request: Message Type -49</h3>
+<h2 id='closehtlcsigned'>closeHTLCSigned</h2><h3 id='simple-type-100050-protocol'>Simple Type -100050 Protocol</h3>
+<p>Type -49 Protocol is used to response the request of close HTLC .</p>
+<h3 id='websocket-request-message-type-100050'>Websocket Request: Message Type -100050</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-49</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"request_close_htlc_hash"</span><span class="p">:</span><span class="s2">"fa6cdcd0974eeabbeffca3d70d0a66cd7549b002de7cd56eee1c7e60b94dc0be"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cToieuvo3JjkEUKa3tjd6J98RXKDTo1d2hUSVgKpZ1KwBvGhQFL8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cTr7SHQ7FR6Ej8ZU8vDpbt3y9GuF3hnBqn81Tv9Tdi5TeakqKavt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cPRy5pB8Ek2DabfQ74x8giqDdPtwTvptgRnq8qEP7KduzdmMFmJM"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_htlc_temp_address_for_htnx_private_key"</span><span class="p">:</span><span class="s2">"cTeQ2e9Hw6y1RHjCCF9x3MR7pn3yPySgxSYy5rtvmVvM7ZNh9jUZ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100050</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_node_peer_id"</span><span class="p">:</span><span class="s2">"Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipient_user_peer_id"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"msg_hash"</span><span class="p">:</span><span class="s2">"45620c2a09d610e7eaa85d4f7fe48d38cf9a5b801e0196259ff89da41bba6a47"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel_address_private_key"</span><span class="p">:</span><span class="s2">"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cTWtQC6WWosXNaqFbnotZdqHi5Y74vEARaqGoqPHX3285QKdz1wD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_htlc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cUYShY9qJdX3S1d74dK9Q3QYAypKPMVG9gYvB3iZe3J9GyLCG9G6"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_htlc_temp_address_for_htnx_private_key"</span><span class="p">:</span><span class="s2">"cVpq1dvQdh16iyR1j1FbCDCMxXD27GXMRU7mna3Pe6yPvSVrmgUG"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"curr_rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"0298bdca47bbb76b1022eb7d18534961a12ce6dd80308c839576602b771e324fba"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"curr_rsmc_temp_address_private_key"</span><span class="p">:</span><span class="s2">"cU78aif2a4YR5xK8HxBTrPKjdjhD8W4SSZNTw4yFEdwi59JMrYQY"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <table><thead>
 <tr>
@@ -3354,51 +3192,93 @@ Then Alice launch the closing request.</p>
 <td>channel_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Bob&#39;s private key of the channel address.</td>
 </tr>
 <tr>
 <td>last_rsmc_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Bob&#39;s private key of previous rsmc temp address.</td>
 </tr>
 <tr>
 <td>last_htlc_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Bob&#39;s private key of previous htlc temp address.</td>
 </tr>
 <tr>
 <td>last_htlc_temp_address_for_htnx_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Bob&#39;s private key of previous htlc temp address for htnx.</td>
 </tr>
 <tr>
 <td>curr_rsmc_temp_address_pub_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Bob&#39;s pub key of curr rsmc temp address.</td>
 </tr>
 <tr>
 <td>curr_rsmc_temp_address_private_key</td>
 <td>-------</td>
 <td>data</td>
-<td></td>
+<td>Bob&#39;s private key of curr rsmc temp address.</td>
 </tr>
 </tbody></table>
-<h3 id='websocket-response-message-type-49'>Websocket Response: Message Type -49</h3>
+<h3 id='websocket-response-message-type-100050'>Websocket Response: Message Type -100050</h3>
 <blockquote>
 <p>OBD Responses:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">-49</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;user_id&gt;"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"close htlc success"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-110050</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"latestCommitmentTxInfo"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount_to_counterparty"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_to_htlc"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_to_rsmc"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"begin_block_height"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel_id"</span><span class="p">:</span><span class="s2">"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_at"</span><span class="p">:</span><span class="s2">"2020-06-09T16:24:09.9204628+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_by"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"curr_hash"</span><span class="p">:</span><span class="s2">"f08463542b83b17da8328624dc06443184bac742937f40ddbbaeccbd059561df"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"curr_state"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"from_counterparty_side_for_me_tx_hex"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_cltv_expiry"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_h"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_multi_address"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_multi_address_script_pub_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_r"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_redeem_script"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_routing_packet"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_sender"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_tx_hex"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htlc_txid"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"input_amount"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"input_txid"</span><span class="p">:</span><span class="s2">"ebcdb6658a38cd5e072646fc51d8061571b5df59a66c4898a3cf4b86b19650ea"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"input_vout"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_commitment_tx_id"</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_edit_time"</span><span class="p">:</span><span class="s2">"2020-06-09T16:24:09.9204628+08:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_hash"</span><span class="p">:</span><span class="s2">"4a5854c6cc0d1930500e05353aff416b8cdd1859dc2c2af44b46089e23938023"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"owner"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"peer_id_a"</span><span class="p">:</span><span class="s2">"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"peer_id_b"</span><span class="p">:</span><span class="s2">"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"property_id"</span><span class="p">:</span><span class="mi">137</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rsmc_input_txid"</span><span class="p">:</span><span class="s2">"a9e2e14939f5edadabd8675be6d160c73762e9d562b35594328150db968e32c3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rsmc_multi_address"</span><span class="p">:</span><span class="s2">"2N1CTdYvAfopS1qWQLGjqwTTqmKyWrSfuVY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rsmc_multi_address_script_pub_key"</span><span class="p">:</span><span class="s2">"a914573b2587a9f4672b6a2964c234d9b9d34d188dba87"</span><span class="p">,</span><span class="w">                           </span><span class="s2">"rsmc_redeem_script"</span><span class="p">:</span><span class="s2">"522102fed65567b2ab00e2cbb28b46a687ce8fd0894486989cba54975b45bbc6a85ed821028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52ae"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rsmc_temp_address_pub_key"</span><span class="p">:</span><span class="s2">"02fed65567b2ab00e2cbb28b46a687ce8fd0894486989cba54975b45bbc6a85ed8"</span><span class="p">,</span><span class="w">               </span><span class="s2">"rsmc_tx_hex"</span><span class="p">:</span><span class="s2">"0200000001c3328e96db5081329455b362d5e96237c760d1e65b67d8abadedf53949e1e2a900000000d900473044022037fa3ac0917d3bc965ede51cb330f0baf5cfe4da91e54988a521205378e66e4c022034d5c8cc347d617dd54f0f66fd4a2b47fb1aa8d417f575bbb45d5fa20add0c080147304402207c0f867a8fa3f2a02d0c09fe37af564170cda0090650974ca0eac993ff84ba1902206910dea102e9fcec49bd6453fb33579457e80f66cbaaaec46c7a4bb50613f0440147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03344700000000000017a914573b2587a9f4672b6a2964c234d9b9d34d188dba870000000000000000166a146f6d6e690000000000000089000000004d7c6d001c0200000000000017a914573b2587a9f4672b6a2964c234d9b9d34d188dba8700000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"rsmc_txid"</span><span class="p">:</span><span class="s2">"fa7751984b5991d025c07a59045e437477e6e2904e3141e0d2fd144210822c9f"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"send_at"</span><span class="p">:</span><span class="s2">"0001-01-01T00:00:00Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"sign_at"</span><span class="p">:</span><span class="s2">"2020-06-09T16:26:01.9381622+08:00"</span><span class="p">,</span><span class="w">              </span><span class="s2">"to_counterparty_tx_hex"</span><span class="p">:</span><span class="s2">"0200000003e062124a8f5476cd4cff020894525d360f6d0ab4a8d2b357a90f328c3dabe2d900000000d90047304402207449af13fff3ea7cd979e348722859b1c49a59b163637276c83e2f625df4aece0220290e7b3e0208b1d0f896f554db33f097b5dac30c6fe825bfd4cc02789ea72e640147304402205121ded0913dc12e87cd1df3b1974f1bf3f14bd0c0d43bd9b05d74d67d143b9202207315984b7bdc16b623e7bd540c6d16f1c1a2412fd3d26cbe8d65b661caf13c100147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffffea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cdeb02000000d90047304402200aca4baf1229076ba939196e709be7eeb7efecba53ea935b3927dc2f238aa75c02205dac78ef8955dcd705e2dae5e3ae0947ab7196255b473e2fdc6ed268668ceb290147304402205c8fa21796390bbe4d3bb242f1b4b1bc660390824105d31dee1a685be1e94b69022035da7fba16c599735b0ae29d21ef8292b846e1800ef606c3e3f57fac5a3501d80147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aefffffffffcabe9c10966c7640e41fcbc1e597991d4da4edc2f6e257c6159c1d7c34a8b8200000000d900473044022045c297ed55c1909324b5c9ab3b4d4c8b7666c74eaada24c586324814b5e854bf02205b96cb0f81bbae680d228d5c023c20ed14d1a6eeb1aed98da4ef1330afecab40014730440220110a42b75af5e395d61aaf777ea8acf4eecf734f958f3cd9465d48e2a504c199022077fbd0618f7ba25b6d8de0a1a783d300f5621eba44700ed03ecb33c60499d2540147522102c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc6621028f49447e1a20d4211c8c621976cff3d2ae00d4af79be3e74e05f1ed4e23f319e52aeffffffff03ea930000000000001976a9147a019f584f6a65d114d5f17264c9eb32f763d72c88ac0000000000000000166a146f6d6e6900000000000000890000000029b9270022020000000000001976a914ceb05f96f5b3cbd12d7bff5f9f45252b3f67bf7088ac00000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"to_counterparty_txid"</span><span class="p">:</span><span class="s2">"1a3960c81384be425d7364a6f10c416c4f49d15497b8012e63731593b2cf0a3d"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tx_type"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -3428,10 +3308,10 @@ Then Alice launch the closing request.</p>
 <td>receiever</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>latestCommitmentTxInfo</td>
 <td>-------</td>
 <td>result</td>
-<td>success or failed</td>
+<td>the latest Commitment transaction infomation, for debugging purpose only.</td>
 </tr>
 </tbody></table>
 <h2 id='closehtlcchannel'>CloseHtlcChannel</h2><h3 id='simple-type-50-protocol'>Simple Type -50 Protocol</h3>
