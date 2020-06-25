@@ -25,7 +25,7 @@ search: true
 
 # OmniBOLT Daemon Websocket Messages Reference
 
-Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18), which provides the complete services of token transactions on bitcoin network. And current OBD implementation is deeply binded to OmniCore. 
+Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18 or later), which provides the on chain settlement service for OmniBOLT. And current OBD implementation is deeply binded to OmniCore. 
 
 We assume you have already gone through our [installation instruction](https://github.com/omnilaboratory/obd#installation), so that you are familar with:
 
@@ -39,7 +39,8 @@ We assume you have already gone through our [installation instruction](https://g
 For kernel developers in our community, the above steps are the easiest way to get started. Just run the [GUI tool](https://github.com/omnilaboratory/DebuggingTool) and open [OmniBOLT Daemon](https://github.com/omnilaboratory/obd#step-4-test-channel-operations-using-websocket-testing-tool) project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from GUI tool. You may intercept the messages and track message flows of OBD kernel.
 
 
-Client JS SDK is also released with the GUI tool. This SDK implements HD functions, and is for wallet developers to easily play with obd. 
+[Client JS SDK](https://github.com/omnilaboratory/DebuggingTool/blob/master/js/obdapi.js) is also released with the GUI tool. This SDK implements APIs in this document, and internal HD functions managing pub/priv keys genertion, and is for wallet developers to easily integrate. Also it helps developers automatically fill in the arguments which is hardly to be manually finished.
+
 
 
 # Wallet
