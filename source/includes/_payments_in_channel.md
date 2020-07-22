@@ -100,7 +100,7 @@ rsmc_hex 				| ------- |   result    | to RSMC(the multi-sig temp address) trans
 to_counterparty_tx_hex 			| ------- |   result    | to counterparty(the address of counterparty) transaction hex.
 
 
-## Revoke and Acknowledge Commitment Transaction(Debug mode only)
+## commitmentTransactionAccepted(Debug mode only)
 
 ### Simple Type -100352 Protocol
 
