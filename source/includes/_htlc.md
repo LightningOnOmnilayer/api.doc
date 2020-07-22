@@ -504,7 +504,7 @@ request_hash   | ------- |   result  | hash of this HTLC request
 
 -->
 
-## ForwardR
+## forwardR
 
 ### Simple Type -100045 Protocol
 
@@ -549,17 +549,18 @@ curr_htlc_temp_address_for_he1b_private_key  	| ------- |   data    | bob's priv
 > OBD Responses:
 
 ```json
- "type":-110045,
-    "status":true,
-    "from":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP",
-    "to":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP",
-    "result":{
-        "channel_id":"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9",
-        "he1b_temp_pub_key":"02d93e3a855ec5603d74c6f379da184c5fcc05372ca48b4791e1afa1d6587db715",
-	"he1b_tx_hex":"02000xxxxxxxxxxxxxxxxxbf97538700000000",
-	"herd1b_tx_hex":"6f6d6xxxxxxxxxxxxxxx001976a914ceb05f",
-        "msg_hash":"5f28fc568453f3c5625a5dc4e918a3d5b3aa75f7a447ee44166880698d2dc61e",
-        "r":"cUAa45B7TWp6FbK6N15WLq5pXDCKUJj98RSXm4QTV5WsQNeF6tmn"
+{
+	"type":-110045,
+	"status":true,
+    	"from":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP",
+	"to":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP",
+	"result":{
+        	"channel_id":"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9",
+        	"he1b_temp_pub_key":"02d93e3a855ec5603d74c6f379da184c5fcc05372ca48b4791e1afa1d6587db715",
+		"he1b_tx_hex":"02000xxxxxxxxxxxxxxxxxbf97538700000000",
+		"herd1b_tx_hex":"6f6d6xxxxxxxxxxxxxxx001976a914ceb05f",
+        	"msg_hash":"5f28fc568453f3c5625a5dc4e918a3d5b3aa75f7a447ee44166880698d2dc61e",
+        	"r":"cUAa45B7TWp6FbK6N15WLq5pXDCKUJj98RSXm4QTV5WsQNeF6tmn"
     }
 }
 ```
@@ -577,6 +578,114 @@ herd1b_tx_hex  		| ------- |   result  | transaction hex of HERD1B.
 msg_hash  		| ------- |   result  | 
 r			| ------- |   result  | the preimage.
 
+
+
+==========================================================
+
+
+## signR
+
+### Simple Type -100046 Protocol
+
+Type -100046 Protocol is used to accept R and notify the sender.
+
+ 
+ 
+### Websocket Request: Message Type -100046
+
+> Request:
+
+```json
+{
+	"type":-100046,
+	"recipient_node_peer_id":"QmVQZ6byysojM1mYyxNrDXy8gG96BbH8ZDW9pnuHFGWazn",
+	"recipient_user_peer_id":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
+	"data":{
+		"channel_id":"80d34c072c35b83a70f82fcb791025b4756db6f8aad37d6f50fbde763168abf5",
+		"msg_hash":"091c3e8d576054c4bdc71759ee37cc455ebfa1b753900f54358009d589a1b130",
+		"r":"cUAa45B7TWp6FbK6N15WLq5pXDCKUJj98RSXm4QTV5WsQNeF6tmn",
+		"channel_address_private_key":"cVV22tLgBbLv1K1uW6z2doR4Copat1mejjND1jtW8CVkRLUSpPxf"
+	}
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+channel_id   | ------- |   data    | hash of this HTLC request 
+msg_hash	| ------- |   data    |  hash of the message
+r            | ------- |   data    | Preimage_R
+channel_address_private_key         		| ------- |   data    | bob's private key of channel address. 
+ 
+
+### Websocket Response: Message Type -110046
+
+> OBD Responses:
+
+```json
+{
+	"type":-110046,
+	"status":true,
+	"from":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/4001/p2p/QmVQZ6byysojM1mYyxNrDXy8gG96BbH8ZDW9pnuHFGWazn",
+	"to":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0@/ip4/127.0.0.1/tcp/4001/p2p/QmVQZ6byysojM1mYyxNrDXy8gG96BbH8ZDW9pnuHFGWazn",
+	"result":{
+		"commitmentTxInfo":{
+			"amount_to_counterparty":13,
+			"amount_to_htlc":4,
+			"amount_to_rsmc":3,
+			"begin_block_height":1764129,
+			"channel_id":"80d34c072c35b83a70f82fcb791025b4756db6f8aad37d6f50fbde763168abf5",
+			"create_at":"2020-06-09T16:19:57.4116087+08:00",
+			"create_by":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
+			"curr_hash":"191947428ead76964da30881524696a8b3ebbaee2bc365c8cd29467a54e011ae",
+			"curr_state":12,
+			"from_counterparty_side_for_me_tx_hex":"0200000 xxxxxxxxx 7088ac00000000",
+			"htlc_cltv_expiry":1,
+			"htlc_h":"035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933",
+			"htlc_multi_address":"2NAS4M4CCzew1BFnq59nuDJBNGoigo1oAyV",
+			"htlc_multi_address_script_pub_key":"a914bc86aa4fe56c2efda016bb1b0fa928372b8c51ab87",
+			"htlc_r":"cUAa45B7TWp6FbK6N15WLq5pXDCKUJj98RSXm4QTV5WsQNeF6tmn",
+            "htlc_redeem_script":"52210218da225a18   xxxxxxx   95bb6391ce5d6d4fc6652ae",
+            "htlc_routing_packet":"80d34c072c35b83a70f82fcb791025b4756db6f8aad37d6f50fbde763168abf5",
+            "htlc_sender":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
+            "htlc_temp_address_pub_key":"0218da225a18821ec4353cd4d4c10735e5ce56552166c072e43d977bb50da30f18",
+            "htlc_tx_hex":"0200000 xxxxx c51ab8700000000",
+            "htlc_txid":"14b1caad63717b4a2b8f7bf51964f33c707b4f2adbb145aad21777ac5da64516",
+            "id":19,
+            "input_amount":20,
+            "input_txid":"ebcdb6658a38cd5e072646fc51d8061571b5df59a66c4898a3cf4b86b19650ea",
+            "input_vout":2,
+            "last_commitment_tx_id":18,
+            "last_edit_time":"2020-06-09T16:19:57.4116087+08:00",
+            "last_hash":"6ec57103f76f17e0c3b7d3d21ae2e35682be87a52d324bff58934c3a7c22717c",
+            "owner":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
+            "peer_id_a":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
+            "peer_id_b":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
+            "property_id":137,
+            "rsmc_input_txid":"",
+            "rsmc_multi_address":"2MxVc1GcmtyHgn6s2gzHD8Vjv94YV4bkwqd",
+            "rsmc_multi_address_script_pub_key":"a9143990d4cce9619dcaf5bb619fb19f36d0f43c38ac87",
+            "rsmc_redeem_script":"522103609 xxxxx 95bb6391ce5d6d4fc6652ae",
+            "rsmc_temp_address_pub_key":"0360917f53381f2b05bb3ec299b6bf7e7446a5c6ed287d65cfc6e38858c3800172",
+            "rsmc_tx_hex":"0200000001c33 xxxxxx c8700000000",
+            "rsmc_txid":"058f36e8fd80e970f299c84b843de16fe909d4dfdf046a2d200ac2f3f3a13fc0",
+            "send_at":"0001-01-01T00:00:00Z",
+            "sign_at":"0001-01-01T00:00:00Z",
+            "to_counterparty_tx_hex":"0200000 xxxxxxxx 8ac00000000",
+            "to_counterparty_txid":"66f327f8df014c641839081397211561def01757ca19392b44dff8bf1f434027",
+            "tx_type":1
+        }
+    }
+}
+```
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+status         | ------- |   body    | true or false
+from	       | ------- |   body    | sender
+to             | ------- |   body    | receiever
+id             | ------- |   result  | 
+commitmentTxInfo		| ------- |   result  | returns the params in this commitment transaction.
+ 
  
 
 ## closeHTLC
@@ -699,7 +808,7 @@ last_htlc_temp_address_for_htnx_private_key      | ------- |   data  | Bob's pri
 curr_rsmc_temp_address_pub_key      | ------- |   data    | Bob's pub key of curr rsmc temp address.
 curr_rsmc_temp_address_private_key  | ------- |   data    | Bob's private key of curr rsmc temp address.
 
-### Websocket Response: Message Type -100050
+### Websocket Response: Message Type -110050
 
 > OBD Responses:
 
@@ -765,19 +874,19 @@ to             | ------- |   body    | receiever
 latestCommitmentTxInfo            | ------- |   result  | the latest Commitment transaction infomation, for debugging purpose only.
 
 
-## CloseHtlcChannel
+## closeChannel
 
-### Simple Type -50 Protocol
+### Simple Type -100038 Protocol
 
-Type -50 Protocol is used to close HTLC channel.
+Type -100038 Protocol is used to close a channel.
 
-### Websocket Request: Message Type -50
+### Websocket Request: Message Type -100038
 
 > Request:
 
 ```json
 {
-	"type":-50,
+	"type": -100038,
 	"data":{
 		"channel_id":[223,177,75,185,186,22,47,155,145,238,242,1,158,247,192,1,48,183,197,192,190,72,49,233,62,65,156,103,111,172,109,51]
 	}
@@ -789,19 +898,35 @@ Parameter | default | placement | Description
 channel_id   | ------- |   data    | 
 
 
-## CloseHtlcChannel Signed
+### Websocket Response: Message Type -110038
 
-### Simple Type -51 Protocol
+> OBD Responses:
 
-Type -51 Protocol is used to response to request of close HTLC channel.
+```json
+{
+	"type": -110038,
+	"data":{
+		"to be updated": to be updated according to latest obd release. 
+	}
+}
 
-### Websocket Request: Message Type -51
+```
+
+
+
+## closeChannelSigned
+
+### Simple Type -100039 Protocol
+
+Type -100039 Protocol is used to response the request of closing a channel.
+
+### Websocket Request: Message Type -100039
 
 > Request:
 
 ```json
 {
-	"type":-51,
+	"type":-100039,
 	"data":{
 		"channel_id":[223,177,75,185,186,22,47,155,145,238,242,1,158,247,192,1,48,183,197,192,190,72,49,233,62,65,156,103,111,172,109,51],		"request_close_channel_hash":"4453e70ba9f2a805433b3696e43fd4175cabf45daf36aa59368ecf210f5773cb",
 		"approval":true
@@ -814,3 +939,18 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
 request_close_channel_hash  | ------- |   data    | hash of channel
 approval    | ------- |   data    | true or false
+
+
+### Websocket Response: Message Type -110039
+
+> OBD Responses:
+
+```json
+{
+	"type": -110039,
+	"data":{
+		"to be updated": to be updated according to latest obd release. 
+	}
+}
+
+```

@@ -1,4 +1,4 @@
-## fundingBTC
+## fundingBitcoin
 
 ### Simple Type -102109 Protocol
 
@@ -59,7 +59,7 @@ hex            | ------- |   result  | transaction hex.
 txid	       | ------- |   result  | transaction id.
 
 
-## BTCFundingCreated
+## bitcoinFundingCreated
 
 ### Simple Type -100340 Protocol
 
@@ -125,7 +125,7 @@ funding_txid   | ------- |   result  | funding transaction id.
 temporary_channel_id  | ------- |   result  | temporary channel id. 
 
 
-## BTCFundingSigned
+## bitcoinFundingSigned
 
 ### Simple Type -100350 Protocol
  
