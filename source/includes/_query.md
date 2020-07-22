@@ -4,7 +4,7 @@ This section collects all the messages used in querying the latest status of the
 
 # Query
 
-## GetAllCommitmentTransactions
+## getAllCommitmentTransactions
 
 ###  Simple Type -35101 Protocol
 
@@ -105,7 +105,7 @@ txid_to_other                                       | ------- |   result  |
 txid_to_temp_multi_address                          | ------- |   result  | 
  
 
-##  GetLatestCommitmentTransaction
+##  getLatestCommitmentTransaction
 
 ###  Simple Type -35104 Protocol
 
@@ -206,7 +206,7 @@ txid_to_other    				| ------- |   result  |
 txid_to_temp_multi_address     			| ------- |   result  | 
 
 
-##  GetLatestRevockableDeliveryTransaction
+##  getLatestRevockableDeliveryTransaction
 
 ###  Simple Type -35105 Protocol
 
@@ -230,7 +230,7 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-##  GetLatestBreachRemedyTransaction
+##  getLatestBreachRemedyTransaction
 
 ###  Simple Type -35106 Protocol
 
@@ -254,7 +254,7 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-## GetAllRevockableDeliveryTransactions
+## getAllRevockableDeliveryTransactions
 
 ### Simple Type -35108 Protocol
 
@@ -278,7 +278,7 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
  
-## GetAllBreachRemedyTransactions
+## getAllBreachRemedyTransactions
 
 ### Simple Type -35109 Protocol
 
@@ -302,7 +302,7 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-## GetAllChannels
+## getAllChannels
 
 ### Simple Type -3202 Protocol
 
@@ -321,7 +321,7 @@ Type -3202 Protocol is used to get all of channels.
 This message has no arguments.
 
 
-## GetChannelDetail
+## getChannelDetail
 
 ### Simple Type -3207 Protocol
 
@@ -343,7 +343,7 @@ Parameter | default | placement | Description
 id        | ------- |   data    | id of channel in database table
  
 
-## GetAllBroadcastedCommitmentTransactions
+## getAllBroadcastedCommitmentTransactions
 
 ### Simple Type -35110 Protocol
 
@@ -367,7 +367,7 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
  
 
-## GetH
+## getH
 
 ### Simple Type -4001 Protocol
 
@@ -388,7 +388,7 @@ Type -4001 Protocol is used to get a list of H (Hash_Preimage_R).
 This message has no arguments.
 
 
-## GetR
+## getR
 
 ### Simple Type -4101 Protocol
 
@@ -473,7 +473,7 @@ sign_at           | ------- |   result  |
 sign_by           | ------- |   result  | 
 
 
-## GetRWithChannelID
+## getRWithChannelID
 
 ### Simple Type -4103 Protocol
 
@@ -499,7 +499,7 @@ Parameter | default | placement | Description
 channel_id  | ------- |   data    | 
 
 
-## GetRoutingWithH
+## getRoutingWithH
 
 ### Simple Type -4104 Protocol
 
@@ -521,7 +521,7 @@ Parameter | default | placement | Description
 h         | ------- |   data    | the H (Hash_Preimage_R)
 
 
-## GetRWithH
+## getRWithH
 
 ### Simple Type -4105 Protocol
 
