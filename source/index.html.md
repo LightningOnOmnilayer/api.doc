@@ -294,10 +294,11 @@ wif       | ------- |   result  | other format private key of address
 
 # Basic Lightning Network Operations
 
+<!-- 
 ## connectRemotePeer
 
 ### Simple Type -102001 Protocol
-
+-->
  
 
 <!-- # create channel -->
