@@ -55,7 +55,7 @@ invoice   | ------- |   data    | the invoice string encoded by beth32.
 
 ### Simple Type -100401 Protocol
 
-Pay an invoice. This protocol is the first step of a payment, which seeks a full path of nodes, decide which path is the optimistic one, in terms of hops, node's histroy service quility, and fees.
+Pay an invoice. This protocol firstly seeks a full path of nodes, decides which path is the optimistic one, in terms of hops, node's histroy service quility, and fees. Then it construct an HTLC and pay to the payee who creates the invoice.  
 
 
 ### Websocket Request: Message Type -100401
