@@ -2117,7 +2117,7 @@ curr_temp_address：
 </tr>
 </tbody></table>
 <h2 id='payinvoice'>payInvoice</h2><h3 id='simple-type-100401-protocol'>Simple Type -100401 Protocol</h3>
-<p>Pay an invoice. This protocol is the first step of a payment, which seeks a full path of nodes, decide which path is the optimistic one, in terms of hops, node&#39;s histroy service quility, and fees.</p>
+<p>Pay an invoice. This protocol firstly seeks a full path of nodes, decides which path is the optimistic one, in terms of hops, node&#39;s histroy service quility, and fees. Then it construct an HTLC and pay to the payee who creates the invoice.  </p>
 <h3 id='websocket-request-message-type-100401'>Websocket Request: Message Type -100401</h3>
 <blockquote>
 <p>Request:</p>
