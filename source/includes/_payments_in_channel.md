@@ -138,25 +138,30 @@ curr_temp_address：
 	"recipient_node_peer_id":"QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
 	"recipient_user_peer_id":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
 	"data":{
-        	"channel_id":"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9",
-        	"curr_temp_address_pub_key":"03b2e7ecc5ff62feb342943a1364f555e8302f507f78c6392c82b9e12c95ccb40b",
-        	"curr_temp_address_private_key":"cPnHVbg3ZZoXhvgu5pWSx18zf9Dw5jfp7wMaDEx4JzHd9zqh1etk",
-        	"last_temp_address_private_key":"cU78aif2a4YR5xK8HxBTrPKjdjhD8W4SSZNTw4yFEdwi59JMrYQY",
-        	"msg_hash":"853a6adee774f65daf2bb4b59ffb3500293cd79e55c22d414438111320824a4f",
-        	"channel_address_private_key":"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd",
-        	"approval":true
-    	}
+		"channel_id":"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9",
+		"msg_hash":"853a6adee774f65daf2bb4b59ffb3500293cd79e55c22d414438111320824a4f",
+		"c2a_rsmc_signed_hex":"c851e763c53adb27dc9451be6dd23cc07ba4......",
+		"c2a_counterparty_signed_hex":"c851e763c53adb27dc9451be6dd23cc07ba4......",
+		"channel_address_private_key":"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd",
+		"curr_temp_address_pub_key":"03b2e7ecc5ff62feb342943a1364f555e8302f507f78c6392c82b9e12c95ccb40b",
+		"curr_temp_address_private_key":"cPnHVbg3ZZoXhvgu5pWSx18zf9Dw5jfp7wMaDEx4JzHd9zqh1etk",
+		"last_temp_address_private_key":"cU78aif2a4YR5xK8HxBTrPKjdjhD8W4SSZNTw4yFEdwi59JMrYQY",
+		"approval":true
+	}
 }
 
 ```
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-channel_id         			| ------- |   data    | 
+channel_id         			| ------- |   data    | the channel id.
+msg_hash  | ------- |   data    | 
+c2a_rsmc_signed_hex  | ------- |   data    | the hex signed at client side. 
+c2a_counterparty_signed_hex  | ------- |   data    | the hex signed at client side. 
+channel_address_private_key 		| ------- |   data    | private key of the channel that payee holds.
 curr_temp_address_pub_key               | ------- |   data    | current multi-sig temp address pubkey.
 curr_temp_address_private_key           | ------- |   data    | current multi-sig temp address private key.
 last_temp_address_private_key		| ------- |   data    | previous multi-sig temp address private key. 
-channel_address_private_key 		| ------- |   data    | private key of the channel that payee holds.
 approval  | ------- |   data    | true or false
 
 

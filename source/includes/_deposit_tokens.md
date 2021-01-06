@@ -160,8 +160,9 @@ temporary_channel_id		| ------- |   result  | temporary channel id.
 	"recipient_user_peer_id":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
 	"data":{
 		"temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef",
-		"fundee_channel_address_private_key":"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd"
-    	}
+		"fundee_channel_address_private_key":"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd",
+		"signed_alice_rsmc_hex":"c851e763c53adb27dc9451be6dd23cc07ba4......"
+    }
 }
 ``` 
 
@@ -170,6 +171,7 @@ Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 temporary_channel_id    		| ------- |   data    | temporary channel id.
 fundee_channel_address_private_key	| ------- |   data    | private key of the channel that Bob holds, used to sign the commitment transactions. 
+signed_alice_rsmc_hex  | ------- |   data    | the hex signed at client side. 
 
 ### Websocket Response: Message Type -110035
 

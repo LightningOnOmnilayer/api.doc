@@ -58,7 +58,7 @@ Type -102004 Protocol is used to sign up a new user by hirarchecal deterministic
 OBD returns mnemonic words to the client who signs up, and create a new user by the hash of the mnemonic words as the UserID.
 
 
-### Mode 2 remote OBD that is not trusted: 
+### Mode 2 remote OBD that is not trusted (currently using): 
 In this mode, this Protocol requires to generate mnemonic words using BIP32 on local device. Clients, e.g wallets, interacting with obd shall implement this HD mechanism for security guarantees. Mnemonic words shall be kept in a local safe place, and never be shared with any OBD instances.
 
 <aside class="warning">
@@ -153,17 +153,17 @@ to        | ------- |   body    | to whom should know the login of this peer
 result    | ------- |   body    | response data from OBD
 
 
-## logOut
+<!-- ## logOut
 
 ### Simple Type -102002 Protocol
 
-Log out.
+Log out. -->
 
 ## connectPeer 
 
 ### Simple Type -102003
 
-connect to a remote counterparty's OBD server.
+Establish a p2p connection with a remote OBD.
 
 ### Websocket Request: Message Type -102003
 
@@ -181,7 +181,27 @@ connect to a remote counterparty's OBD server.
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-remote_node_address      | ------- |   body    |  node address of the remote obd server.
+remote_node_address      | ------- |   body    |  node address of the OBD.
+
+
+## connectToServer 
+
+Connect to an OBD.
+
+> Request: 
+
+```json
+{
+	"data":{
+		"obd_address":"ws://62.234.216.108:60020/wstest"
+	}
+}
+```
+
+
+Parameter | default | placement | Description
+--------- | ------- | --------- | ------------
+obd_address      | ------- |   body    |  an OBD address.
 
 
 ## genAddressFromMnemonic 
@@ -294,23 +314,16 @@ wif       | ------- |   result  | other format private key of address
 
 # Basic Lightning Network Operations
 
-<!-- 
-## connectRemotePeer
-
-### Simple Type -102001 Protocol
--->
- 
-
 <!-- # create channel -->
 ## openChannel
 
-### Simple Type -10032 Protocol
+### Simple Type -100032 Protocol
 
-Type -32 Protocol is used to request to create a channel with someone else(Bob). 
+Type -100032 Protocol is used to request to create a channel with someone else(Bob). 
 
 Alice sends request to her OBD instance, her OBD helps her complete the message, and routes her request to Bob's OBD for creating a channel between them. 
 
-### Websocket Request: Message Type -10032 
+### Websocket Request: Message Type -100032 
 
 > Request:
  
@@ -320,25 +333,27 @@ Alice sends request to her OBD instance, her OBD helps her complete the message,
     "recipient_node_peer_id":"QmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiont",
     "recipient_user_peer_id":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
     "data":{
-        "funding_pubkey":"02c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc66"
+		"funding_pubkey":"02c57b02d24356e1d31d34d2e3a09f7d68a4bdec6c0556595bb6391ce5d6d4fc66",
+		"is_private":false
     }
 }
 ```
 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
-funding pubkey    | ------- |   data    | public key of funder, who wish to deposite BTC and other tokens to the channel
 recipient_node_peer_id | ------- |   body    | peer id of the obd node where the fundee logged in.
 recipient_user_peer_id | ------- |   body    | the user id of the fundee.
+funding pubkey    | ------- |   data    | public key of funder, who wish to deposite BTC and other tokens to the channel
+is_private              | ------- |   data    | true to private channel or false to open channel.
  
 
-### Websocket Response: Message Type -10032 
+### Websocket Response: Message Type -100032 
 
 > OBD Response:
 
 ```json
 {
-	"type":-32,
+	"type":-100032,
 	"status":true,
 	"from":"<user_id>",
 	"to":"<user_id>",
@@ -359,7 +374,7 @@ recipient_user_peer_id | ------- |   body    | the user id of the fundee.
 		"payment_base_point":"",
 		"push_msat":0,
 		"revocation_base_point":"",
-		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+		"temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef",
 		"to_self_delay":0
 	}
 }
@@ -391,13 +406,13 @@ to_self_delay                      | ------- |    result   |
 
 ## acceptChannel
 
-### Simple Type -10033 Protocol
+### Simple Type -100033 Protocol
  
 
 Bob replies to accept, his OBD completes his message and routes it back to Alice's OBD.
 Then Alice sees the response of acceptance. 
 
-### Websocket Request: Message Type -10033
+### Websocket Request: Message Type -100033
 
 
 > Request:
@@ -421,13 +436,13 @@ temporary_channel_id  | ------- |   data    | the temporary channel id, used bef
 funding pubkey        | ------- |   data    | public key of fundee(Bob), who wish to deposite BTC and other tokens to the channel. Current implementation of OBD supports one-way deposite. Fundee does not need to fund the channel.
 approval              | ------- |   data    | true to accept or false to deny.
  
-### Websocket Response: Message Type -10033
+### Websocket Response: Message Type -100033
 
 > OBD Responses:
 
 ```json
 {
-	"type":-33,
+	"type":-100033,
 	"status":true,
 	"from":"<user_id>",
 	"to":"<user_id>",
@@ -440,7 +455,7 @@ approval              | ------- |   data    | true to accept or false to deny.
 		"channel_address":"2N1DFjaE4yCcECdFwgLQcLmNrLV5zetgQtE",
 		"channel_address_redeem_script":"5221021d475729c52f86df24b36aa231945bd090f9c23ccbfb91e4ade6813b2419d32d2103efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce952ae",
 		"channel_address_script_pub_key":"a9145761a1d45b8a6e7caa10a4bcecca97630c67af4687",
-		"channel_id":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		"channel_id":"",
 		"channel_reserve_satoshis":0,
 		"close_at":"0001-01-01T00:00:00Z",
 		"create_at":"2019-09-21T00:05:25.667117+08:00",
@@ -464,7 +479,7 @@ approval              | ------- |   data    | true to accept or false to deny.
 		"pub_key_b":"03efd8923f1829ece87202892d31cd75c20b7a7b5adf888f7ba04fa2c1bc931ce9",
 		"push_msat":0,
 		"revocation_base_point":"",
-		"temporary_channel_id":[43,207,125,166,133,84,214,91,184,177,149,10,111,209,133,201,147,178,48,245,6,18,162,239,207,45,105,158,251,200,138,183],
+		"temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef",
 		"to_self_delay":0
 	}
 }

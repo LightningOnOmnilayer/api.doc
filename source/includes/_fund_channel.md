@@ -2,7 +2,7 @@
 
 ### Simple Type -102109 Protocol
 
-Type 102109 Protocol is used for depositing bitcoin into a channel. Since the basic Omnilayer protocal uses BTC as miner fee in constructing transactions, this message 102109 is mandatory for depositing a little BTC into a channel as miner fee.  
+Type -102109 Protocol is used for depositing bitcoin into a channel. Since the basic Omnilayer protocal uses BTC as miner fee in constructing transactions, this message -102109 is mandatory for depositing a little BTC into a channel as miner fee.  
 
 
 ### Websocket Request: Message Type -102109
@@ -11,7 +11,7 @@ Type 102109 Protocol is used for depositing bitcoin into a channel. Since the ba
 
 ```json
 {
-	"type":102109,
+	"type":-102109,
 	"data":{
 		"from_address":"mre4gBmjKiBm8gwZmpCNcnnHiDY7TXr2wD",
 		"from_address_private_key":"cVV22tLgBbLv1K1uW6z2doR4Copat1mejjND1jtW8CVkRLUSpPxf",
@@ -149,8 +149,9 @@ temporary_channel_id  | ------- |   result  | temporary channel id.
 		"temporary_channel_id":"38e41ef5ba61c11642b2fa3ea93e8026ab7b057b06b64215f255669acf8dc0ef",
 		"channel_address_private_key":"cTWBhAwXyDtM5XxBwibUxMzH5R2na7WHCTXcnL2xq3y25S4mpAMd",
 		"funding_txid":"603bfad3a62e7bf5480bc851e763c53adb276b16b02edc9451be6dd23cc07ba4",
+		"signed_miner_redeem_transaction_hex":"c851e763c53adb27dc9451be6dd23cc07ba4......",
 		"approval":true
-    	}
+    }
 }
 ```
 
@@ -159,6 +160,7 @@ Parameter | default | placement | Description
 temporary_channel_id         | ------- |   data    | temporary channel id. 
 channel_address_private_key  | ------- |   data    | private key of the channel that Bob holds.
 funding_txid                 | ------- |   data    | funding transaction id. 
+signed_miner_redeem_transaction_hex  | ------- |   data    | the hex signed at client side. 
 approval                     | ------- |   data    | true or false.
 
  
