@@ -41,9 +41,9 @@ is_private          | ------- |   data    | true to private channel or false to 
 ```json
 {
 	"type":-100402,
-	"data"{ 
+	"data": { 
 		"invoice":"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"
-    	}
+    }
 }
 
 ```
@@ -53,23 +53,20 @@ Parameter | default | placement | Description
 invoice   | ------- |   data    | the invoice string encoded by beth32. 
 
 
-<!-- payInvoice currently is not an api of sdk -->
-<!-- 
 ## payInvoice
 
-### Simple Type -100401 Protocol
+### A SDK Function
 
-Pay an invoice. This protocol firstly seeks a full path of nodes, decides which path is the optimistic one, in terms of hops, node's histroy service quility, and fees. Then it construct an HTLC and pay to the payee who creates the invoice.  
+Pay an invoice. This function firstly seeks a full path of nodes, decides which path is the optimistic one, in terms of hops, node's histroy service quility, and fees. Then it construct an HTLC and pay to the payee who creates the invoice.  
 
 
-### Websocket Request: Message Type -100401
+### Request: 
 
 >Request:
 
 ```json
 {
-	"type":-100401,
-	"data"{
+	"data": {
 		"invoice":"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"
 	}
 }
@@ -78,33 +75,6 @@ Pay an invoice. This protocol firstly seeks a full path of nodes, decides which 
 Parameter | default | placement | Description
 --------- | ------- | --------- | ------------
 invoice   | ------- |   data    | the invoice string encoded by beth32. 
-
-
-### Websocket Response: Message Type -110401
-
->Response:
-
-```json
-{
-	"type":-110401,
-	"status":true,
-	"from":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/3001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP",
-	"to":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
-	"result":{
-		"min_cltv_expiry":1,
-		"next_node_peerId":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
-		"routing_packet":"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"
-    	}
-}
-``` 
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-min_cltv_expiry   | ------- |   result    | min cltv expiry.
-next_node_peerId  | ------- |   result    | next hop.
-routing_packet	  | ------- |   result    | routing packet.
-
--->
 
 
 ## HTLCFindPath
@@ -122,7 +92,7 @@ There is two ways to do it. One is through an invoice and the other is through s
 ```json
 {
 	"type":-100401,
-	"data"{
+	"data": {
 		"invoice":"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"
 	}
 }

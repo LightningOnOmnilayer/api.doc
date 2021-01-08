@@ -58,7 +58,7 @@ Type -102004 Protocol is used to sign up a new user by hirarchecal deterministic
 OBD returns mnemonic words to the client who signs up, and create a new user by the hash of the mnemonic words as the UserID.
 
 
-### Mode 2 remote OBD that is not trusted (currently using): 
+### Mode 2 remote OBD that is not trusted (currently using as a SDK function): 
 In this mode, this Protocol requires to generate mnemonic words using BIP32 on local device. Clients, e.g wallets, interacting with obd shall implement this HD mechanism for security guarantees. Mnemonic words shall be kept in a local safe place, and never be shared with any OBD instances.
 
 <aside class="warning">
@@ -104,8 +104,6 @@ status    | ------- |   body    | true or false.
 from      | ------- |   body    | socket id generated when establishing a websocket connection.
 to        | ------- |   body    | socket id generated when establishing a websocket connection.
 result    | ------- |   body    | mnemonic words.
-
-
 
 
 ## logIn
@@ -206,7 +204,7 @@ obd_address      | ------- |   body    |  an OBD address.
 
 ## genAddressFromMnemonic 
 
-### Simple Type -103000 Protocol
+### Simple Type -103000 Protocol (currently using as a SDK function)
 
 Type -103000 Protocol generates a new address from mnemonic words. This message requires to generate address on local device from mnemonic words using BIP32. Clients interacting with obd, e.g wallets, shall implement this HD mechanism for security guarantees. Mnemonic words shall be kept in a safe place, and never be shared  with any obd instances.  
 
