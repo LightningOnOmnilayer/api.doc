@@ -285,6 +285,9 @@
                     <a href="#addinvoice" class="toc-h2 toc-link" data-title="addInvoice">addInvoice</a>
                   </li>
                   <li>
+                    <a href="#payinvoice" class="toc-h2 toc-link" data-title="payInvoice">payInvoice</a>
+                  </li>
+                  <li>
                     <a href="#htlcfindpath" class="toc-h2 toc-link" data-title="HTLCFindPath">HTLCFindPath</a>
                   </li>
                   <li>
@@ -403,7 +406,7 @@
 <h2 id='genmnemonic'>genMnemonic</h2><h3 id='simple-type-102004-protocol'>Simple Type -102004 Protocol</h3><h3 id='mode-1-local-obd'>Mode 1 local OBD:</h3>
 <p>Type -102004 Protocol is used to sign up a new user by hirarchecal deterministic wallet system integrated in OBD.
 OBD returns mnemonic words to the client who signs up, and create a new user by the hash of the mnemonic words as the UserID.</p>
-<h3 id='mode-2-remote-obd-that-is-not-trusted-currently-using'>Mode 2 remote OBD that is not trusted (currently using):</h3>
+<h3 id='mode-2-remote-obd-that-is-not-trusted-currently-using-as-a-sdk-function'>Mode 2 remote OBD that is not trusted (currently using as a SDK function):</h3>
 <p>In this mode, this Protocol requires to generate mnemonic words using BIP32 on local device. Clients, e.g wallets, interacting with obd shall implement this HD mechanism for security guarantees. Mnemonic words shall be kept in a local safe place, and never be shared with any OBD instances.</p>
 
 <aside class="warning">
@@ -608,7 +611,7 @@ Log out. -->
 <td>an OBD address.</td>
 </tr>
 </tbody></table>
-<h2 id='genaddressfrommnemonic'>genAddressFromMnemonic</h2><h3 id='simple-type-103000-protocol'>Simple Type -103000 Protocol</h3>
+<h2 id='genaddressfrommnemonic'>genAddressFromMnemonic</h2><h3 id='simple-type-103000-protocol-currently-using-as-a-sdk-function'>Simple Type -103000 Protocol (currently using as a SDK function)</h3>
 <p>Type -103000 Protocol generates a new address from mnemonic words. This message requires to generate address on local device from mnemonic words using BIP32. Clients interacting with obd, e.g wallets, shall implement this HD mechanism for security guarantees. Mnemonic words shall be kept in a safe place, and never be shared  with any obd instances.  </p>
 <h3 id='request-message-type-103000'>Request: Message Type -103000</h3>
 <blockquote>
@@ -2345,9 +2348,9 @@ curr_temp_address：
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100402</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">{</span><span class="w"> 
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="s2">"invoice"</span><span class="p">:</span><span class="s2">"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -2366,60 +2369,33 @@ curr_temp_address：
 <td>the invoice string encoded by beth32.</td>
 </tr>
 </tbody></table>
-
-<!-- payInvoice currently is not an api of sdk -->
-
-<!-- 
-## payInvoice
-
-### Simple Type -100401 Protocol
-
-Pay an invoice. This protocol firstly seeks a full path of nodes, decides which path is the optimistic one, in terms of hops, node's histroy service quility, and fees. Then it construct an HTLC and pay to the payee who creates the invoice.  
-
-
-### Websocket Request: Message Type -100401
-
->Request:
-
-```json
-{
-    "type":-100401,
-    "data"{
-        "invoice":"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"
-    }
-}
-```
- 
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-invoice   | ------- |   data    | the invoice string encoded by beth32. 
-
-
-### Websocket Response: Message Type -110401
-
->Response:
-
-```json
-{
-    "type":-110401,
-    "status":true,
-    "from":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2@/ip4/127.0.0.1/tcp/3001/p2p/Qmd3a2GWMwJuC98x1sthzvqXXhaVSz5rFzJYCekBU5ihPP",
-    "to":"1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2",
-    "result":{
-        "min_cltv_expiry":1,
-        "next_node_peerId":"39e8b1f3e7aec51a368d70eac6d47195099e55c6963d38bcd729b22190dcdae0",
-        "routing_packet":"ea5096b1864bcfa398486ca659dfb5711506d851fc4626075ecd388a65b6cde9"
-        }
-}
-``` 
-
-Parameter | default | placement | Description
---------- | ------- | --------- | ------------
-min_cltv_expiry   | ------- |   result    | min cltv expiry.
-next_node_peerId  | ------- |   result    | next hop.
-routing_packet    | ------- |   result    | routing packet.
-
--->
+<h2 id='payinvoice'>payInvoice</h2><h3 id='a-sdk-function'>A SDK Function</h3>
+<p>Pay an invoice. This function firstly seeks a full path of nodes, decides which path is the optimistic one, in terms of hops, node&#39;s histroy service quility, and fees. Then it construct an HTLC and pay to the payee who creates the invoice.  </p>
+<h3 id='request'>Request:</h3>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"invoice"</span><span class="p">:</span><span class="s2">"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>default</th>
+<th>placement</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invoice</td>
+<td>-------</td>
+<td>data</td>
+<td>the invoice string encoded by beth32.</td>
+</tr>
+</tbody></table>
 <h2 id='htlcfindpath'>HTLCFindPath</h2><h3 id='simple-type-100401-protocol'>Simple Type -100401 Protocol</h3>
 <p>This protocol is the first step of a payment, which seeks a full path of nodes, decide which path is the optimistic one, in terms of hops, node&#39;s histroy service quility, and fees. </p>
 
@@ -2430,7 +2406,7 @@ routing_packet    | ------- |   result    | routing packet.
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="mi">-100401</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"invoice"</span><span class="p">:</span><span class="s2">"obtb400000000s1pqzyfnpwQmVEoTmyofsbEnsoFwQXHngafECHJuVfEgGyb2bZtyiontuzq1f1dbb3518c1fb12f263d065c1d18576d13f88dff55bfc25ef52afaa2c97a5d2hzz035be1bc8f26ac7318d83663bd5dab10c843a74d11e573731a6a9abee5b9d46933xq8p0sm45qdqtdescriptionjf4"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
