@@ -19,11 +19,13 @@ includes:
   - htlc
   - atomic_swap
   - query
+  - grpc
   
 search: true
 ---
 
-# OmniBOLT Daemon Websocket Messages Reference
+<!-- # OmniBOLT Daemon Websocket Messages Reference -->
+# OBD Websocket Reference
 
 Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18 or later), which provides the on chain settlement service for OmniBOLT. And current OBD implementation is deeply binded to OmniCore. 
 

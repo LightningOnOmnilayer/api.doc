@@ -1,6 +1,6 @@
 # HTLC Payment
  
-## addInvoice
+## wsAddInvoice
 
 ### Simple Type -100402 Protocol
 
