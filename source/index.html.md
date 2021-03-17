@@ -108,7 +108,7 @@ to        | ------- |   body    | socket id generated when establishing a websoc
 result    | ------- |   body    | mnemonic words.
 
 
-## logIn
+## wsLogIn
 
 ### Simple Type -102001 Protocol
 
@@ -159,7 +159,7 @@ result    | ------- |   body    | response data from OBD
 
 Log out. -->
 
-## connectPeer 
+## wsConnectPeer 
 
 ### Simple Type -102003
 
@@ -315,7 +315,7 @@ wif       | ------- |   result  | other format private key of address
 # Basic Lightning Network Operations
 
 <!-- # create channel -->
-## openChannel
+## wsOpenChannel
 
 ### Simple Type -100032 Protocol
 
