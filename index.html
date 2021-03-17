@@ -230,10 +230,10 @@
                     <a href="#genmnemonic" class="toc-h2 toc-link" data-title="genMnemonic">genMnemonic</a>
                   </li>
                   <li>
-                    <a href="#login" class="toc-h2 toc-link" data-title="logIn">logIn</a>
+                    <a href="#wslogin" class="toc-h2 toc-link" data-title="wsLogIn">wsLogIn</a>
                   </li>
                   <li>
-                    <a href="#connectpeer" class="toc-h2 toc-link" data-title="connectPeer">connectPeer</a>
+                    <a href="#wsconnectpeer" class="toc-h2 toc-link" data-title="wsConnectPeer">wsConnectPeer</a>
                   </li>
                   <li>
                     <a href="#connecttoserver" class="toc-h2 toc-link" data-title="connectToServer">connectToServer</a>
@@ -247,7 +247,7 @@
             <a href="#basic-lightning-network-operations" class="toc-h1 toc-link" data-title="Basic Lightning Network Operations">Basic Lightning Network Operations</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#openchannel" class="toc-h2 toc-link" data-title="openChannel">openChannel</a>
+                    <a href="#wsopenchannel" class="toc-h2 toc-link" data-title="wsOpenChannel">wsOpenChannel</a>
                   </li>
                   <li>
                     <a href="#acceptchannel" class="toc-h2 toc-link" data-title="acceptChannel">acceptChannel</a>
@@ -570,7 +570,7 @@ This endpoint manages users created by an OBD instance. Here we use Alice and Bo
 <td>mnemonic words.</td>
 </tr>
 </tbody></table>
-<h2 id='login'>logIn</h2><h3 id='simple-type-102001-protocol'>Simple Type -102001 Protocol</h3>
+<h2 id='wslogin'>wsLogIn</h2><h3 id='simple-type-102001-protocol'>Simple Type -102001 Protocol</h3>
 <p>Type -102001 Protocol is used to login to OBD.</p>
 <h3 id='websocket-request-message-type-102001'>Websocket Request: Message Type -102001</h3>
 <blockquote>
@@ -649,7 +649,7 @@ This endpoint manages users created by an OBD instance. Here we use Alice and Bo
 ### Simple Type -102002 Protocol
 
 Log out. -->
-<h2 id='connectpeer'>connectPeer</h2><h3 id='simple-type-102003'>Simple Type -102003</h3>
+<h2 id='wsconnectpeer'>wsConnectPeer</h2><h3 id='simple-type-102003'>Simple Type -102003</h3>
 <p>Establish a p2p connection with a remote OBD.</p>
 <h3 id='websocket-request-message-type-102003'>Websocket Request: Message Type -102003</h3>
 <blockquote>
@@ -850,7 +850,7 @@ wif       | ------- |   result  | other format private key of address
 -->
 <h1 id='basic-lightning-network-operations'>Basic Lightning Network Operations</h1>
 <!-- # create channel -->
-<h2 id='openchannel'>openChannel</h2><h3 id='simple-type-100032-protocol'>Simple Type -100032 Protocol</h3>
+<h2 id='wsopenchannel'>wsOpenChannel</h2><h3 id='simple-type-100032-protocol'>Simple Type -100032 Protocol</h3>
 <p>Type -100032 Protocol is used to request to create a channel with someone else(Bob). </p>
 
 <p>Alice sends request to her OBD instance, her OBD helps her complete the message, and routes her request to Bob&#39;s OBD for creating a channel between them. </p>
