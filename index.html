@@ -221,10 +221,10 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#omnibolt-daemon-websocket-messages-reference" class="toc-h1 toc-link" data-title="OmniBOLT Daemon Websocket Messages Reference">OmniBOLT Daemon Websocket Messages Reference</a>
+            <a href="#obd-websocket-reference" class="toc-h1 toc-link" data-title="OBD Websocket Reference">OBD Websocket Reference</a>
           </li>
           <li>
-            <a href="#wallet" class="toc-h1 toc-link" data-title="Wallet">Wallet</a>
+            <a href="#wswallet" class="toc-h1 toc-link" data-title="wsWallet">wsWallet</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#genmnemonic" class="toc-h2 toc-link" data-title="genMnemonic">genMnemonic</a>
@@ -282,7 +282,7 @@
             <a href="#htlc-payment" class="toc-h1 toc-link" data-title="HTLC Payment">HTLC Payment</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#addinvoice" class="toc-h2 toc-link" data-title="addInvoice">addInvoice</a>
+                    <a href="#wsaddinvoice" class="toc-h2 toc-link" data-title="wsAddInvoice">wsAddInvoice</a>
                   </li>
                   <li>
                     <a href="#payinvoice" class="toc-h2 toc-link" data-title="payInvoice">payInvoice</a>
@@ -374,6 +374,98 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#obd-grpc-api-reference" class="toc-h1 toc-link" data-title="OBD gRPC API Reference">OBD gRPC API Reference</a>
+          </li>
+          <li>
+            <a href="#htlc" class="toc-h1 toc-link" data-title="HTLC">HTLC</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#addinvoice" class="toc-h2 toc-link" data-title="AddInvoice">AddInvoice</a>
+                  </li>
+                  <li>
+                    <a href="#listinvoices" class="toc-h2 toc-link" data-title="ListInvoices">ListInvoices</a>
+                  </li>
+                  <li>
+                    <a href="#parseinvoice" class="toc-h2 toc-link" data-title="ParseInvoice">ParseInvoice</a>
+                  </li>
+                  <li>
+                    <a href="#sendpayment" class="toc-h2 toc-link" data-title="SendPayment">SendPayment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#lightning" class="toc-h1 toc-link" data-title="Lightning">Lightning</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#channelbalance" class="toc-h2 toc-link" data-title="ChannelBalance">ChannelBalance</a>
+                  </li>
+                  <li>
+                    <a href="#connectpeer" class="toc-h2 toc-link" data-title="ConnectPeer">ConnectPeer</a>
+                  </li>
+                  <li>
+                    <a href="#disconnectpeer" class="toc-h2 toc-link" data-title="DisconnectPeer">DisconnectPeer</a>
+                  </li>
+                  <li>
+                    <a href="#fundchannel" class="toc-h2 toc-link" data-title="FundChannel">FundChannel</a>
+                  </li>
+                  <li>
+                    <a href="#gettransactions" class="toc-h2 toc-link" data-title="GetTransactions">GetTransactions</a>
+                  </li>
+                  <li>
+                    <a href="#latesttransaction" class="toc-h2 toc-link" data-title="LatestTransaction">LatestTransaction</a>
+                  </li>
+                  <li>
+                    <a href="#listchannels" class="toc-h2 toc-link" data-title="ListChannels">ListChannels</a>
+                  </li>
+                  <li>
+                    <a href="#openchannel" class="toc-h2 toc-link" data-title="OpenChannel">OpenChannel</a>
+                  </li>
+                  <li>
+                    <a href="#pendingchannels" class="toc-h2 toc-link" data-title="PendingChannels">PendingChannels</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#rsmc" class="toc-h1 toc-link" data-title="Rsmc">Rsmc</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#rsmcpayment" class="toc-h2 toc-link" data-title="RsmcPayment">RsmcPayment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#wallet" class="toc-h1 toc-link" data-title="Wallet">Wallet</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changepassword" class="toc-h2 toc-link" data-title="ChangePassword">ChangePassword</a>
+                  </li>
+                  <li>
+                    <a href="#estimatefee" class="toc-h2 toc-link" data-title="EstimateFee">EstimateFee</a>
+                  </li>
+                  <li>
+                    <a href="#getinfo" class="toc-h2 toc-link" data-title="GetInfo">GetInfo</a>
+                  </li>
+                  <li>
+                    <a href="#genseed" class="toc-h2 toc-link" data-title="GenSeed">GenSeed</a>
+                  </li>
+                  <li>
+                    <a href="#listpeers" class="toc-h2 toc-link" data-title="ListPeers">ListPeers</a>
+                  </li>
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                  </li>
+                  <li>
+                    <a href="#logout" class="toc-h2 toc-link" data-title="Logout">Logout</a>
+                  </li>
+                  <li>
+                    <a href="#nextaddr" class="toc-h2 toc-link" data-title="NextAddr">NextAddr</a>
+                  </li>
+                  <li>
+                    <a href="#newaddress" class="toc-h2 toc-link" data-title="NewAddress">NewAddress</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://github.com/omnilaboratory/obd'>Join our dev community</a></li>
@@ -384,7 +476,8 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='omnibolt-daemon-websocket-messages-reference'>OmniBOLT Daemon Websocket Messages Reference</h1>
+        <!-- # OmniBOLT Daemon Websocket Messages Reference -->
+<h1 id='obd-websocket-reference'>OBD Websocket Reference</h1>
 <p>Welcome to the Websocket API reference documentation for OmniBOLT Daemon (OBD), the daemon that communicates with light clients written in any program languages that support websocket connection, such as javascript, golang, shell or even C/C++. OBD runs as an independent process connecting to a full node of OmniCore(version 0.18 or later), which provides the on chain settlement service for OmniBOLT. And current OBD implementation is deeply binded to OmniCore. </p>
 
 <p>We assume you have already gone through our <a href="https://github.com/omnilaboratory/obd#installation">installation instruction</a>, so that you are familar with:</p>
@@ -401,7 +494,7 @@
 <p>For kernel developers in our community, the above steps are the easiest way to get started. Just run the <a href="https://github.com/omnilaboratory/DebuggingTool">GUI tool</a> and open <a href="https://github.com/omnilaboratory/obd#step-4-test-channel-operations-using-websocket-testing-tool">OmniBOLT Daemon</a> project with your favorit golang editor, run OBD in debug mode, setup break points, and send messages from GUI tool. You may intercept the messages and track message flows of OBD kernel.</p>
 
 <p><a href="https://github.com/omnilaboratory/DebuggingTool/tree/master/sdk">Client JS SDK</a> is also released with the GUI tool. This SDK implements APIs in this document, especially the internal HD functions managing pub/priv keys generation. This SDK and is for wallet developers to easily integrate. Also it helps developers automatically fill in the arguments which is hardly to be manually finished.</p>
-<h1 id='wallet'>Wallet</h1>
+<h1 id='wswallet'>wsWallet</h1>
 <p>Wallet is the first place that a client begin to work with an obd instance. User can initiate a local obd instance or connect to a remote one. The first step is to generate mnemonic code to identify yourself in the network using genMnemonic. Once the code is obtained by the user, then channel addresses, pub/priv key pairs will all be generated by it. The wallet is created. </p>
 <h2 id='genmnemonic'>genMnemonic</h2><h3 id='simple-type-102004-protocol'>Simple Type -102004 Protocol</h3><h3 id='mode-1-local-obd'>Mode 1 local OBD:</h3>
 <p>Type -102004 Protocol is used to sign up a new user by hirarchecal deterministic wallet system integrated in OBD.
@@ -2278,7 +2371,7 @@ curr_temp_address：
 <td>true or false</td>
 </tr>
 </tbody></table>
-<h1 id='htlc-payment'>HTLC Payment</h1><h2 id='addinvoice'>addInvoice</h2><h3 id='simple-type-100402-protocol'>Simple Type -100402 Protocol</h3>
+<h1 id='htlc-payment'>HTLC Payment</h1><h2 id='wsaddinvoice'>wsAddInvoice</h2><h3 id='simple-type-100402-protocol'>Simple Type -100402 Protocol</h3>
 <p>create an invoice.</p>
 <h3 id='websocket-request-message-type-100402'>Websocket Request: Message Type -100402</h3>
 <blockquote>
@@ -5079,6 +5172,1489 @@ This section collects all the messages used in querying the latest status of the
 <td>-------</td>
 <td>result</td>
 <td>the R (Preimage_R)</td>
+</tr>
+</tbody></table>
+<h1 id='obd-grpc-api-reference'>OBD gRPC API Reference</h1>
+<p>In administrator mode, OmniBOLT provides some gRPC APIs to do tasks related channel opretions.</p>
+
+<p>Code examples in shell environment, invoke APIs with <code>grpcurl</code> command line tool that a third-party tool.</p>
+
+<p>Github repo is here: https://github.com/fullstorydev/grpcurl/</p>
+<h1 id='htlc'>HTLC</h1><h2 id='addinvoice'>AddInvoice</h2><h3 id='unary-rpc'>Unary RPC</h3>
+<p>AddInvoice attempts to add a new invoice to the invoice database. </p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"cltv_expiry":&lt;string&gt;, "value":&lt;double&gt;, "property_id":&lt;int64&gt;, "private":&lt;bool&gt;}'</span> localhost:50051 proxy.Htlc/AddInvoice
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'htlc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">htlc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Htlc</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">property_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int64</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">value</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">double</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">memo</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">cltv_expiry</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">private</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">htlc</span><span class="p">.</span><span class="nx">AddInvoice</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-invoice'>gRPC Request: [Invoice]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>property_id</td>
+<td>int64</td>
+<td>assets id</td>
+</tr>
+<tr>
+<td>value</td>
+<td>double</td>
+<td>amount of transfer</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>cltv_expiry</td>
+<td>string</td>
+<td>expiry time.</td>
+</tr>
+<tr>
+<td>private</td>
+<td>bool</td>
+<td>true to private channel or false to open channel.</td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-addinvoiceresponse'>gRPC Response: [AddInvoiceResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payment_request</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='listinvoices'>ListInvoices</h2><h3 id='unary-rpc-2'>Unary RPC</h3>
+<p>ListInvoices returns a list of all the invoices currently stored within the database. Any active debug invoices are ignored. It has full support for paginated responses, allowing users to query for specific invoices through their add_index. This can be done by using either the first_index_offset or last_index_offset fields included in the response as the index_offset of the next request. By default, the first 100 invoices created will be returned. Backwards pagination is also supported through the Reversed flag.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"index_offset":&lt;uint64&gt;, "num_max_invoices":&lt;uint64&gt;, "reversed":&lt;bool&gt;}'</span> localhost:50051 proxy.Htlc/ListInvoices
+
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'htlc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">htlc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Htlc</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">index_offset</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">uint64</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">num_max_invoices</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">uint64</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">reversed</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">htlc</span><span class="p">.</span><span class="nx">ListInvoices</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-listinvoicerequest'>gRPC Request: [ListInvoiceRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index_offset</td>
+<td>uint64</td>
+<td>The index of an invoice that will be used as either the start or end of a query to determine which invoices should be returned in the response.</td>
+</tr>
+<tr>
+<td>num_max_invoices</td>
+<td>uint64</td>
+<td>The max number of invoices to return in the response to this query.</td>
+</tr>
+<tr>
+<td>reversed</td>
+<td>bool</td>
+<td>If set, the invoices returned will result from seeking backwards from the specified index offset. This can be used to paginate backwards.</td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-listinvoiceresponse'>gRPC Response: [ListInvoiceResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invoices</td>
+<td>Invoice</td>
+<td>A list of invoices from the time slice of the time series specified in the request.</td>
+</tr>
+<tr>
+<td>last_index_offset</td>
+<td>uint64</td>
+<td>The index of the last item in the set of returned invoices. This can be used to seek further, pagination style.</td>
+</tr>
+<tr>
+<td>first_index_offset</td>
+<td>uint64</td>
+<td>The index of the last item in the set of returned invoices. This can be used to seek backwards, pagination style.</td>
+</tr>
+</tbody></table>
+<h2 id='parseinvoice'>ParseInvoice</h2><h3 id='unary-rpc-3'>Unary RPC</h3>
+<p>ParseInvoice decodes the <code>payment_request</code> and get out all of details from an invoice.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"payment_request":&lt;string&gt;}'</span> localhost:50051 proxy.Htlc/ParseInvoice
+
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'htlc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">htlc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Htlc</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">payment_request</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">htlc</span><span class="p">.</span><span class="nx">ParseInvoice</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-parseinvoicerequest'>gRPC Request: [ParseInvoiceRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payment_request</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-parseinvoiceresponse'>gRPC Response: [ParseInvoiceResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>property_id</td>
+<td>int64</td>
+<td>assets id</td>
+</tr>
+<tr>
+<td>value</td>
+<td>double</td>
+<td>amount of transfer</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>cltv_expiry</td>
+<td>string</td>
+<td>expiry time.</td>
+</tr>
+<tr>
+<td>private</td>
+<td>bool</td>
+<td>true to private channel or false to open channel.</td>
+</tr>
+<tr>
+<td>h</td>
+<td>string</td>
+<td>preimage</td>
+</tr>
+<tr>
+<td>recipient_node_peer_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>recipient_user_peer_id</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='sendpayment'>SendPayment</h2><h3 id='unary-rpc-4'>Unary RPC</h3>
+<p>SendPayment attempts to route a payment described by the passed PaymentRequest to the final destination. The call returns payment data.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"payment_request":&lt;string&gt;, "invoice_detail":&lt;ParseInvoiceResponse&gt;}'</span> localhost:50051 proxy.Htlc/SendPayment
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'htlc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">htlc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Htlc</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">payment_request</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">invoice_detail</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">ParseInvoiceResponse</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">htlc</span><span class="p">.</span><span class="nx">SendPayment</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-sendrequest'>gRPC Request: [SendRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payment_request</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>invoice_detail</td>
+<td>ParseInvoiceResponse</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-sendresponse'>gRPC Response: [SendResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payment_hash</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>payment_preimage</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_to_rsmc</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_to_htlc</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_to_counterparty</td>
+<td>double</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='lightning'>Lightning</h1><h2 id='channelbalance'>ChannelBalance</h2><h3 id='unary-rpc-5'>Unary RPC</h3>
+<p>ChannelBalance returns a report on the total funds across all open channels, categorized in local/remote, pending local/remote and unsettled local/remote balances.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext localhost:50051 proxy.Lightning/ChannelBalance
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">ChannelBalance</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-channelbalancerequest'>gRPC Request: [ChannelBalanceRequest]</h3>
+<p>This request has no parameters.</p>
+<h3 id='grpc-response-channelbalanceresponse'>gRPC Response: [ChannelBalanceResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>local_balance</td>
+<td>double</td>
+<td>Sum of channels local balances.</td>
+</tr>
+<tr>
+<td>remote_balance</td>
+<td>double</td>
+<td>Sum of channels remote balances.</td>
+</tr>
+<tr>
+<td>unsettled_local_balance</td>
+<td>double</td>
+<td>Sum of channels local unsettled balances.</td>
+</tr>
+<tr>
+<td>unsettled_remote_balance</td>
+<td>double</td>
+<td>Sum of channels remote unsettled balances.</td>
+</tr>
+<tr>
+<td>pending_open_local_balance</td>
+<td>double</td>
+<td>Sum of channels pending local balances.</td>
+</tr>
+<tr>
+<td>pending_open_remote_balance</td>
+<td>double</td>
+<td>Sum of channels pending remote balances.</td>
+</tr>
+</tbody></table>
+<h2 id='connectpeer'>ConnectPeer</h2><h3 id='unary-rpc-6'>Unary RPC</h3>
+<p>ConnectPeer attempts to establish a connection to a remote peer. This is at the networking level, and is used for communication between nodes. This is distinct from establishing a channel with a peer.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"addr":&lt;string&gt;}'</span> localhost:50051 proxy.Lightning/ConnectPeer
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">addr</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">ConnectPeer</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-connectpeerrequest'>gRPC Request: [ConnectPeerRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addr</td>
+<td>string</td>
+<td>address of the peer</td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-connectpeerresponse'>gRPC Response: [ConnectPeerResponse]</h3>
+<p>This response has no parameters. </p>
+<h2 id='disconnectpeer'>DisconnectPeer</h2><h3 id='unary-rpc-7'>Unary RPC</h3>
+<p>DisconnectPeer attempts to disconnect one peer from another identified. In the case that we currently have a pending or active channel with the target peer, then this action will be not be allowed.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"addr":&lt;string&gt;}'</span> localhost:50051 proxy.Lightning/DisconnectPeer
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">addr</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">DisconnectPeer</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-disconnectpeerrequest'>gRPC Request: <a href="#">DisconnectPeerRequest</a></h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addr</td>
+<td>string</td>
+<td>address of the peer</td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-disconnectpeerresponse'>gRPC Response: <a href="#">DisconnectPeerResponse</a></h3>
+<p>This response has no parameters.</p>
+<h2 id='fundchannel'>FundChannel</h2><h3 id='unary-rpc-8'>Unary RPC</h3>
+<p>FundChannel attempts to fund some bitcoin for miner fee and omni assets into a channel.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"template_channel_id":&lt;string&gt;, "btc_amount":&lt;double&gt;, "property_id":&lt;int64&gt;, "asset_amount":&lt;double&gt;, "recipientInfo":&lt;RecipientNodeInfo&gt;}'</span> localhost:50051 proxy.Lightning/FundChannel
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">template_channel_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">btc_amount</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">double</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">property_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int64</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">asset_amount</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">double</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">recipientInfo</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">RecipientNodeInfo</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">FundChannel</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-fundchannelrequest'>gRPC Request: [FundChannelRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>template_channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>btc_amount</td>
+<td>double</td>
+<td>bitcoin for miner fee</td>
+</tr>
+<tr>
+<td>property_id</td>
+<td>int64</td>
+<td>ID of an omni asset</td>
+</tr>
+<tr>
+<td>asset_amount</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>recipientInfo</td>
+<td>RecipientNodeInfo</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-fundchannelresponse'>gRPC Response: [FundChannelResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='gettransactions'>GetTransactions</h2><h3 id='unary-rpc-9'>Unary RPC</h3>
+<p>GetTransactions returns a list describing all the known transactions relevant to a specified channel.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"channel_id":&lt;string&gt;, "page_size":&lt;int32&gt;, "page_index":&lt;int32&gt;}'</span> localhost:50051 proxy.Lightning/GetTransactions
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">channel_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">page_size</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">page_index</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">GetTransactions</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-gettransactionsrequest'>gRPC Request: [GetTransactionsRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>int32</td>
+<td></td>
+</tr>
+<tr>
+<td>page_index</td>
+<td>int32</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-transactiondetails'>gRPC Response: [TransactionDetails]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transactions</td>
+<td>Transaction</td>
+<td>The list of transactions relevant to the specified channel.</td>
+</tr>
+<tr>
+<td>total_count</td>
+<td>int32</td>
+<td></td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>int32</td>
+<td></td>
+</tr>
+<tr>
+<td>page_index</td>
+<td>int32</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='latesttransaction'>LatestTransaction</h2><h3 id='unary-rpc-10'>Unary RPC</h3>
+<p>LatestTransaction returns the latest transaction from specified channel.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"channel_id":&lt;string&gt;}'</span> localhost:50051 proxy.Lightning/LatestTransaction
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">channel_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">LatestTransaction</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-latesttransactionrequest'>gRPC Request: [LatestTransactionRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-transaction'>gRPC Response: [Transaction]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_a</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_b</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_a</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>peer_b</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>curr_state</td>
+<td>int32</td>
+<td></td>
+</tr>
+<tr>
+<td>tx_hash</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>tx_type</td>
+<td>int32</td>
+<td></td>
+</tr>
+<tr>
+<td>h</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>r</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_htlc</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='listchannels'>ListChannels</h2><h3 id='unary-rpc-11'>Unary RPC</h3>
+<p>ListChannels returns a description of all the open channels that this node is a participant in.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"active_only":&lt;bool&gt;, "inactive_only":&lt;bool&gt;, "public_only":&lt;bool&gt;, "private_only":&lt;bool&gt;, "peer":&lt;bytes&gt;, "page_size":&lt;int32&gt;, "page_index":&lt;int32&gt;}'</span> localhost:50051 proxy.Lightning/ListChannels
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">active_only</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">inactive_only</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">public_only</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">private_only</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">peer</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bytes</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">page_size</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">page_index</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">ListChannels</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-listchannelsrequest'>gRPC Request: [ListChannelsRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>active_only</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>inactive_only</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>public_only</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>private_only</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>peer</td>
+<td>bytes</td>
+<td>Filters the response for channels with a target peer&#39;s pubkey. If peer is empty, all channels will be returned.</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>int32</td>
+<td></td>
+</tr>
+<tr>
+<td>page_index</td>
+<td>int32</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-listchannelsresponse'>gRPC Response: [ListChannelsResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channels</td>
+<td>Channel</td>
+<td>The list of active channels</td>
+</tr>
+</tbody></table>
+<h2 id='openchannel'>OpenChannel</h2><h3 id='unary-rpc-12'>Unary RPC</h3>
+<p>OpenChannel attempts to open a singly funded channel specified in the request to a remote peer.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"node_pubkey_string":&lt;string&gt;, "node_pubkey_index":&lt;int32&gt;, "private":&lt;bool&gt;, "recipientInfo":&lt;RecipientNodeInfo&gt;}'</span> localhost:50051 proxy.Lightning/OpenChannel
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">node_pubkey_string</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">node_pubkey_index</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">private</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">recipientInfo</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">RecipientNodeInfo</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">OpenChannel</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-openchannelrequest'>gRPC Request: [OpenChannelRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>node_pubkey_string</td>
+<td>string</td>
+<td>The pubkey of the node to open a channel with.</td>
+</tr>
+<tr>
+<td>node_pubkey_index</td>
+<td>int32</td>
+<td>The pubkey index of the node to open a channel with.</td>
+</tr>
+<tr>
+<td>private</td>
+<td>bool</td>
+<td>true to private channel or false to open channel.</td>
+</tr>
+<tr>
+<td>recipientInfo</td>
+<td>RecipientNodeInfo</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-openchannelresponse'>gRPC Response: [OpenChannelResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>template_channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='pendingchannels'>PendingChannels</h2><h3 id='unary-rpc-13'>Unary RPC</h3>
+<p>PendingChannels returns a list of all the channels that are currently considered &quot;pending&quot;. A channel is pending if it has finished the funding workflow and is waiting for confirmations for the funding txn, or is in the process of closure, either initiated cooperatively or non-cooperatively.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"page_size":&lt;int32&gt;, "page_index":&lt;int32&gt;}'</span> localhost:50051 proxy.Lightning/PendingChannels
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rpc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">page_size</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">page_index</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">lightning</span><span class="p">.</span><span class="nx">PendingChannels</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-pendingchannelsrequest'>gRPC Request: [PendingChannelsRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page_size</td>
+<td>int32</td>
+<td></td>
+</tr>
+<tr>
+<td>page_index</td>
+<td>int32</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-listchannelsresponse-2'>gRPC Response: [ListChannelsResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channels</td>
+<td>Channel</td>
+<td>The list of active channels</td>
+</tr>
+</tbody></table>
+<h1 id='rsmc'>Rsmc</h1><h2 id='rsmcpayment'>RsmcPayment</h2><h3 id='unary-rpc-14'>Unary RPC</h3>
+<p>RsmcPayment attempts to send a payment with RSMC.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"channel_id":&lt;string&gt;, "amount":&lt;double&gt;, "recipientInfo":&lt;RecipientNodeInfo&gt;}'</span> localhost:50051 proxy.Rsmc/RsmcPayment
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'rsmc.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">rsmc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Rsmc</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">channel_id</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">amount</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">double</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">recipientInfo</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">RecipientNodeInfo</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">rsmc</span><span class="p">.</span><span class="nx">RsmcPayment</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-rsmcpaymentrequest'>gRPC Request: [RsmcPaymentRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>recipientInfo</td>
+<td>RecipientNodeInfo</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-rsmcpaymentresponse'>gRPC Response: [RsmcPaymentResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_a</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>amount_b</td>
+<td>double</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='wallet'>Wallet</h1><h2 id='changepassword'>ChangePassword</h2><h3 id='unary-rpc-15'>Unary RPC</h3>
+<p>ChangePassword change the password as known the <code>login_token</code> that used to login by administrator.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"current_password":&lt;string&gt;, "new_password":&lt;string&gt;}'</span> localhost:50051 proxy.Wallet/ChangePassword
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">current_password</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">new_password</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">ChangePassword</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-changepasswordrequest'>gRPC Request: [ChangePasswordRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>current_password</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>new_password</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-changepasswordresponse'>gRPC Response: [ChangePasswordResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='estimatefee'>EstimateFee</h2><h3 id='unary-rpc-16'>Unary RPC</h3>
+<p>EstimateFee asks the chain backend to estimate the fee rate and total fees for a transaction that pays to multiple specified outputs.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"conf_target":&lt;int32&gt;}'</span> localhost:50051 proxy.Wallet/EstimateFee
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">conf_target</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">EstimateFee</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-estimatefeerequest'>gRPC Request: [EstimateFeeRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>conf_target</td>
+<td>int32</td>
+<td>The target number of blocks that this transaction should be confirmed by.</td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-estimatefeeresponse'>gRPC Response: [EstimateFeeResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sat_per_kw</td>
+<td>int64</td>
+<td>The total fee in satoshis.</td>
+</tr>
+</tbody></table>
+<h2 id='getinfo'>GetInfo</h2><h3 id='unary-rpc-17'>Unary RPC</h3>
+<p>GetInfo returns general information concerning the lightning node including it&#39;s identity pubkey, alias, the chains it is connected to, and information concerning the number of open+pending channels.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext localhost:50051 proxy.Wallet/GetInfo
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-getinforequest'>gRPC Request: [GetInfoRequest]</h3>
+<p>This request has no parameters.</p>
+<h3 id='grpc-response-getinforesponse'>gRPC Response: [GetInfoResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_peerId</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>node_peerId</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>node_address</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_fee_rate</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_max_fee</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>chain_node_type</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>is_admin</td>
+<td>bool</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='genseed'>GenSeed</h2><h3 id='unary-rpc-18'>Unary RPC</h3>
+<p>GenSeed is the first method that should be used to instantiate a new obd instance. This method allows a caller to generate a new aezeed cipher seed given an optional passphrase. </p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"aezeed_passphrase":&lt;bytes&gt;, "seed_entropy":&lt;bytes&gt;}'</span> localhost:50051 proxy.Wallet/GenSeed
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">aezeed_passphrase</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bytes</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">seed_entropy</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bytes</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">GenSeed</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-genseedrequest'>gRPC Request: [GenSeedRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>aezeed_passphrase</td>
+<td>bytes</td>
+<td>aezeed_passphrase is an optional user provided passphrase that will be used to encrypt the generated aezeed cipher seed.</td>
+</tr>
+<tr>
+<td>seed_entropy</td>
+<td>bytes</td>
+<td>seed_entropy is an optional 16-bytes generated via CSPRNG. If not specified, then a fresh set of randomness will be used to create the seed.</td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-genseedresponse'>gRPC Response: [GenSeedResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cipher_seed_mnemonic</td>
+<td>string</td>
+<td>cipher_seed_mnemonic is a 24-word mnemonic that encodes a prior aezeed cipher seed obtained by the user. This field is optional, as if not provided, then the daemon will generate a new cipher seed for the user. Otherwise, then the daemon will attempt to recover the wallet state linked to this cipher seed.</td>
+</tr>
+<tr>
+<td>enciphered_seed</td>
+<td>string</td>
+<td>enciphered_seed are the raw aezeed cipher seed bytes. This is the raw cipher text before run through our mnemonic encoding scheme.</td>
+</tr>
+</tbody></table>
+<h2 id='listpeers'>ListPeers</h2><h3 id='unary-rpc-19'>Unary RPC</h3>
+<p>ListPeers returns a verbose listing of all currently active peers.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext localhost:50051 proxy.Wallet/ListPeers
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">ListPeers</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-listpeersrequest'>gRPC Request: [ListPeersRequest]</h3>
+<p>This request has no parameters.</p>
+<h3 id='grpc-response-listpeersresponse'>gRPC Response: [ListPeersResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>peers</td>
+<td>Peer</td>
+<td>The list of currently connected peers</td>
+</tr>
+</tbody></table>
+<h2 id='login'>Login</h2><h3 id='unary-rpc-20'>Unary RPC</h3>
+<p>Login attempts to login to an obd instance with administrator role.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"mnemonic":&lt;string&gt;, "login_token":&lt;string&gt;}'</span> localhost:50051 proxy.Wallet/Login
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="na">mnemonic</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+  <span class="na">login_token</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">Login</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-loginrequest'>gRPC Request: [LoginRequest]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mnemonic</td>
+<td>string</td>
+<td>mnemonic words</td>
+</tr>
+<tr>
+<td>login_token</td>
+<td>string</td>
+<td>as known password</td>
+</tr>
+</tbody></table>
+<h3 id='grpc-response-loginresponse'>gRPC Response: [LoginResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_peerId</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>node_peerId</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>node_address</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_fee_rate</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>htlc_max_fee</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>chain_node_type</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='logout'>Logout</h2><h3 id='unary-rpc-21'>Unary RPC</h3>
+<p>Logout attempts to logout from an obd instance.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext localhost:50051 proxy.Wallet/Logout
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">Logout</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-logoutrequest'>gRPC Request: [LogoutRequest]</h3>
+<p>This request has no parameters.</p>
+<h3 id='grpc-response-logoutresponse'>gRPC Response: [LogoutResponse]</h3>
+<p>This response has no parameters.</p>
+<h2 id='nextaddr'>NextAddr</h2><h3 id='unary-rpc-22'>Unary RPC</h3>
+<p>NextAddr returns the next unused address within the wallet.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext localhost:50051 proxy.Wallet/NextAddr
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">NextAddr</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-addrrequest'>gRPC Request: [AddrRequest]</h3>
+<p>This request has no parameters.</p>
+<h3 id='grpc-response-addrresponse'>gRPC Response: [AddrResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addr</td>
+<td>string</td>
+<td>The address encoded using a bech32 format.</td>
+</tr>
+</tbody></table>
+<h2 id='newaddress'>NewAddress</h2><h3 id='unary-rpc-23'>Unary RPC</h3>
+<p>NewAddress creates a new address under control of the local wallet.</p>
+<pre class="highlight shell tab-shell"><code>
+<span class="gp">$ </span>grpcurl -plaintext localhost:50051 proxy.Wallet/NewAddress
+</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">loaderOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keepCase</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">longs</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">enums</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="na">defaults</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">oneofs</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">packageDefinition</span> <span class="o">=</span> <span class="nx">protoLoader</span><span class="p">.</span><span class="nx">loadSync</span><span class="p">(</span><span class="s1">'wallet.proto'</span><span class="p">,</span> <span class="nx">loaderOptions</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">obdrpc</span> <span class="o">=</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">loadPackageDefinition</span><span class="p">(</span><span class="nx">packageDefinition</span><span class="p">).</span><span class="nx">proxy</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
+<span class="p">};</span> 
+<span class="nx">wallet</span><span class="p">.</span><span class="nx">NewAddress</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><h3 id='grpc-request-newaddressrequest'>gRPC Request: [NewAddressRequest]</h3>
+<p>This request has no parameters.</p>
+<h3 id='grpc-response-newaddressresponse'>gRPC Response: [NewAddressResponse]</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addr</td>
+<td>string</td>
+<td>The address encoded using a bech32 format.</td>
 </tr>
 </tbody></table>
 
