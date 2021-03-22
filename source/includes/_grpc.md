@@ -1,6 +1,16 @@
 # OBD gRPC API Reference
 
-In administrator mode, OmniBOLT provides some gRPC APIs to do tasks related channel opretions.
+This is the gRPC API reference documentation for omnibolt daemon. 
+
+The grpc API is offered when your obd runs in exclusive mode, which is that only you are able to connect the obd instance. This is the mode same to lnd. We suggest you to visit the link below for obd architecture:
+
+https://omnilaboratory.github.io/obd/#/Architecture?id=exclusive-mode
+
+In exclusive mode, connection type is http protocol between client and obd currently.
+
+The proto files are here:
+
+https://github.com/omnilaboratory/obd/tree/master/proxy/pb
 
 Code examples in shell environment, invoke APIs with `grpcurl` command line tool that a third-party tool.
 
