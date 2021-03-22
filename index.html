@@ -5175,7 +5175,17 @@ This section collects all the messages used in querying the latest status of the
 </tr>
 </tbody></table>
 <h1 id='obd-grpc-api-reference'>OBD gRPC API Reference</h1>
-<p>In administrator mode, OmniBOLT provides some gRPC APIs to do tasks related channel opretions.</p>
+<p>This is the gRPC API reference documentation for omnibolt daemon. </p>
+
+<p>The grpc API is offered when your obd runs in exclusive mode, which is that only you are able to connect the obd instance. This is the mode same to lnd. We suggest you to visit the link below for obd architecture:</p>
+
+<p>https://omnilaboratory.github.io/obd/#/Architecture?id=exclusive-mode</p>
+
+<p>In exclusive mode, connection type is http protocol between client and obd currently.</p>
+
+<p>The proto files are here:</p>
+
+<p>https://github.com/omnilaboratory/obd/tree/master/proxy/pb</p>
 
 <p>Code examples in shell environment, invoke APIs with <code>grpcurl</code> command line tool that a third-party tool.</p>
 
