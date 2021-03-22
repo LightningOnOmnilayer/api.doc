@@ -12,7 +12,7 @@ The proto files are here:
 
 https://github.com/omnilaboratory/obd/tree/master/proxy/pb
 
-Code examples in shell environment, invoke APIs with `grpcurl` command line tool that a third-party tool.
+Code examples invoking obd API use `grpcurl` command line tool：
 
 Github repo is here: https://github.com/fullstorydev/grpcurl/
 
