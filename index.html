@@ -5999,7 +5999,7 @@ This section collects all the messages used in querying the latest status of the
 <h2 id='openchannel'>OpenChannel</h2><h3 id='unary-rpc-12'>Unary RPC</h3>
 <p>OpenChannel attempts to open a singly funded channel specified in the request to a remote peer.</p>
 <pre class="highlight shell tab-shell"><code>
-<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"node_pubkey_string":&lt;string&gt;, "node_pubkey_index":&lt;int32&gt;, "private":&lt;bool&gt;, "recipientInfo":&lt;RecipientNodeInfo&gt;}'</span> localhost:50051 proxy.Lightning/OpenChannel
+<span class="gp">$ </span>grpcurl -plaintext -d <span class="s1">'{"node_pubkey_string":&lt;string&gt;, "private":&lt;bool&gt;, "recipientInfo":&lt;RecipientNodeInfo&gt;}'</span> localhost:50051 proxy.Lightning/OpenChannel
 </code></pre><pre class="highlight javascript tab-javascript"><code>
 <span class="kr">const</span> <span class="nx">grpc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'grpc'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">protoLoader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'@grpc/proto-loader'</span><span class="p">);</span>
@@ -6015,7 +6015,6 @@ This section collects all the messages used in querying the latest status of the
 <span class="kd">let</span> <span class="nx">lightning</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">obdrpc</span><span class="p">.</span><span class="nx">Lightning</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">createInsecure</span><span class="p">());</span>
 <span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="p">{</span> 
   <span class="na">node_pubkey_string</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> 
-  <span class="na">node_pubkey_index</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">,</span> 
   <span class="na">private</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span><span class="p">,</span> 
   <span class="na">recipientInfo</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">RecipientNodeInfo</span><span class="o">&gt;</span><span class="p">,</span> 
 <span class="p">};</span> 
@@ -6035,11 +6034,6 @@ This section collects all the messages used in querying the latest status of the
 <td>node_pubkey_string</td>
 <td>string</td>
 <td>The pubkey of the node to open a channel with.</td>
-</tr>
-<tr>
-<td>node_pubkey_index</td>
-<td>int32</td>
-<td>The pubkey index of the node to open a channel with.</td>
 </tr>
 <tr>
 <td>private</td>
