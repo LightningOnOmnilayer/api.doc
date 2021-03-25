@@ -610,7 +610,7 @@ OpenChannel attempts to open a singly funded channel specified in the request to
 
 ```shell
 
-$ grpcurl -plaintext -d '{"node_pubkey_string":<string>, "node_pubkey_index":<int32>, "private":<bool>, "recipientInfo":<RecipientNodeInfo>}' localhost:50051 proxy.Lightning/OpenChannel
+$ grpcurl -plaintext -d '{"node_pubkey_string":<string>, "private":<bool>, "recipientInfo":<RecipientNodeInfo>}' localhost:50051 proxy.Lightning/OpenChannel
 ```
 
 ```javascript
@@ -629,7 +629,6 @@ const obdrpc = grpc.loadPackageDefinition(packageDefinition).proxy;
 let lightning = new obdrpc.Lightning('localhost:50051', grpc.credentials.createInsecure());
 let request = { 
   node_pubkey_string: <string>, 
-  node_pubkey_index: <int32>, 
   private: <bool>, 
   recipientInfo: <RecipientNodeInfo>, 
 }; 
@@ -644,7 +643,6 @@ lightning.OpenChannel(request, function(err, response) {
 Parameter | Type | Description
 --------- | ---- | ----------- 
 node_pubkey_string | string  | The pubkey of the node to open a channel with.
-node_pubkey_index | int32  | The pubkey index of the node to open a channel with.
 private | bool  | true to private channel or false to open channel.
 recipientInfo | RecipientNodeInfo  | 
 
